@@ -1,0 +1,207 @@
+@import "vars"
+
+//Large: ≥1199px
++media-breakpoint-down(lg)
+	.main__note
+		transform: rotate(-90deg) translate(90px, -70px)
+		font-size: 14px
+	.team-slider
+		max-width: 90%
+		float: right
+
+//Medium: ≥991px
++media-breakpoint-down(md)
+	.nav
+		&-mob
+			height: 100%
+			max-height: 0
+			overflow: hidden
+			transition: max-height .3s ease-out
+			&.show
+				max-height: 75px
+		&-toggle
+			display: block
+			padding: 10px
+			background: transparent
+			float: right
+		&:focus
+			outline-width: 0
+		[class*='bar-']
+			background: $accent
+			display: block
+			transform: rotate(0deg)
+			transition: .3s ease all
+			transform-origin: 15% 15%
+			border-radius: 8px
+			height: 4px
+			width: 36px
+			margin-bottom: 5px
+		.bar-bot
+			margin-bottom: 0
+			transform-origin: 15% 95%
+	.opened
+		.bar
+			&-top
+				transform: rotate(45deg)
+			&-mid
+				opacity: 0
+			&-bot
+				transform: rotate(-45deg)
+	
+	.number
+		&-item
+			&__title
+				font-size: 60px
+			&__text
+				font-size: 14px
+
+	.team-slider .slick-list
+		padding: 30px 150px 30px 30px !important
+
+	.contacts
+		&-position
+			width: 100%
+			position: static
+			transform: none
+		&-block
+			width: 100%
+
+	.map iframe
+		min-height: 400px
+
+//Small: ≥767px
++media-breakpoint-down(sm)
+	.nav
+		&-mob
+			&.show
+				max-height: 100vh
+		.d-flex
+			flex-direction: column
+		&__phone
+			margin: 20px 0
+	
+	.numbers
+		padding-bottom: 30px
+	.number
+		&-item
+			text-align: center
+			margin-bottom: 40px
+
+	.about
+		&__text
+			margin-top: 25px
+		&__btn
+			margin: 0 auto
+
+	.block-title
+		margin-left: auto
+		margin-right: auto
+		font-size: 28px
+		text-align: center
+		&:before
+			width: 50%
+			left: 50%
+			transform: translateX(-50%)
+
+	.team-slider
+		max-width: 100%
+		float: none
+		.slick-list
+			padding: 30px !important
+		&__slide
+			margin: 0 20px
+			.expert
+				opacity: 1
+				background-color: #fff
+				box-shadow: 0px 4px 20px #1F3879
+				transition: all .3s ease-out
+				&-photo
+					&__name
+						display: none
+					&__image
+						width: 100%
+
+	.foot
+		&__logo
+			margin: 0 auto 20px
+		&-main
+			margin-bottom: 20px
+
+	.dev
+		float: none
+		margin: 20px auto
+
+	.modal
+		&__title
+			font-size: 30px
+		&__text
+			font-size: 26px
+
+//Extra small: ≥575px
++media-breakpoint-down(xs)
+	.nav-list
+		flex-direction: column
+		&__item 
+			a
+				justify-content: center
+			& + .nav-list__item
+				margin-left: 0
+
+	.main, .main .row
+		max-height: 900px
+	.main
+		&-title
+			font-size: 28px
+			text-align: center
+			span
+				display: block
+				&:before
+					width: 100%
+					left: 0
+		&-text
+			text-align: center
+	
+	.number
+		&-item
+			&__title
+				font-size: 50px
+
+	.expert
+		flex-direction: column
+		padding: 20px
+		&-photo
+			margin-right: 0
+			&__image
+				margin: 0 auto 20px
+		&-info
+			&__name
+				font-size: 22px
+				text-align: center
+			&__position
+				font-size: 16px
+				text-align: center
+			&__text
+				i
+					font-size: 40px
+				span
+					font-size: 16px
+			&__phone, &__email
+				font-size: 16px
+
+
+	.contacts
+		&-block
+			padding: 0
+			box-shadow: none
+			margin-bottom: 25px
+
+	.modal
+		padding: 20px
+		&:before, &:after
+			display: none
+		&__title
+			font-size: 24px
+		&__text
+			font-size: 20px
+			&:before
+				width: 100%
