@@ -61,19 +61,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="d-flex justify-content-lg-end justify-content-center align-items-center">
 					<ul class="nav-list">
 						<li class="nav-list__item"><a href="{{ route('index') }}">{{ trans('main.menu1') }}</a></li>
-						<li class="nav-list__item"><a href="#">{{ trans('main.menu2') }} <i></i></a></li>
-						<li class="nav-list__item"><a href="#">{{ trans('main.menu3') }}</a></li>
-						<li class="nav-list__item"><a href="#">{{ trans('main.menu4') }}</a></li>
+						<li class="nav-list__item">
+							<a style="cursor:pointer">{{ trans('main.menu2') }} <i></i></a>
+							<ul class="nav-hide">
+								<li><a href="{{ route('jurAut') }}">Абонентское юридическое обслуживание</a></li>
+								<li>
+									<a style="cursor:pointer">Корпоративное право <i></i></a>
+									<ul class="nav-hide2">
+										<li><a href="{{ route('dev') }}">Открытие бизнеса в Украине</a></li>
+										<li><a href="{{ route('dev') }}">Покупка готовых компаний в Украине</a></li>
+										<li><a href="{{ route('dev') }}">Закрытие бизнеса в Украине</a></li>
+										<li><a href="{{ route('dev') }}">Открытие бизнеса в США</a></li>
+									</ul>	
+								</li>
+								<li><a href="{{ route('dev') }}">Налоговое право</a></li>
+								<li><a href="{{ route('dev') }}">Разрешение споров <i></i></a></li>
+								<li><a href="{{ route('dev') }}">Тендерное право</a></li>
+								<li><a href="{{ route('dev') }}">Миграционное право <i></i></a></li>
+								<li><a href="{{ route('dev') }}">Адвокат частных лиц <i></i></a></li>
+								<li><a href="{{ route('dev') }}">Интеллектуальная собственность</a></li>
+								<li><a href="{{ route('dev') }}">Бухгалтерский аутсорсинг</a></li>
+							</ul>
+						</li>
+						<li class="nav-list__item"><a href="#team" class="anchor">{{ trans('main.menu3') }}</a></li>
+						<li class="nav-list__item"><a href="{{ route('dev') }}">{{ trans('main.menu4') }}</a></li>
 						<li class="nav-list__item"><a href="#contacts" class="list anchor">{{ trans('main.menu5') }}</a></li>
 					</ul>
 					<a href="tel:+380674029916" class="nav__phone">+38 067 402 99 16</a>
 					<div class="lang">
 						@if(app()->getLocale() == 'uk')
 							<div class="lang__item">Укр <i></i></div>
-							<a href="{{ localization()->getLocalizedURL('ru') }}"" class="lang__hide">Рус</a>
+							<a href="{{ localization()->getLocalizedURL('ru') }}" class="lang__hide">Рус</a>
 						@else
 							<div class="lang__item">Рус <i></i></div>
-							<a href="{{ localization()->getLocalizedURL('uk') }}"" class="lang__hide">Укр</a>
+							<a href="{{ localization()->getLocalizedURL('uk') }}" class="lang__hide">Укр</a>
 						@endif
 					</div>
 				</div>
@@ -82,7 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </nav>
 
-<header class="main">
+<header class="main header">
 	<div class="main-ico i1 d-none d-md-block"></div>
 	<div class="container">
 		<div class="main-ico i2 d-none d-md-block"></div>
@@ -175,7 +196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="team">
+<section id="team" class="team">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('main.team_note') }}</div>
 		<div class="row">
@@ -511,8 +532,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-md-6">
 				<ul class="foot-main">
 					<li class="foot-main__item"><a href="{{ route('index') }}">{{ trans('main.menu1') }}</a></li>
-					<li class="foot-main__item"><a href="#">{{ trans('main.menu3') }}</a></li>
-					<li class="foot-main__item"><a href="#">{{ trans('main.menu4') }}</a></li>
+					<li class="foot-main__item"><a href="#team" class="anchor">{{ trans('main.menu3') }}</a></li>
+					<li class="foot-main__item"><a href="{{ route('dev') }}">{{ trans('main.menu4') }}</a></li>
 					<li class="foot-main__item"><a href="#contacts" class="anchor">{{ trans('main.menu5') }}</a></li>
 				</ul>
 			</div>
@@ -520,36 +541,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row">
 			<div class="col-md-4">
 				<ul class="foot-list">
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu1') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu2') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu3') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu4') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu5') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu6') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu7') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu8') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu9') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('jurAut') }}">{{ trans('main.foot_menu1') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu2') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu3') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu4') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu5') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu6') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu7') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu8') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu9') }}</a></li>
 				</ul>
 			</div>
 			<div class="col-md-4">
 				<ul class="foot-list">
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu9') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu10') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu11') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu12') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu13') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu14') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu15') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu9') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu10') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu11') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu12') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu13') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu14') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu15') }}</a></li>
 				</ul>
 			</div>
 			<div class="col-md-4">
 				<ul class="foot-list">
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu16') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu17') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu18') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu19') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu20') }}</a></li>
-					<li class="foot-list__item"><a href="#">{{ trans('main.foot_menu21') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu16') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu17') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu18') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu19') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu20') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu21') }}</a></li>
 				</ul>
 				<a href="https://wamp.com.ua" target="_blank" class="dev">
 					<img src="{{ asset('images/wamp.svg') }}" alt="wamp">
@@ -572,6 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<h3 class="modal__title">{{ trans('main.modal_title1') }}</h3>
 		<h4 class="modal__text">{{ trans('main.modal_text1') }}</h4>
 		<form class="modal-form form_check" autocomplete="off">
+			<input type="hidden" name="title" value="{{ trans('main.modal_form_title') }}">
 			<div class="rline">
 				<input type="text" name="name" class="modal-form__input rfield" placeholder="{{ trans('main.name') }}">
 			</div>
@@ -580,6 +602,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<button class="modal-form__btn btnsubmit">{{ trans('main.modal_btn1') }} <i></i></button>
 		</form>
+	</div>
+	<div id="thn" class="thn">
+		<h3>{{ trans('main.thn_title') }}</h3>
+		<p>{{ trans('main.thn_text') }}</p>
 	</div>
 </div>
 

@@ -17,11 +17,20 @@ __webpack_require__.r(__webpack_exports__);
 
 $(function () {
   var navHeight = $('.nav').innerHeight();
-  $('.main').css({
+  $('.header').css({
     'margin-top': navHeight + 'px',
     'height': 'calc(100vh - ' + navHeight + 'px)'
   });
-  $('.main .row').css('height', 'calc(100vh - ' + navHeight + 'px)');
+  $('.header .row').css('height', 'calc(100vh - ' + navHeight + 'px)'); // Скролинг по якорям
+
+  $('.anchor').bind("click", function (e) {
+    var anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: $(anchor.attr('href')).offset().top - navHeight // отступ от меню
+
+    }, 500);
+    e.preventDefault();
+  });
   var toggle = document.querySelector('.nav-toggle');
   var navMob = document.querySelector('.nav-mob');
   toggle.addEventListener('click', function (e) {
@@ -89,15 +98,16 @@ $(function () {
   });
   $('.team-slider').slick({
     infinite: false,
-    arrows: false,
+    arrows: true,
     centerMode: true,
     centerPadding: '100px',
     dots: true,
     responsive: [{
-      breakpoint: 767,
+      breakpoint: 768,
       settings: {
         centerPadding: '0px',
-        dots: false
+        dots: false,
+        arrows: false
       }
     }]
   });
@@ -108,6 +118,55 @@ $(function () {
   });
   var lastNumbHead = $('.team-slider .slick-dots li:last-child button').html();
   $('.team-slider .slick-dots').append('<div class="last"><span></span><p>' + lastNumbHead + '</p></div>');
+  $('.ja_benefits-item').matchHeight();
+  $('.ja_volume-item').matchHeight();
+  $('.faq-content').accordion({
+    collapsible: true,
+    heightStyle: "content"
+  });
+  $('.blog-slider').slick({
+    infinite: false,
+    arrows: false,
+    dots: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    autoplay: true,
+    responsive: [{
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    }, {
+      breakpoint: 575,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true
+      }
+    }]
+  });
+  $('.blog-item').matchHeight();
+  var dots = $('.blog-slider .slick-dots li').length;
+  $('.blog-slider .slick-dots li').css('width', 'calc(100% / ' + dots + ')'); // Отправка формы
+
+  $('form').submit(function () {
+    var data = $(this).serialize();
+    data += '&ajax-request=true';
+    $.ajax({
+      type: 'POST',
+      url: '/mail.php',
+      dataType: 'json',
+      data: data,
+      success: function () {
+        $.fancybox.close();
+        $.fancybox.open({
+          src: '#thn'
+        });
+      }()
+    });
+    return false;
+  });
 });
 
 /***/ }),

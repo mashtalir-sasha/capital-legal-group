@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::localizedGroup(function () {
 
 	Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+	Route::get('/site-under-construction', [App\Http\Controllers\HomeController::class, 'dev'])->name('dev');
 
+	//services routes
+	Route::get('/juridichnij-autsorsing', [App\Http\Controllers\ServiceController::class, 'jurAut'])->name('jurAut');
 });
 
 Auth::routes(['register' => false]);
