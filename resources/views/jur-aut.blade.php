@@ -40,68 +40,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="line line_2"></div>
 </div>
 
-<nav class="nav">
-	<div class="container">
-		<div class="row align-items-end justify-content-between">
-			<div class="col-md-3 col-6">
-				<a href="{{ route('index') }}">
-					<img src="{{ asset('images/logo.svg') }}" alt="logo" class="nav__logo">
-				</a>
-			</div>
-			<div class="col-md-3 col-6 d-block d-lg-none">
-				<div class="nav-btn">
-					<button class="nav-toggle">
-						<span class="bar-top"></span>
-						<span class="bar-mid"></span>
-						<span class="bar-bot"></span>
-					</button>
-				</div>	
-			</div>
-			<div class="col-xl-8 col-lg-9 nav-mob">
-				<div class="d-flex justify-content-lg-end justify-content-center align-items-center">
-					<ul class="nav-list">
-						<li class="nav-list__item"><a href="{{ route('index') }}">{{ trans('main.menu1') }}</a></li>
-						<li class="nav-list__item">
-							<a style="cursor:pointer">{{ trans('main.menu2') }} <i></i></a>
-							<ul class="nav-hide">
-								<li><a href="{{ route('jurAut') }}">Абонентское юридическое обслуживание</a></li>
-								<li>
-									<a style="cursor:pointer">Корпоративное право <i></i></a>
-									<ul class="nav-hide2">
-										<li><a href="{{ route('dev') }}">Открытие бизнеса в Украине</a></li>
-										<li><a href="{{ route('dev') }}">Покупка готовых компаний в Украине</a></li>
-										<li><a href="{{ route('dev') }}">Закрытие бизнеса в Украине</a></li>
-										<li><a href="{{ route('dev') }}">Открытие бизнеса в США</a></li>
-									</ul>	
-								</li>
-								<li><a href="{{ route('dev') }}">Налоговое право</a></li>
-								<li><a href="{{ route('dev') }}">Разрешение споров <i></i></a></li>
-								<li><a href="{{ route('dev') }}">Тендерное право</a></li>
-								<li><a href="{{ route('dev') }}">Миграционное право <i></i></a></li>
-								<li><a href="{{ route('dev') }}">Адвокат частных лиц <i></i></a></li>
-								<li><a href="{{ route('dev') }}">Интеллектуальная собственность</a></li>
-								<li><a href="{{ route('dev') }}">Бухгалтерский аутсорсинг</a></li>
-							</ul>
-						</li>
-						<li class="nav-list__item"><a href="#team" class="anchor">{{ trans('main.menu3') }}</a></li>
-						<li class="nav-list__item"><a href="{{ route('dev') }}">{{ trans('main.menu4') }}</a></li>
-						<li class="nav-list__item"><a href="#contacts" class="list anchor">{{ trans('main.menu5') }}</a></li>
-					</ul>
-					<a href="tel:+380674029916" class="nav__phone">+38 067 402 99 16</a>
-					<div class="lang">
-						@if(app()->getLocale() == 'uk')
-							<div class="lang__item">Укр <i></i></div>
-							<a href="{{ localization()->getLocalizedURL('ru') }}" class="lang__hide">Рус</a>
-						@else
-							<div class="lang__item">Рус <i></i></div>
-							<a href="{{ localization()->getLocalizedURL('uk') }}" class="lang__hide">Укр</a>
-						@endif
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</nav>
+@include('templates.nav')
 
 <header class="ja_head header">
 	<div class="container">
@@ -252,6 +191,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<p class="ja_form__text">{{ trans('jur-aut.form_text') }}</p>
 				<form class="ja_form-content row form_check" autocomplete="off">
 					<input type="hidden" name="title" value="{{ trans('jur-aut.form_sendTitle') }}">
+					<input type="hidden" name="page" value="{{ URL::current() }}">
 					<div class="col-sm-6">
 						<div class="rline">
 							<input type="text" name="name" class="ja_form-content__input rfield" placeholder="{{ trans('main.name') }}" >
@@ -394,19 +334,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<i>01</i>
 						<p>{{ trans('jur-aut.question1') }}</p>
 					</div>
-					<div class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Eveniet provident nisi, iste placeat similique cupiditate in, tenetur aliquam obcaecati quidem!</div>
+					<div class="faq__answer">{!! trans('jur-aut.answer1') !!}</div>
 
 					<div class="faq__title">
 						<i>02</i>
 						<p>{{ trans('jur-aut.question2') }}</p>
 					</div>
-					<div class="faq__answer">Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Eveniet provident nisi, iste placeat similique cupiditate in, tenetur aliquam obcaecati quidem!</div>
+					<div class="faq__answer">{!! trans('jur-aut.answer2') !!}</div>
 
 					<div class="faq__title">
 						<i>03</i>
 						<p>{{ trans('jur-aut.question3') }}</p>
 					</div>
-					<div class="faq__answer">{{ trans('jur-aut.answer3') }}</div>
+					<div class="faq__answer">{!! trans('jur-aut.answer3') !!}</div>
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>
@@ -478,117 +418,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section id="contacts" class="contacts">
-	<div class="container">
-		<div class="note d-none d-xl-block">{{ trans('main.contacts_note') }}</div>
-		<div class="row">
-			<div class="col contacts-position">
-				<div class="contacts-block">
-					<h3 class="block-title"><span>{{ trans('main.contacts_title') }}</span></h3>
-					<p class="contacts-block__text addr">{{ trans('main.contacts_addr') }}</p>
-					<a href="mailto:office@spg.kiev.ua" class="contacts-block__text email">office@spg.kiev.ua</a>
-					<a href="tel:+380674029916" class="contacts-block__text phone">+38 067 402 99 16</a>
-					<div class="contacts-block__soc">
-						<a href="https://www.facebook.com/spg.kiev.ua" target="_blank" class="facebook"></a>
-						<a href="https://instagram.com/spgkiev?igshid=YmMyMTA2M2Y=" target="_blank" class="instagram"></a>
-						<a href="https://www.youtube.com/channel/UCray89DGhD0x4MY0OWLkT2w" target="_blank" class="youtube"></a>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-10 offset-xl-1">
-				<div class="map">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.587824205955!2d30.504919223191045!3d50.448777639338786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce58def18f17%3A0xeb4ba29c3d603908!2zMThBLCDQstGD0LvQuNGG0Y8g0IbQstCw0L3QsCDQpNGA0LDQvdC60LAsIDE40JAsINCa0LjRl9CyLCAwMjAwMA!5e0!3m2!1suk!2sua!4v1655315441422!5m2!1suk!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+@include('templates.foot')
 
-<footer class="foot">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-md-3">
-				<img src="{{ asset('images/foot_logo.png') }}" alt="" class="foot__logo">
-			</div>
-			<div class="col-md-6">
-				<ul class="foot-main">
-					<li class="foot-main__item"><a href="{{ route('index') }}">{{ trans('main.menu1') }}</a></li>
-					<li class="foot-main__item"><a href="{{ route('index') }}/#team" class="anchor">{{ trans('main.menu3') }}</a></li>
-					<li class="foot-main__item"><a href="{{ route('dev') }}">{{ trans('main.menu4') }}</a></li>
-					<li class="foot-main__item"><a href="#contacts" class="anchor">{{ trans('main.menu5') }}</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<ul class="foot-list">
-					<li class="foot-list__item"><a href="{{ route('jurAut') }}">{{ trans('main.foot_menu1') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu2') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu3') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu4') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu5') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu6') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu7') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu8') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu9') }}</a></li>
-				</ul>
-			</div>
-			<div class="col-md-4">
-				<ul class="foot-list">
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu9') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu10') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu11') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu12') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu13') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu14') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu15') }}</a></li>
-				</ul>
-			</div>
-			<div class="col-md-4">
-				<ul class="foot-list">
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu16') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu17') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu18') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu19') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu20') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu21') }}</a></li>
-				</ul>
-				<a href="https://wamp.com.ua" target="_blank" class="dev">
-					<img src="{{ asset('images/wamp.svg') }}" alt="wamp">
-					<p>{{ trans('main.dev') }}</p>
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="container cprt">
-		<div class="row">
-			<div class="col">
-				<p class="cprt__text">{{ trans('main.cprt') }} {{ date('Y') }}</p>
-			</div>
-		</div>
-	</div>
-</footer>
-
-<div class="d-none">
-	<div id="modal" class="modal">
-		<h3 class="modal__title">{{ trans('main.modal_title1') }}</h3>
-		<h4 class="modal__text">{{ trans('main.modal_text1') }}</h4>
-		<form class="modal-form form_check" autocomplete="off">
-			<input type="hidden" name="title" value="{{ trans('main.modal_form_title') }}">
-			<div class="rline">
-				<input type="text" name="name" class="modal-form__input rfield" placeholder="{{ trans('main.name') }}">
-			</div>
-			<div class="rline">
-				<input type="text" name="phone" class="modal-form__input rfield" placeholder="{{ trans('main.phone') }}">
-			</div>
-			<button class="modal-form__btn btnsubmit">{{ trans('main.modal_btn1') }} <i></i></button>
-		</form>
-	</div>
-	<div id="thn" class="thn">
-		<h3>{{ trans('main.thn_title') }}</h3>
-		<p>{{ trans('main.thn_text') }}</p>
-	</div>
-</div>
+@include('templates.modal')
 
 <script src="{{ mix('/js/all.js') }}"></script>
 <script src="{{ mix('/js/scripts.js') }}"></script>

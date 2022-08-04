@@ -97,7 +97,7 @@ $(function() {
 	})
 
 	$('.team-slider').slick({
-		infinite: false,
+		infinite: true,
 		arrows: true,
 		centerMode: true,
 		centerPadding: '100px',
@@ -162,7 +162,7 @@ $(function() {
 	let dots = $('.blog-slider .slick-dots li').length
 	$('.blog-slider .slick-dots li').css('width', 'calc(100% / '+dots+')')
 
-		// Отправка формы
+	// Отправка формы
 	$('form').submit(function() {
 		let data = $(this).serialize()
 		data += '&ajax-request=true'
@@ -178,5 +178,9 @@ $(function() {
 		})
 		return false
 	})
+
+	$('.receive-item').matchHeight()
+
+	$('.tarif-item__wrap, .cart-item__wrap, .package-item__wrap').matchHeight()
 
 })

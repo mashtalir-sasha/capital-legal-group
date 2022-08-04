@@ -97,7 +97,7 @@ $(function () {
     }]
   });
   $('.team-slider').slick({
-    infinite: false,
+    infinite: true,
     arrows: true,
     centerMode: true,
     centerPadding: '100px',
@@ -167,6 +167,8 @@ $(function () {
     });
     return false;
   });
+  $('.receive-item').matchHeight();
+  $('.tarif-item__wrap, .cart-item__wrap, .package-item__wrap').matchHeight();
 });
 
 /***/ }),

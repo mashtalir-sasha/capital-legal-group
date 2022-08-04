@@ -3,6 +3,7 @@ if(isset ($_POST['title'])) {$title=$_POST['title'];}
 if(isset ($_POST['name'])) {$name=$_POST['name'];}
 if(isset ($_POST['phone'])) {$phonenum=$_POST['phone'];}
 if(isset ($_POST['query'])) {$query=$_POST['query'];}
+if(isset ($_POST['page'])) {$page=$_POST['page'];}
 
 
 $to = "mashtalir_sasha@ukr.net";
@@ -13,7 +14,8 @@ if ( $name || $phonenum ) {
 	$message .= ""
 		. ( $name ?" Ім'я:  $name <br>" : "")
 		. ( $phonenum ?" Телефон:  $phonenum <br>" : "")
-		. ( $query ?" Запит:  $query <br>" : "");
+		. ( $query ?" Запит:  $query <br>" : "")
+		. ( $page ?"<hr><br> Заявку залишено на сторінці:  <a href='$page' target='_blank'>$page</a> <br>" : "");
 }
 
 $headers = "MIME-Version: 1.0\r\n";

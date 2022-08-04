@@ -85,6 +85,13 @@
 	.map iframe
 		min-height: 400px
 
+	.other-services
+		padding-bottom: 50px
+		&:before
+			display: none
+		&__btn
+			margin-bottom: 20px
+
 //Small: ≥767px
 +media-breakpoint-down(sm)
 	.nav
@@ -143,6 +150,9 @@
 					&__image
 						width: 100%
 
+	.partner
+		margin: 0 10px 50px
+
 	.foot
 		&__logo
 			margin: 0 auto 20px
@@ -164,6 +174,54 @@
 		&_about
 			&-list
 				margin-bottom: 20px
+		&_benefits-item
+			&__ico
+				margin: 0 auto 10px
+			&__text
+				text-align: center
+				&:before
+					left: 50%
+					transform: translateX(-50%)
+
+	//vurishennja sporiv
+	.vs
+		&_about
+			&__btn
+				margin: 0 auto 20px
+
+	.receive-item
+		&__ico
+			margin: 0 auto 10px
+		&__text
+			text-align: center
+			&:before
+				left: 50%
+				transform: translateX(-50%)
+
+	.other-services
+		&:after
+			display: none
+		&__btn
+			margin: 0 auto 20px
+
+	.manager
+		&-image
+			width: fit-content
+			margin: 30px auto
+			&:after
+				display: none
+		&__name
+			text-align: center
+		&__position
+			text-align: center
+		&-text
+			width: fit-content
+			margin: 20px auto
+		&__link
+			margin: 0 auto
+		&-diploma
+			width: fit-content
+			margin: 0 auto
 
 //Extra small: ≥575px
 +media-breakpoint-down(xs)
@@ -304,3 +362,36 @@
 		&__answer
 			font-size: 16px
 			padding: 20px
+
+	//vurishennja sporiv
+	.vs
+		&_price
+			&-table
+				tr
+					display: block
+					width: 100%
+					border: 1px solid #B0ADAD
+				th, td
+					display: block
+					width: 100% !important
+				td
+					border: 1px solid #e3e3e3 !important
+
+	.manager
+		&__name
+			font-size: 30px
+		&__position
+			font-size: 20px
+		&-text
+			&__text
+				max-width: 210px
+		&__content
+			&:first-child
+				margin-top: 20px
+		&__title
+			font-size: 18px
+		&__text
+			font-size: 16px
+		&-diploma
+			&:before
+				display: none

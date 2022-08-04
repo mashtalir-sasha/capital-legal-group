@@ -52,6 +52,9 @@ button
 	&:focus
 		outline: none
 
+.mt20
+	margin-top: 20px
+
 .container
 	position: relative
 
@@ -442,6 +445,7 @@ button
 		position: absolute
 		bottom: 0
 		left: -3%
+		z-index: -1
 
 .about
 	padding: 70px 0
@@ -514,7 +518,7 @@ button
 			padding: 30px 250px 30px 30px !important
 		.slick-arrow
 			&.slick-prev
-				display: none
+				display: none !important
 			&.slick-next
 				z-index: 2
 				font-size: 0
@@ -685,7 +689,7 @@ button
 	display: flex
 	align-items: center
 	justify-content: center
-	margin: 0 10px 50px
+	margin: 25px 10px
 
 .reviews
 	position: relative
@@ -995,7 +999,7 @@ button
 			content: ''
 			width: 100%
 			height: 100%
-			background: rgba(29, 36, 52, 0.6)
+			background: rgba(29, 36, 52, 0.8)
 			position: absolute
 			top: 0
 			left: 0
@@ -1051,6 +1055,11 @@ button
 			font-size: 18px
 			color: #BABABA
 			max-width: 540px
+		&-subtitle
+			font-family: $title
+			font-weight: 600
+			font-size: 30px
+			color: #BABABA
 
 	&_about
 		padding: 70px 0
@@ -1089,28 +1098,33 @@ button
 	&_block-title
 		width: fit-content
 		position: relative
+		z-index: 1
 		font-family: $title
 		font-weight: 600
 		font-size: 30px
 		color: #333
 		margin-bottom: 30px
 		span
-			display: table
+			display: inline-block
 			position: relative
 			&:before
 				content: ''
-				width: 106%
+				width: 102%
 				height: 20px
 				background-color: rgba(#C6C6DB, .36)
 				position: absolute
 				bottom: 0
-				left: -3%
+				left: -1%
+				z-index: -1
 		i
 			font-style: normal
 			color: #3962D1
 
 	&_benefits
 		padding: 70px 0 40px
+		&_shadow
+			background: #FDFDFD
+			box-shadow: 0px 4px 20px rgba(50, 96, 186, 0.25)
 		.container
 			position: relative
 			&:before
@@ -1436,5 +1450,499 @@ button
 			font-size: 16px
 			color: #A38B38
 			margin-top: 10px
+
+// virushennja sporiv
+.vs
+	&_about
+		padding: 70px 0
+		background-color: #FDFDFD
+		box-shadow: 0px 4px 20px rgba(50, 96, 186, 0.25)
+		&__title
+			font-weight: 700
+			font-size: 20px
+			color: #1D1D1D
+			margin-bottom: 20px
+			&_fwn
+				font-weight: normal
+		&__text
+			font-size: 20px
+			color: #1D1D1D
+			margin-bottom: 20px
+		&-list
+			list-style-type: none
+			padding-left: 0
+			margin-bottom: 20px
+			li
+				position: relative
+				font-size: 18px
+				padding-left: 25px
+				&:before
+					content: ''
+					width: 10px
+					height: 10px
+					border-radius: 50% 50%
+					background-color: #3962D1
+					position: absolute
+					top: 7px
+					left: 0
+				& + li
+					margin-top: 20px
+			&_into
+				list-style-type: none
+				padding-left: 0
+				margin-bottom: 0
+				margin-top: 10px
+				li
+					padding-left: 0
+					color: #333333
+					margin-top: 0
+					&:before
+						display: none
+					& + li
+						margin-top: 0
+			&_fz16
+				li
+					font-size: 16px
+					& + li
+						margin-top: 10px
+		&-link
+			display: block
+			position: relative
+			z-index: 1
+			font-weight: 700
+			font-size: 18px
+			color: #1B358C
+			text-decoration: underline
+			margin-bottom: 20px
+		&__btn
+			position: relative
+			z-index: 1
+			display: flex
+			width: fit-content
+			align-items: center
+			padding: 12px 14px
+			background-color: #C6A636
+			border-radius: 3px
+			font-family: $title
+			font-weight: 600
+			color: #fff
+			i
+				display: block
+				width: 16px
+				height: 16px
+				background-image: url(/images/btn_arrow.svg)
+				background-position: center center
+				background-size: contain
+				background-repeat: no-repeat
+				margin-left: 15px
+	&_price
+		&__last
+			color: #575757
+		&-table
+			position: relative
+			z-index: 1
+			width: 100%
+			margin: 30px 0 15px
+			th, td
+				border: 1px solid #B0ADAD
+				width: 33.333%
+				padding: 9px 20px
+				background-color: #EAEFEF
+				text-align: center
+				font-size: 18px
+			td
+				text-align: left
+			th
+				font-weight: 700
+				color: #fff
+				&.first
+					width: 60%
+					background-color: #3962D1
+				&.middle
+					background-color: #455CB4
+
+.other-services
+	position: relative
+	padding: 70px 0 50px
+	&:before
+		content: ''
+		width: 317px
+		height: 306px
+		background-image: url(/images/other_services_ico1.svg)
+		position: absolute
+		top: 35px
+		left: 0
+	&:after
+		content: ''
+		width: 380px
+		height: 306px
+		background-image: url(/images/other_services_ico2.svg)
+		position: absolute
+		bottom: -100px
+		right: 0
+	&__item
+		position: relative
+		z-index: 1
+		display: flex
+		align-items: flex-end
+		height: 200px
+		background-size: cover
+		background-position: center
+		background-repeat: no-repeat
+		margin-bottom: 20px
+	&__text
+		display: flex
+		align-items: center
+		padding: 10px 20px
+		min-height: 60px
+		width: 100%
+		max-width: 255px
+		background: rgba(19, 16, 53, 0.37)
+		backdrop-filter: blur(30px)
+		font-family: $title
+		font-weight: 600
+		color: #fff
+	&__btn
+		position: relative
+		z-index: 1
+		display: flex
+		width: fit-content
+		background-color: #C6A636
+		border: 2px solid #A38B38
+		border-radius: 3px
+		font-family: $title
+		font-weight: 600
+		color: #fff
+		padding: 12px 30px
+		margin-bottom: 20px
+		i
+			display: block
+			width: 16px
+			height: 16px
+			background-image: url(/images/btn_arrow.svg)
+			background-position: center center
+			background-size: contain
+			background-repeat: no-repeat
+			margin-left: 50px
+
+.receive
+	padding-bottom: 70px
+	&.pt
+		padding-top: 70px
+	&-item
+		padding: 20px
+		background: rgba(245, 245, 245, 0.38)
+		box-shadow: 0px 4px 10px rgba(78, 148, 222, 0.24)
+		margin-bottom: 30px
+		&__ico
+			width: 75px
+			height: 75px
+			object-fit: contain
+			margin-bottom: 10px
+		&__text
+			position: relative
+			margin-top: 5px
+			padding-top: 15px
+			color: #333333
+			&:before
+				content: ''
+				width: 100%
+				max-width: 150px
+				height: 3px
+				background-color: #3962D1
+				position: absolute
+				top: 0
+				left: 0
+
+.manager
+	padding: 70px 0
+	&-image
+		position: relative
+		margin: 30px 0 30px
+		&:before
+			content: ''
+			width: 134px
+			height: 153px
+			background-color: #007CFF
+			position: absolute
+			top: -25px
+			left: -30px
+			z-index: -1
+		&:after
+			content: ''
+			width: 383px
+			height: 386px
+			background-image: url(/images/manager_ico.svg)
+			position: absolute
+			right: -320px
+			top: -45px
+	&__name
+		font-weight: 700
+		font-size: 40px
+		text-transform: uppercase
+	&__position
+		font-size: 30px
+		color: #414141
+	&-text
+		display: flex
+		margin: 20px 0
+		&__count
+			font-weight: 700
+			font-size: 70px
+			line-height: 1
+			color: #232323
+		&__text
+			max-width: 280px
+			font-size: 18px
+			font-weight: 700
+			color: #232323
+			margin-left: 10px
+	&__link
+		position: relative
+		z-index: 1
+		display: table
+		color: #4B64C0
+		margin-left: 90px
+		font-size: 20px
+		& + .manager__link
+			margin-top: 5px
+	&__title
+		font-weight: 700
+		font-size: 25px
+	&__text
+		font-size: 18px
+	&__content
+		margin-bottom: 20px
+	&-diploma
+		position: relative
+		&:before
+			content: ''
+			width: 134px
+			height: 153px
+			background-color: #007CFF
+			position: absolute
+			bottom: -20px
+			right: -20px
+			z-index: -1
+
+// korporatuvne pravo
+.tarif
+	padding: 70px 0 50px
+	&-item
+		background-color: #F6F5FF
+		margin-bottom: 20px
+		&__title
+			padding: 15px
+			background-color: #4B64C0
+			h4
+				font-family: $title
+				font-weight: 600
+				font-size: 25px
+				color: #fff
+				text-align: center
+		&__wrap
+			padding: 20px
+		&__price
+			padding: 20px
+		&__subtitle
+			font-weight: 700
+			font-size: 18px
+			color: #000
+			margin-bottom: 10px
+		&__text
+			font-size: 18px
+		&__price
+			p
+				font-weight: 700
+				font-size: 18px
+				color: #000
+				margin-bottom: 10px
+		&__btn
+			position: relative
+			z-index: 1
+			display: flex
+			width: fit-content
+			align-items: center
+			padding: 12px 14px
+			background-color: #C6A636
+			border-radius: 3px
+			font-family: $title
+			font-weight: 600
+			color: #fff
+			i
+				display: block
+				width: 16px
+				height: 16px
+				background-image: url(/images/btn_arrow.svg)
+				background-position: center center
+				background-size: contain
+				background-repeat: no-repeat
+				margin-left: 40px
+		&_accent
+			background-color: rgba(#C3DAF2, .64)
+			.tarif-item__title
+				background-color: #1B358C
+
+.alt
+	padding: 70px 0 50px
+	&-services
+		&__item
+			display: block
+			position: relative
+			z-index: 1
+			display: flex
+			align-items: flex-end
+			height: 360px
+			background-size: cover
+			background-position: center
+			background-repeat: no-repeat
+			margin-bottom: 70px
+		&__text
+			display: flex
+			align-items: center
+			padding: 20px
+			min-height: 60px
+			width: 100%
+			max-width: 390px
+			background: rgba(19, 16, 53, 0.37)
+			backdrop-filter: blur(30px)
+			font-family: $title
+			font-weight: 600
+			font-size: 20px
+			color: #fff
+
+.cart
+	&-item
+		background-color: #F6F5FF
+		margin-bottom: 20px
+		&__title
+			padding: 15px
+			background-color: #4B64C0
+			h4
+				font-family: $title
+				font-weight: 600
+				font-size: 18px
+				color: #fff
+				text-align: center
+		&__wrap
+			padding: 20px
+		&__price
+			padding: 20px
+		&__text
+			font-size: 18px
+		&__price
+			p
+				font-weight: 700
+				font-size: 18px
+				color: #000
+				margin-bottom: 10px
+		&__btn
+			position: relative
+			z-index: 1
+			display: flex
+			width: fit-content
+			align-items: center
+			padding: 12px 14px
+			background-color: #C6A636
+			border-radius: 3px
+			font-family: $title
+			font-weight: 600
+			color: #fff
+			i
+				display: block
+				width: 16px
+				height: 16px
+				background-image: url(/images/btn_arrow.svg)
+				background-position: center center
+				background-size: contain
+				background-repeat: no-repeat
+				margin-left: 40px
+		&_sold
+			position: relative
+			&:before
+				content: ''
+				width: 100%
+				height: 100%
+				background-color: rgba(#D9D9D9, .69)
+				position: absolute
+				left: 0
+				top: 0
+				z-index: 2
+		&__sold
+			width: 100%
+			font-family: $title
+			font-weight: 600
+			font-size: 20px
+			color: #fff
+			text-transform: uppercase
+			text-align: center
+			padding: 18px 0
+			background-color: #A38B38
+			position: absolute
+			top: 50%
+			left: 0
+
+.package
+	padding: 70px 0 50px
+	&-item
+		background-color: #F6F5FF
+		margin-bottom: 20px
+		&__title
+			display: flex
+			justify-content: center
+			align-items: center
+			height: 100vh
+			max-height: 85px
+			background-color: #4B64C0
+			h4
+				font-family: $title
+				font-weight: 600
+				font-size: 25px
+				color: #fff
+				text-align: center
+		&__wrap
+			padding: 20px
+		&__price
+			padding: 20px
+		&__subtitle
+			font-weight: 700
+			font-size: 18px
+			color: #000
+		&__text
+			font-size: 18px
+			& + &
+				margin-top: 10px
+		&__price
+			p
+				font-weight: 700
+				font-size: 18px
+				color: #000
+				margin-bottom: 10px
+		&__btn
+			position: relative
+			z-index: 1
+			display: flex
+			width: fit-content
+			align-items: center
+			padding: 12px 14px
+			background-color: #C6A636
+			border-radius: 3px
+			font-family: $title
+			font-weight: 600
+			color: #fff
+			i
+				display: block
+				width: 16px
+				height: 16px
+				background-image: url(/images/btn_arrow.svg)
+				background-position: center center
+				background-size: contain
+				background-repeat: no-repeat
+				margin-left: 40px
+		&_accent
+			background-color: rgba(#C3DAF2, .64)
+			.package-item__title
+				background-color: #1B358C
+
 
 @import "media" // Always at the end
