@@ -18,6 +18,8 @@
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -35,10 +37,8 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div class="grid d-none d-xl-block">
-	<div class="line line_1"></div>
-	<div class="line line_2"></div>
-</div>
+<div class="grid-line grid-line_1 d-none d-xl-block"></div>
+<div class="grid-line grid-line_2 d-none d-xl-block"></div>
 
 <nav class="nav">
 	<div class="container">

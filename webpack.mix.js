@@ -16,12 +16,13 @@ require('laravel-mix-polyfill');
 mix
     .scripts([
         'resources/libs/jquery/dist/jquery.min.js',
-        'resources/libs/fancybox/dist/jquery.fancybox.min.js',
+        'resources/libs/f/jquery.fancybox.min.js',
         'resources/libs/required_fields/jquery.maskedinput.min.js',
         'resources/libs/required_fields/required_fields.js',
         'resources/libs/slick-carousel/slick/slick.min.js',
         'resources/libs/matchHeight/dist/jquery.matchHeight.js',
         'resources/libs/jquery-accordion/js/jquery-ui-1.9.2.custom.min.js',
+        'resources/libs/smooth-parallax/dist/smooth-parallax.min.js',
     ], 'public/js/all.js')
     .js('resources/js/scripts.js', 'public/js')
     .polyfill({

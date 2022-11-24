@@ -18,7 +18,7 @@
 +media-breakpoint-down(md)
 	.nav
 		&-mob
-			height: 100%
+			height: 100vh
 			max-height: 0
 			overflow: hidden
 			transition: max-height .3s ease-out
@@ -109,6 +109,12 @@
 		&-hide
 			transform: translateX(-73%)
 	
+	.main, .ja_head, .ja_block
+		&-title
+			span
+				&:before
+					display: none
+
 	.numbers
 		padding-bottom: 30px
 	.number
@@ -128,9 +134,7 @@
 		font-size: 28px
 		text-align: center
 		&:before
-			width: 50%
-			left: 50%
-			transform: translateX(-50%)
+			display: none
 
 	.team-slider
 		max-width: 100%
@@ -149,6 +153,26 @@
 						display: none
 					&__image
 						width: 100%
+		.slick-arrow
+			width: 50px !important
+			height: 50px !important
+			position: absolute
+			top: 50% !important
+			transform: translateY(-50%)
+			z-index: 2
+			background-image: url(/images/team-slider_arrow.svg)
+			background-size: 30px
+			background-position: center
+			background-repeat: no-repeat
+			border-radius: 50%
+			font-size: 0
+			background-color: #e4e4e4 !important
+			&.slick-prev
+				display: inline-block !important
+				left: 0
+				transform: translateY(-50%) rotate(180deg)
+			&.slick-next
+				right: 0
 
 	.partner
 		margin: 0 10px 50px
@@ -158,6 +182,10 @@
 			margin: 0 auto 20px
 		&-main
 			margin-bottom: 20px
+		&__link
+			text-align: center
+			&:first-child
+				margin-top: 20px
 
 	.dev
 		float: none
@@ -182,6 +210,16 @@
 				&:before
 					left: 50%
 					transform: translateX(-50%)
+		&_price-table_buh
+			tr
+				display: block
+				width: 100%
+				border: 1px solid #B0ADAD
+			th, td
+				display: block
+				width: 100% !important
+			td
+				border: 1px solid #e3e3e3 !important
 
 	//vurishennja sporiv
 	.vs
@@ -223,6 +261,44 @@
 			width: fit-content
 			margin: 0 auto
 
+	.blog-list
+		&__wrap
+			padding-top: 20px
+			padding-bottom: 20px
+			margin-bottom: 20px
+		&__title
+			margin-bottom: 0
+
+	.blog-nav
+		height: 0
+		opacity: 0
+		transition: ease-out .3s
+		&.show
+			height: 1000%
+			max-height: 1300px
+			margin-top: 20px
+			opacity: 1
+		&__btn
+			position: relative
+			display: flex
+			align-items: center
+			justify-content: space-between
+			padding: 0 20px
+			i
+				display: block
+				cursor: pointer
+				display: block
+				width: 10px
+				height: 6px
+				background-image: url(/images/menu_arrow.svg)
+				background-size: contain
+				background-position: center
+				background-repeat: no-repeat
+				transition: ease-out .3s
+			&.opened
+				i
+					transform: rotate(180deg)
+
 //Extra small: ≥575px
 +media-breakpoint-down(xs)
 	.nav-list
@@ -237,12 +313,21 @@
 		&-hide
 			position: static
 			transform: none
-			li a
-				justify-content: flex-start
+			li
+				&:before
+					top: 10px
+					transform: none
+				a
+					justify-content: flex-start
+				i
+					right: 10px
 		&-hide2
-			left: 50%
-			transform: translateY(-50%)
+			left: 0
+			transform: none
 			bottom: 0
+			position: relative
+			z-index: 2
+			max-width: 234px
 
 	.main, .main .row
 		max-height: 900px
@@ -320,6 +405,8 @@
 						left: 0
 			&-text
 				text-align: center
+			&-subtitle
+				text-align: center
 			&__content
 				&:before
 					display: none
@@ -395,3 +482,10 @@
 		&-diploma
 			&:before
 				display: none
+
+	.variant-item
+		&__title
+			padding: 20px
+		&__wrap
+			padding: 20px
+				

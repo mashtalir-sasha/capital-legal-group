@@ -4,14 +4,17 @@ if(isset ($_POST['name'])) {$name=$_POST['name'];}
 if(isset ($_POST['phone'])) {$phonenum=$_POST['phone'];}
 if(isset ($_POST['query'])) {$query=$_POST['query'];}
 if(isset ($_POST['page'])) {$page=$_POST['page'];}
+if(isset ($_POST['expert'])) {$expert=$_POST['expert'];}
 
 
-$to = "mashtalir_sasha@ukr.net";
+//$to = "priadka@spg.kiev.ua";
+$to = "mashtalir.sasha@gmail.com, mashtalir_sasha@ukr.net";
 
 
 $message = "Форма: $title <br><br>";
-if ( $name || $phonenum ) {
+if ( $expert || $name || $phonenum || $query || $page ) {
 	$message .= ""
+		. ( $expert ?" Зв'язатись з  $expert <br>" : "")
 		. ( $name ?" Ім'я:  $name <br>" : "")
 		. ( $phonenum ?" Телефон:  $phonenum <br>" : "")
 		. ( $query ?" Запит:  $query <br>" : "")

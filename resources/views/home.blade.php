@@ -18,6 +18,8 @@
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -35,10 +37,8 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div class="grid d-none d-xl-block">
-	<div class="line line_1"></div>
-	<div class="line line_2"></div>
-</div>
+<div class="grid-line grid-line_1 d-none d-xl-block"></div>
+<div class="grid-line grid-line_2 d-none d-xl-block"></div>
 
 @include('templates.nav')
 
@@ -56,53 +56,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </header>
 
-<section class="numbers">
+<section class="numbers scroll fadeIn">
 	<img src="{{ asset('images/numbers_image.svg') }}" alt="image" class="numbers__image d-none d-md-block">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('main.numbers_note') }}</div>
 		<div class="row">
-			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
-				<div class="number-item">
+			<div class="col-xl-3 col-md-4 col-6 offset-xl-1 order-first">
+				<div class="number-item fadeIn_slow">
 					<p class="number-item__title">{{ trans('main.number_title1') }}</p>
 					<p class="number-item__text">{{ trans('main.number_text1') }}</p>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
-				<div class="number-item">
+				<div class="number-item fadeIn_slow">
 					<p class="number-item__title">{{ trans('main.number_title2') }}</p>
 					<p class="number-item__text">{{ trans('main.number_text2') }}</p>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
-				<div class="number-item">
+				<div class="number-item fadeIn_slow">
 					<p class="number-item__title">{{ trans('main.number_title3') }}</p>
 					<p class="number-item__text">{{ trans('main.number_text3') }}</p>
 				</div>
 			</div>
 		
 			<div class="numbers-line d-none d-md-block">
-				<div class="numbers-line__big i1"></div>
+				<div class="numbers-line__big i1 pulse"></div>
 				<div class="numbers-line__small i1"></div>
 				<div class="numbers-line__small i2"></div>
-				<div class="numbers-line__big i2"></div>
-				<div class="numbers-line__big i3"></div>
+				<div class="numbers-line__big i2 pulse"></div>
+				<div class="numbers-line__big i3 pulse"></div>
 				<div class="numbers-line__small i3"></div>
 			</div>
 		
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
-				<div class="number-item">
+				<div class="number-item fadeIn_slow">
 					<p class="number-item__title">{{ trans('main.number_title4') }}</p>
 					<p class="number-item__text">{{ trans('main.number_text4') }}</p>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
-				<div class="number-item">
+				<div class="number-item fadeIn_slow">
 					<p class="number-item__title">{{ trans('main.number_title5') }}</p>
 					<p class="number-item__text">{{ trans('main.number_text5') }}</p>
 				</div>
 			</div>
-			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
-				<div class="number-item">
+			<div class="col-xl-3 col-md-4 col-6 offset-xl-1 order-first order-sm-last">
+				<div class="number-item fadeIn_slow">
 					<p class="number-item__title">{{ trans('main.number_title6') }}</p>
 					<p class="number-item__text">{{ trans('main.number_text6') }}</p>
 				</div>
@@ -111,13 +111,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="about">
+<section class="about scroll fadeIn">
 	<div class="container">
 		<div class="about__ico d-none d-md-block"></div>
 		<div class="note d-none d-xl-block">{{ trans('main.about_note') }}</div>
 		<div class="row">
 			<div class="col offset-xl-1">
-				<h3 class="block-title">{!! trans('main.about_title') !!}</h3>
+				<h3 class="block-title fadeInRight">{!! trans('main.about_title') !!}</h3>
 			</div>
 		</div>
 		<div class="row align-items-center">
@@ -135,12 +135,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section id="team" class="team">
+<section id="team" class="team scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('main.team_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="block-title">{!! trans('main.team_title') !!}</h3>
+				<h3 class="block-title fadeInRight">{!! trans('main.team_title') !!}</h3>
 				<div class="team-slider">
 					<div class="team-slider__slide">
 						<div class="expert">
@@ -155,8 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>15+</i>
 									<span>{{ trans('main.expert_text1') }}</span>
 								</p>
-								<a href="tel:+380674029916" class="expert-info__phone">+38 067 402 99 16</a>
-								<a href="mailto:priadka@spg.kiev.ua" class="expert-info__email">priadka@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name1') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -173,8 +172,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>15+</i>
 									<span>{{ trans('main.expert_text2') }}</span>
 								</p>
-								<a href="tel:+380677650888" class="expert-info__phone">+38 067 765 08 88</a>
-								<a href="mailto:tsemeiko@spg.kiev.ua" class="expert-info__email">tsemeiko@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name2') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -191,8 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>17+</i>
 									<span>{{ trans('main.expert_text3') }}</span>
 								</p>
-								<a href="tel:+380973126266" class="expert-info__phone">+38 097 312 62 66</a>
-								<a href="mailto:shnyahin@spg.kiev.ua" class="expert-info__email">shnyahin@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name3') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -209,8 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>15+</i>
 									<span>{{ trans('main.expert_text4') }}</span>
 								</p>
-								<a href="tel:+380674434414" class="expert-info__phone">+38 067 443 44 14</a>
-								<a href="mailto:office@prima-veritas.ua" class="expert-info__email">office@prima-veritas.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name4') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -227,8 +223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>15+</i>
 									<span>{{ trans('main.expert_text5') }}</span>
 								</p>
-								<a href="tel:+380677650888" class="expert-info__phone">+38 067 765 08 88</a>
-								<a href="mailto:denis.krainik@gmail.com" class="expert-info__email">denis.krainik@gmail.com</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name5') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -245,8 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>15+</i>
 									<span>{{ trans('main.expert_text6') }}</span>
 								</p>
-								<a href="tel:+380964559677" class="expert-info__phone">+38 096 455 96 77</a>
-								<a href="mailto:vestabuhgalter@gmail.com" class="expert-info__email">vestabuhgalter@gmail.com</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name6') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -263,7 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>10+</i>
 									<span>{{ trans('main.expert_text7') }}</span>
 								</p>
-								<a href="mailto:alyonkina@spg.kiev.ua" class="expert-info__email">alyonkina@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name7') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -280,7 +274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>10+</i>
 									<span>{{ trans('main.expert_text8') }}</span>
 								</p>
-								<a href="mailto:borovyk@spg.kiev.ua" class="expert-info__email">borovyk@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name8') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -297,7 +291,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>5+</i>
 									<span>{{ trans('main.expert_text9') }}</span>
 								</p>
-								<a href="mailto:rukodii@spg.kiev.ua" class="expert-info__email">rukodii@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name9') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -313,7 +307,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<p class="expert-info__text">
 									<span>{{ trans('main.expert_text10') }}</span>
 								</p>
-								<a href="mailto:k.priadka@spg.kiev.ua" class="expert-info__email">k.priadka@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name10') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -323,19 +317,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="partners">
+<section class="partners scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('main.partners_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="block-title">{!! trans('main.partners_title') !!}</h3>
+				<h3 class="block-title fadeInRight">{!! trans('main.partners_title') !!}</h3>
 				<div class="d-flex align-items-end">
 					<p class="partners__text">{{ trans('main.partners_text') }}</p>
 					<div class="partners__line"></div>
 				</div>
 			</div>
 			<div class="col-12">
-				<div class="row align-items-center justify-content-end d-none d-md-flex">
+				<div class="row align-items-center justify-content-end d-none d-md-flex" smooth-parallax container="body" start-position-x="-.3" end-position-x="0">
 					<div class="col-md-2">
 						<div class="partner">
 							<img src="{{ asset('images/uploads/client1.png') }}" alt="partner">
@@ -362,7 +356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 					</div>
 				</div>
-				<div class="row align-items-center d-none d-md-flex">
+				<div class="row align-items-center d-none d-md-flex" smooth-parallax container="body" start-position-x=".3" end-position-x="0">
 					<div class="col-md-2">
 						<div class="partner">
 							<img src="{{ asset('images/uploads/client6.png') }}" alt="partner">
@@ -446,13 +440,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="reviews">
+<section class="reviews scroll fadeIn">
 	<div class="reviews__ico d-none d-md-block"></div>
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('main.reviews_title') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="block-title"><span>{{ trans('main.reviews_title') }}</span></h3>
+				<h3 class="block-title fadeInRight"><span>{{ trans('main.reviews_title') }}</span></h3>
 				<div class="reviews-slider">
 					<div class="review">
 						<a href="{{ asset('images/uploads/1rev.jpg') }}" data-fancybox="reviews">

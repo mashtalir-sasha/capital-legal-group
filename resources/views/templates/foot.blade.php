@@ -27,14 +27,18 @@
 <footer class="foot">
 	<div class="container">
 		<div class="row align-items-center">
-			<div class="col-md-3">
+			<div class="col-md-3 d-none d-sm-block">
 				<img src="{{ asset('images/foot_logo.png') }}" alt="" class="foot__logo">
 			</div>
 			<div class="col-md-6">
 				<ul class="foot-main">
 					<li class="foot-main__item"><a href="{{ route('index') }}">{{ trans('main.menu1') }}</a></li>
-					<li class="foot-main__item"><a href="{{ route('index') }}/#team" class="anchor">{{ trans('main.menu3') }}</a></li>
-					<li class="foot-main__item"><a href="{{ route('dev') }}">{{ trans('main.menu4') }}</a></li>
+					@if( Route::currentRouteName() != 'index' )
+					<li class="foot-main__item"><a href="{{ route('index') }}/#team">{{ trans('main.menu3') }}</a></li>
+					@else
+					<li class="foot-main__item"><a href="#team" class="anchor">{{ trans('main.menu3') }}</a></li>
+					@endif
+					<li class="foot-main__item"><a href="{{ route('blog.main') }}">{{ trans('main.menu4') }}</a></li>
 					<li class="foot-main__item"><a href="#contacts" class="anchor">{{ trans('main.menu5') }}</a></li>
 				</ul>
 			</div>
@@ -44,12 +48,12 @@
 				<ul class="foot-list">
 					<li class="foot-list__item"><a href="{{ route('jurAut') }}">{{ trans('main.foot_menu1') }}</a></li>
 					<li class="foot-list__item"><a href="{{ route('korpPravo') }}">{{ trans('main.foot_menu2') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu3') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('podatkovePravo') }}">{{ trans('main.foot_menu3') }}</a></li>
 					<li class="foot-list__item"><a href="{{ route('vurSpor') }}">{{ trans('main.foot_menu4') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu5') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu6') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu8') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu9') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('tendernePravo') }}">{{ trans('main.foot_menu5') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('mihratsiinePravo') }}">{{ trans('main.foot_menu6') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('intelektVlasnist') }}">{{ trans('main.foot_menu8') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('bukhhalterskyiAut') }}">{{ trans('main.foot_menu9') }}</a></li>
 				</ul>
 			</div>
 			<div class="col-md-4">
@@ -65,10 +69,18 @@
 			</div>
 			<div class="col-md-4">
 				<ul class="foot-list">
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu15') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu16') }}</a></li>
-					<li class="foot-list__item"><a href="{{ route('dev') }}">{{ trans('main.foot_menu17') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('otrymanniaIpn') }}">{{ trans('main.foot_menu15') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('otrymanniaDoz') }}">{{ trans('main.foot_menu16') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('otrymanniaPos') }}">{{ trans('main.foot_menu17') }}</a></li>
 				</ul>
+			</div>
+		</div>
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				<a href="{{ route('oferta') }}" class="foot__link">{{ trans('oferta-konf.oferta_link') }}</a>
+				<a href="{{ route('konfident') }}" class="foot__link">{{ trans('oferta-konf.polituka_link') }}</a>
+			</div>
+			<div class="col-md-6">
 				<a href="https://wamp.com.ua" target="_blank" class="dev">
 					<img src="{{ asset('images/wamp.svg') }}" alt="wamp">
 					<p>{{ trans('main.dev') }}</p>

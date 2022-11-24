@@ -8,6 +8,9 @@ $(function() {
 	$('.header .row').css(
 		'height', 'calc(100vh - '+navHeight+'px)'
 	)
+	$('.header-margin').css({
+		'margin-top': navHeight+'px',
+	})
 
 	// Скролинг по якорям
 	$('.anchor').bind("click", function(e){
@@ -17,6 +20,14 @@ $(function() {
 		}, 500)
 	e.preventDefault()
 	})
+
+	window.onload = function() {
+		if (location.hash == "#team") {		
+			$('html, body').stop().animate({
+				scrollTop: $('#team').offset().top-navHeight// отступ от меню
+			}, 500)
+		}
+	};
 
 	let toggle = document.querySelector('.nav-toggle')
 	let navMob = document.querySelector('.nav-mob')
@@ -107,8 +118,7 @@ $(function() {
 			breakpoint: 768,
 				settings: {
 					centerPadding: '0px',
-					dots: false,
-					arrows: false
+					dots: false
 				}
 			}
 		]
@@ -168,9 +178,12 @@ $(function() {
 		data += '&ajax-request=true'
 		$.ajax({
 			type: 'POST',
-			url: '/mail.php',
+			url: '/mail',
 			dataType: 'json',
 			data: data,
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			success: (function() {
 				$.fancybox.close()
 				$.fancybox.open({src:'#thn'})
@@ -182,5 +195,37 @@ $(function() {
 	$('.receive-item').matchHeight()
 
 	$('.tarif-item__wrap, .cart-item__wrap, .package-item__wrap').matchHeight()
+
+	$('.blog-cart__title').matchHeight()
+
+	$('.expert-info__btn').click(function() {
+		let name = $(this).data('name')
+		$('#expert.modal input[name=expert]').val(name)
+	})
+
+	// Функция для анимации
+	$(".scroll").each(function () {
+		var block = $(this)
+		$(window).scroll(function() {
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				var top = block.offset().top+300
+			} else {
+				var top = block.offset().top+300
+			}
+			var bottom = block.height()+top;
+			top = top - $(window).height();
+			var scroll_top = $(this).scrollTop();
+			if ((scroll_top > top) && (scroll_top < bottom)) {
+				if (!block.hasClass("animated")) {
+					block.addClass("animated")
+					block.trigger('animatedIn')
+				}
+			}
+		})
+	})
+
+	if ($(window).width() > 1199) {
+		SmoothParallax.init()
+	}
 
 })

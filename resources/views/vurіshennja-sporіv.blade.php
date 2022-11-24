@@ -18,6 +18,8 @@
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -35,10 +37,8 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div class="grid d-none d-xl-block">
-	<div class="line line_1"></div>
-	<div class="line line_2"></div>
-</div>
+<div class="grid-line grid-line_1 d-none d-xl-block"></div>
+<div class="grid-line grid-line_2 d-none d-xl-block"></div>
 
 @include('templates.nav')
 
@@ -56,7 +56,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </header>
 
-<section class="vs_about">
+<section class="vs_about scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('vur-spor.about_note') }}</div>
 		<div class="row">
@@ -109,12 +109,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="other-services">
+<section class="other-services scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('vur-spor.other_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title"><span><i>{{ trans('vur-spor.other_title') }}</i></span></h3>
+				<h3 class="ja_block-title fadeInRight"><span><i>{{ trans('vur-spor.other_title') }}</i></span></h3>
 				<div class="row">
 					<div class="col-md-4 col-sm-6">
 						<div class="other-services__item" style="background-image: url(/images/other_item1.jpg);">
@@ -140,12 +140,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="receive">
+<section class="receive scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('vur-spor.receive_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title"><span><i>{{ trans('vur-spor.receive_title') }}</i></span></h3>
+				<h3 class="ja_block-title fadeInRight"><span><i>{{ trans('vur-spor.receive_title') }}</i></span></h3>
 				<div class="row">
 					<div class="col-lg-3 col-sm-6">
 						<div class="receive-item">
@@ -177,13 +177,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="ja_form">
+<section class="ja_form scroll fadeIn">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-xl-9">
 				<h3 class="ja_form__title">{{ trans('jur-aut.form_title') }}</h3>
 				<p class="ja_form__text">{{ trans('jur-aut.form_text') }}</p>
 				<form class="ja_form-content row form_check" autocomplete="off">
+					<input type="hidden" name="mailto" value="{{ $mailto }}">
 					<input type="hidden" name="title" value="{{ trans('jur-aut.form_sendTitle') }}">
 					<input type="hidden" name="page" value="{{ URL::current() }}">
 					<div class="col-sm-6">
@@ -198,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 					<div class="col">
 						<div class="rline">
-							<textarea name="query" rows="3" class="ja_form-content__textarea" placeholder="{{ trans('jur-aut.query') }}"></textarea>
+							<textarea name="question" rows="3" class="ja_form-content__textarea" placeholder="{{ trans('jur-aut.query') }}"></textarea>
 						</div>
 						<button class="ja_form-content__btn btnsubmit">{{ trans('jur-aut.form_btn') }} <i></i></button>
 					</div>
@@ -208,12 +209,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="manager">
+<section id="team" class="manager scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('vur-spor.manager_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title">{!! trans('vur-spor.manager_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('vur-spor.manager_title') !!}</h3>
 			</div>
 		</div>
 		<div class="row justify-content-center align-items-center">
@@ -229,8 +230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<p class="manager-text__count">{{ trans('vur-spor.manager1_year') }}</p>
 					<p class="manager-text__text">{{ trans('vur-spor.manager1_exp') }}</p>
 				</div>
-				<a href="tel:+380973126266" class="manager__link">+38 097 312 62 66</a>
-				<a href="mailto:shnyahin@spg.kiev.ua" class="manager__link">shnyahin@spg.kiev.ua</a>
+				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ trans('vur-spor.manager1_name') }}">{{ trans('main.expert_btn') }} <i></i></a>
 			</div>
 		</div>
 		<div class="row justify-content-center align-items-center">
@@ -260,12 +260,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="ja_faq">
+<section class="ja_faq scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('jur-aut.faq_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title">{!! trans('vur-spor.faq_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('vur-spor.faq_title') !!}</h3>
 
 				<div class="faq-content">
 					<div class="faq__title">
@@ -305,63 +305,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="service-blog">
+<section class="service-blog scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('jur-aut.blog_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title">{!! trans('vur-spor.blog_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('vur-spor.blog_title') !!}</h3>
 				<div class="blog-slider">
+					@forelse($blogContent->articles as $item)
 					<div class="blog-slider__slide">
 						<div class="blog-item">
-							<img src="{{ asset('images/blog1.jpg') }}" alt="blog image" class="blog-item__image">
+							<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="fancybox">
+								<img src="https://img.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
+							</a>
 							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item1_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item1_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
+								<h4 class="blog-item__title">{{ Helpers::getLangString($item, 'title') }}</h4>
+								<p class="blog-item__text">{{ mb_strimwidth(Helpers::getLangString($item, 'text'), 0, 200, "...") }}</p>
+								<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="blog-item__link fancybox">{{ trans('blog.btn') }}</a>
 							</div>
 						</div>
 					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog2.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item2_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item2_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
-							</div>
-						</div>
+					@empty
+					<div class="blog-epty">
+						<h4 class="blog-empty__title">{{ trans('blog.empty_title') }}</h4>
+						<p class="blog-empty__text">{{ trans('blog.empty_text') }}</p>
 					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog3.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item3_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item3_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_watch') }}</a>
-							</div>
-						</div>
-					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog1.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item4_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item4_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
-							</div>
-						</div>
-					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog2.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item1_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item1_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
-							</div>
-						</div>
-					</div>
+					@endforelse
 				</div>
 			</div>
 		</div>

@@ -18,6 +18,8 @@
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -35,10 +37,8 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div class="grid d-none d-xl-block">
-	<div class="line line_1"></div>
-	<div class="line line_2"></div>
-</div>
+<div class="grid-line grid-line_1 d-none d-xl-block"></div>
+<div class="grid-line grid-line_2 d-none d-xl-block"></div>
 
 @include('templates.nav')
 
@@ -56,12 +56,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </header>
 
-<section class="ja_benefits ja_benefits_shadow">
+<section class="ja_benefits ja_benefits_shadow scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('kupivlia-komp.benefits_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="ja_block-title">{!! trans('kupivlia-komp.benefits_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.benefits_title') !!}</h3>
 				<div class="row">
 					<div class="col-lg-4 col-sm-6">
 						<div class="ja_benefits-item">
@@ -87,12 +87,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="tarif">
+<section class="tarif scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('kupivlia-komp.tarif_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title">{!! trans('kupivlia-komp.tarif_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.tarif_title') !!}</h3>
 				<div class="row">
 					<div class="col-lg-4 col-sm-6">
 						<div class="cart-item">
@@ -123,8 +123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 					</div>
 					<div class="col-lg-4 col-sm-6">
-						<div class="cart-item cart-item_sold">
-							<div class="cart-item__sold">{{ trans('kupivlia-komp.sold') }}</div>
+						<div class="cart-item">
 							<div class="cart-item__title">
 								<h4>{!! trans('kupivlia-komp.tarif_name3') !!}</h4>
 							</div>
@@ -143,13 +142,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="ja_form">
+<section class="ja_form scroll fadeIn">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-xl-9">
 				<h3 class="ja_form__title">{{ trans('jur-aut.form_title') }}</h3>
 				<p class="ja_form__text">{{ trans('jur-aut.form_text') }}</p>
 				<form class="ja_form-content row form_check" autocomplete="off">
+					<input type="hidden" name="mailto" value="{{ $mailto }}">
 					<input type="hidden" name="title" value="{{ trans('jur-aut.form_sendTitle') }}">
 					<input type="hidden" name="page" value="{{ URL::current() }}">
 					<div class="col-sm-6">
@@ -164,7 +164,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 					<div class="col">
 						<div class="rline">
-							<textarea name="query" rows="3" class="ja_form-content__textarea" placeholder="{{ trans('jur-aut.query') }}"></textarea>
+							<textarea name="question" rows="3" class="ja_form-content__textarea" placeholder="{{ trans('jur-aut.query') }}"></textarea>
 						</div>
 						<button class="ja_form-content__btn btnsubmit">{{ trans('jur-aut.form_btn') }} <i></i></button>
 					</div>
@@ -174,12 +174,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="alt">
+<section class="alt scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('kupivlia-komp.alt_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title">{!! trans('kupivlia-komp.alt_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.alt_title') !!}</h3>
 				<a href="{{ route('vidkryttiaUkr') }}" class="alt-services__item" style="background-image: url(/images/korp_alt5.jpg);">
 					<p class="alt-services__text">{{ trans('kupivlia-komp.alt_text') }}</p>
 				</a>
@@ -187,7 +187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title"><span><i>{{ trans('kupivlia-komp.other_title') }}</i></span></h3>
+				<h3 class="ja_block-title fadeInRight"><span><i>{{ trans('kupivlia-komp.other_title') }}</i></span></h3>
 				<div class="row justify-content-center">
 					<div class="col-md-4 col-sm-6">
 						<div class="other-services__item" style="background-image: url(/images/korp_alt2.jpg);">
@@ -199,13 +199,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<div class="other-services__item" style="background-image: url(/images/korp_alt3.jpg);">
 							<p class="other-services__text">{{ trans('kupivlia-komp.other_text2') }}</p>
 						</div>
-						<a href="{{ route('dev') }}" class="other-services__btn">{{ trans('kupivlia-komp.other_btn') }} <i></i></a>
+						<a href="{{ route('bukhhalterskyiAut') }}" class="other-services__btn">{{ trans('kupivlia-komp.other_btn') }} <i></i></a>
 					</div>
 					<div class="col-md-4 col-sm-6">
 						<div class="other-services__item" style="background-image: url(/images/korp_alt4.jpg);">
 							<p class="other-services__text">{{ trans('kupivlia-komp.other_text3') }}</p>
 						</div>
-						<a href="{{ route('dev') }}" class="other-services__btn">{{ trans('kupivlia-komp.other_btn') }} <i></i></a>
+						<a href="{{ route('intelektVlasnist') }}" class="other-services__btn">{{ trans('kupivlia-komp.other_btn') }} <i></i></a>
 					</div>
 				</div>
 			</div>
@@ -213,12 +213,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="team">
+<section id="team" class="team scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('jur-aut.team_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="ja_block-title">{!! trans('jur-aut.team_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('jur-aut.team_title') !!}</h3>
 				<div class="team-slider team-slider_service">
 					<div class="team-slider__slide">
 						<div class="expert expert_service">
@@ -233,8 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>15+</i>
 									<span>{{ trans('main.expert_text1') }}</span>
 								</p>
-								<a href="tel:+380674029916" class="expert-info__phone">+38 067 402 99 16</a>
-								<a href="mailto:priadka@spg.kiev.ua" class="expert-info__email">priadka@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name1') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -251,7 +250,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>10+</i>
 									<span>{{ trans('main.expert_text8') }}</span>
 								</p>
-								<a href="mailto:borovyk@spg.kiev.ua" class="expert-info__email">borovyk@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name8') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -268,7 +267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<i>5+</i>
 									<span>{{ trans('main.expert_text9') }}</span>
 								</p>
-								<a href="mailto:rukodii@spg.kiev.ua" class="expert-info__email">rukodii@spg.kiev.ua</a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name9') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -278,12 +277,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="ja_faq">
+<section class="ja_faq scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('kupivlia-komp.faq_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title">{!! trans('kupivlia-komp.faq_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.faq_title') !!}</h3>
 
 				<div class="faq-content">
 					<div class="faq__title">
@@ -291,6 +290,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<p>{{ trans('kupivlia-komp.question1') }}</p>
 					</div>
 					<div class="faq__answer">{!! trans('kupivlia-komp.answer1') !!}</div>
+
+					<div class="faq__title">
+						<i>02</i>
+						<p>{{ trans('kupivlia-komp.question2') }}</p>
+					</div>
+					<div class="faq__answer">{!! trans('kupivlia-komp.answer2') !!}</div>
+
+					<div class="faq__title">
+						<i>03</i>
+						<p>{{ trans('kupivlia-komp.question3') }}</p>
+					</div>
+					<div class="faq__answer">{!! trans('kupivlia-komp.answer3') !!}</div>
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>
@@ -299,63 +310,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section class="service-blog">
+<section class="service-blog scroll fadeIn">
 	<div class="container">
 		<div class="note d-none d-xl-block">{{ trans('jur-aut.blog_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title">{!! trans('kupivlia-komp.blog_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.blog_title') !!}</h3>
 				<div class="blog-slider">
+					@forelse($blogContent->articles as $item)
 					<div class="blog-slider__slide">
 						<div class="blog-item">
-							<img src="{{ asset('images/blog1.jpg') }}" alt="blog image" class="blog-item__image">
+							<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="fancybox">
+								<img src="https://img.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
+							</a>
 							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item1_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item1_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
+								<h4 class="blog-item__title">{{ Helpers::getLangString($item, 'title') }}</h4>
+								<p class="blog-item__text">{{ mb_strimwidth(Helpers::getLangString($item, 'text'), 0, 200, "...") }}</p>
+								<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="blog-item__link fancybox">{{ trans('blog.btn') }}</a>
 							</div>
 						</div>
 					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog2.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item2_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item2_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
-							</div>
-						</div>
+					@empty
+					<div class="blog-epty">
+						<h4 class="blog-empty__title">{{ trans('blog.empty_title') }}</h4>
+						<p class="blog-empty__text">{{ trans('blog.empty_text') }}</p>
 					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog3.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item3_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item3_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_watch') }}</a>
-							</div>
-						</div>
-					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog1.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item4_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item4_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
-							</div>
-						</div>
-					</div>
-					<div class="blog-slider__slide">
-						<div class="blog-item">
-							<img src="{{ asset('images/blog2.jpg') }}" alt="blog image" class="blog-item__image">
-							<div class="blog-item__content">
-								<h4 class="blog-item__title">{{ trans('jur-aut.blog_item1_title') }}</h4>
-								<p class="blog-item__text">{{ trans('jur-aut.blog_item1_text') }}</p>
-								<a href="#" class="blog-item__link">{{ trans('jur-aut.blog_more') }}</a>
-							</div>
-						</div>
-					</div>
+					@endforelse
 				</div>
 			</div>
 		</div>
