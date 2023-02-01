@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'title'              => 'Sleeping Owl',
+    'title'              => 'Адмін панель сайту СПГ',
 
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ return [
     | Admin Text on sidebar top menu
     |--------------------------------------------------------------------------
     */
-    'menu_top'           => 'Админ панель',
+    'menu_top'           => 'Адмін панель',
 
     /*
     |--------------------------------------------------------------------------
@@ -281,7 +281,7 @@ return [
          * See http://docs.ckeditor.com/#!/api/CKEDITOR.config
          */
         'ckeditor'   => [
-            'defaultLanguage' => config('app.locale'),
+            'defaultLanguage' => 'en',
             'height'          => 200,
             'allowedContent'  => true,
             'extraPlugins'    => 'uploadimage,image2,justify,youtube,uploadfile',

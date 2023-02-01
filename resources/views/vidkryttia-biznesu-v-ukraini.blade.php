@@ -61,18 +61,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('vidkryttia-ukr.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<p class="vs_about__title vs_about__title_fwn">{{ trans('vidkryttia-ukr.about_title') }}</p>
+				<p class="vs_about__title vs_about__title_fwn">{{ Helpers::getLangString($about, 'title') }}</p>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-5 col-md-6">
-				<h3 class="vs_about__title">{{ trans('vidkryttia-ukr.about_subtitle1') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'subtitle1') }}</h3>
 				<ul class="vs_about-list vs_about-list_fz16">
-					{!! trans('vidkryttia-ukr.about_list1') !!}
+					@foreach( json_decode($about->list1) as $item )
+						@if( app()->getLocale() == 'uk')
+							<li>{{ $item->item }}</li>
+						@else
+							<li>{{ $item->itemRU }}</li>
+						@endif
+					@endforeach
 				</ul>
-				<h3 class="vs_about__title">{{ trans('vidkryttia-ukr.about_subtitle2') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'subtitle2') }}</h3>
 				<ul class="vs_about-list vs_about-list_fz16">
-					{!! trans('vidkryttia-ukr.about_list2') !!}
+					@foreach( json_decode($about->list2) as $item )
+						@if( app()->getLocale() == 'uk')
+							<li>{{ $item->item }}</li>
+						@else
+							<li>{{ $item->itemRU }}</li>
+						@endif
+					@endforeach
 				</ul>
 				<a href="{{ route('jurAut') }}" class="vs_about-link">{{ trans('vidkryttia-ukr.about_link1') }}</a>
 				<a href="{{ route('bukhhalterskyiAut') }}" class="vs_about-link">{{ trans('vidkryttia-ukr.about_link2') }}</a>
@@ -80,7 +92,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<div class="col-xl-5 col-md-6">
 				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/g5_ZZWtBxqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($about->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
@@ -95,51 +107,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10">
 				<h3 class="ja_block-title fadeInRight">{!! trans('vidkryttia-ukr.tarif_title') !!}</h3>
 				<div class="row">
+					@foreach($tarifs as $item)
 					<div class="col-lg-4 col-sm-6">
-						<div class="tarif-item">
+						<div @if( $loop->iteration % 2 === 0 ) class="tarif-item tarif-item_accent" @else class="tarif-item" @endif>
 							<div class="tarif-item__title">
-								<h4>{{ trans('vidkryttia-ukr.tarif_name1') }}</h4>
+								<h4>{{ Helpers::getLangString($item, 'name') }}</h4>
 							</div>
 							<div class="tarif-item__wrap">
-								<p class="tarif-item__subtitle">{!! trans('vidkryttia-ukr.tarif_subtitle1') !!}</p>
-								<p class="tarif-item__text">{!! trans('vidkryttia-ukr.tarif_text1') !!}</p>
+								<p class="tarif-item__subtitle">{{ Helpers::getLangString($item, 'title') }} <br> {{ trans('vidkryttia-ukr.tarif_subtitle') }}</p>
+								<p class="tarif-item__text">{!! Helpers::getLangString($item, 'text') !!}</p>
 							</div>
 							<div class="tarif-item__price">
-								<p>{!! trans('vidkryttia-ukr.tarif_price1') !!}</p>
+								<p>{!! trans('vidkryttia-ukr.tarif_price') !!} {{ $item->price }} грн.</p>
 								<a href="#buy" class="tarif-item__btn fancybox">{{ trans('vidkryttia-ukr.tarif_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="tarif-item tarif-item_accent">
-							<div class="tarif-item__title">
-								<h4>{{ trans('vidkryttia-ukr.tarif_name2') }}</h4>
-							</div>
-							<div class="tarif-item__wrap">
-								<p class="tarif-item__subtitle">{!! trans('vidkryttia-ukr.tarif_subtitle2') !!}</p>
-								<p class="tarif-item__text">{!! trans('vidkryttia-ukr.tarif_text2') !!}</p>
-							</div>
-							<div class="tarif-item__price">
-								<p>{!! trans('vidkryttia-ukr.tarif_price2') !!}</p>
-								<a href="#buy" class="tarif-item__btn fancybox">{{ trans('vidkryttia-ukr.tarif_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="tarif-item">
-							<div class="tarif-item__title">
-								<h4>{{ trans('vidkryttia-ukr.tarif_name3') }}</h4>
-							</div>
-							<div class="tarif-item__wrap">
-								<p class="tarif-item__subtitle">{!! trans('vidkryttia-ukr.tarif_subtitle3') !!}</p>
-								<p class="tarif-item__text">{!! trans('vidkryttia-ukr.tarif_text3') !!}</p>
-							</div>
-							<div class="tarif-item__price">
-								<p>{!! trans('vidkryttia-ukr.tarif_price3') !!}</p>
-								<a href="#buy" class="tarif-item__btn fancybox">{{ trans('vidkryttia-ukr.tarif_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -289,35 +273,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('vidkryttia-ukr.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('vidkryttia-ukr.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-ukr.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('vidkryttia-ukr.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-ukr.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('vidkryttia-ukr.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-ukr.answer3') !!}</div>
-
-					<div class="faq__title">
-						<i>04</i>
-						<p>{{ trans('vidkryttia-ukr.question4') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-ukr.answer4') !!}</div>
-
-					<div class="faq__title">
-						<i>05</i>
-						<p>{{ trans('vidkryttia-ukr.question5') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-ukr.answer5') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

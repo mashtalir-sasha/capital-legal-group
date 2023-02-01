@@ -62,7 +62,7 @@
 						<li class="nav-list__item"><a href="{{ route('blog.main') }}">{{ trans('main.menu4') }}</a></li>
 						<li class="nav-list__item"><a href="#contacts" class="list anchor">{{ trans('main.menu5') }}</a></li>
 					</ul>
-					<a href="tel:+380674029916" class="nav__phone">+38 067 402 99 16</a>
+					<a href="tel:+{{ preg_replace('~[^0-9]~','',$contacts['phone']) }}" class="nav__phone">{{ $contacts->phone }}</a>
 					<div class="lang">
 						@if(app()->getLocale() == 'uk')
 							<div class="lang__item">Укр <i></i></div>

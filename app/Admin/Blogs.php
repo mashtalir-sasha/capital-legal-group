@@ -52,5 +52,4 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
 
         return $form;
     });
-})->addMenuPage(Blog::class, 1)
-    ->setIcon('fa fa-image');
+});

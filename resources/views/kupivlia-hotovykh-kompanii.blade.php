@@ -63,24 +63,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.benefits_title') !!}</h3>
 				<div class="row">
+					@foreach($benefits as $item)
 					<div class="col-lg-4 col-sm-6">
 						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico1.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('kupivlia-komp.benefits-item1') !!}</p>
+							<img src="{{ asset($item->image) }}" alt="ico" class="ja_benefits-item__ico">
+							<p class="ja_benefits-item__text">
+								<span>{{ Helpers::getLangString($item, 'title') }}</span>
+								{{ Helpers::getLangString($item, 'text') }}
+							</p>
 						</div>
 					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico2.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('kupivlia-komp.benefits-item2') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico3.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('kupivlia-komp.benefits-item3') !!}</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -94,48 +87,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10">
 				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.tarif_title') !!}</h3>
 				<div class="row">
+					@foreach($tarifs as $item)
 					<div class="col-lg-4 col-sm-6">
 						<div class="cart-item">
 							<div class="cart-item__title">
-								<h4>{!! trans('kupivlia-komp.tarif_name1') !!}</h4>
+								<h4>{{ Helpers::getLangString($item, 'title') }} <br> {{ Helpers::getLangString($item, 'subtitle') }}</h4>
 							</div>
 							<div class="cart-item__wrap">
-								<p class="cart-item__text">{!! trans('kupivlia-komp.tarif_text1') !!}</p>
+								<p class="cart-item__text">{!! Helpers::getLangString($item, 'text') !!}</p>
 							</div>
 							<div class="cart-item__price">
-								<p>{!! trans('kupivlia-komp.tarif_price1') !!}</p>
+								<p>{!! trans('kupivlia-komp.tarif_price') !!} {{ $item->price }} грн.</p>
 								<a href="#discuss" class="cart-item__btn fancybox">{{ trans('kupivlia-komp.tarif_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="cart-item">
-							<div class="cart-item__title">
-								<h4>{!! trans('kupivlia-komp.tarif_name2') !!}</h4>
-							</div>
-							<div class="cart-item__wrap">
-								<p class="cart-item__text">{!! trans('kupivlia-komp.tarif_text2') !!}</p>
-							</div>
-							<div class="cart-item__price">
-								<p>{!! trans('kupivlia-komp.tarif_price2') !!}</p>
-								<a href="#discuss" class="cart-item__btn fancybox">{{ trans('kupivlia-komp.tarif_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="cart-item">
-							<div class="cart-item__title">
-								<h4>{!! trans('kupivlia-komp.tarif_name3') !!}</h4>
-							</div>
-							<div class="cart-item__wrap">
-								<p class="cart-item__text">{!! trans('kupivlia-komp.tarif_text3') !!}</p>
-							</div>
-							<div class="cart-item__price">
-								<p>{!! trans('kupivlia-komp.tarif_price3') !!}</p>
-								<a href="#discuss" class="cart-item__btn fancybox">{{ trans('kupivlia-komp.tarif_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -285,23 +252,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('kupivlia-komp.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('kupivlia-komp.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('kupivlia-komp.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('kupivlia-komp.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('kupivlia-komp.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('kupivlia-komp.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('kupivlia-komp.answer3') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

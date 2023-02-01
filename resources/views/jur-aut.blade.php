@@ -61,19 +61,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('jur-aut.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-lg-1">
-				<h3 class="ja_about__title">{{ trans('jur-aut.about_title') }}</h3>
-				<p class="ja_about__text">{{ trans('jur-aut.about_text') }}</p>
+				<h3 class="ja_about__title">{{ Helpers::getLangString($jurAbout, 'title') }}</h3>
+				<p class="ja_about__text">{{ Helpers::getLangString($jurAbout, 'text') }}</p>
 			</div>
 		</div>
 		<div class="row align-items-center">
 			<div class="col-xl-4 offset-xl-1 col-lg-5 col-md-6">
 				<ul class="ja_about-list">
-					{!! trans('jur-aut.about_list') !!}
+					@foreach( json_decode($jurAbout->list) as $item )
+						@if( app()->getLocale() == 'uk')
+							<li>{{ $item->item }}</li>
+						@else
+							<li>{{ $item->itemRU }}</li>
+						@endif
+					@endforeach
 				</ul>
 			</div>
 			<div class="col-lg-7 col-md-6">
 				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/26q0Cd1BXOs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($jurAbout->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
@@ -87,42 +93,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="ja_block-title fadeInRight">{!! trans('jur-aut.benefits_title') !!}</h3>
 				<div class="row">
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico1.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('jur-aut.benefits-item1') !!}</p>
+					@foreach($jurBenefits as $item)
+						<div class="col-lg-4 col-sm-6">
+							<div class="ja_benefits-item">
+								<img src="/{{ $item->image }}" alt="ico" class="ja_benefits-item__ico">
+								<p class="ja_benefits-item__text"><span>{{ Helpers::getLangString($item, 'title') }}</span>{{ Helpers::getLangString($item, 'text') }}</p>
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico2.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('jur-aut.benefits-item2') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico3.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('jur-aut.benefits-item3') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico4.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('jur-aut.benefits-item4') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico5.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('jur-aut.benefits-item5') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico6.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('jur-aut.benefits-item6') !!}</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -136,46 +114,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="ja_block-title fadeInRight">{!! trans('jur-aut.volume_title') !!}</h3>
 				<div class="row justify-content-center">
+					@foreach($jurDirections as $item)
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item1') }}</p>
+							<p class="ja_volume-item__text">{{ Helpers::getLangString($item, 'text') }}</p>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item2') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item3') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item4') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item5') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item6') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item7') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('jur-aut.volume_item8') }}</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 				<a href="#modal" class="ja_volume__btn fancybox">{{ trans('jur-aut.volume_btn') }} <i></i></a>
 			</div>
@@ -285,8 +230,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
 				<h3 class="ja_block-title fadeInRight">{!! trans('jur-aut.price_title') !!}</h3>
-				<p class="ja_price__text">{{ trans('jur-aut.price_text1') }}</p>
-				<p class="ja_price__text">{{ trans('jur-aut.price_text2') }}</p>
+				<p class="ja_price__text">{{ Helpers::getLangString($jurTarif, 'text1') }}</p>
+				<p class="ja_price__text">{{ Helpers::getLangString($jurTarif, 'text2') }}</p>
 
 				<table class="ja_price-table">
 					<tr>
@@ -294,26 +239,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<th class="middle">{!! trans('jur-aut.price-table_title2') !!}</th>
 						<th class="last">{!! trans('jur-aut.price-table_title3') !!}</th>
 					</tr>
-					<tr>
-						<td>{{ trans('jur-aut.tarif1_text1') }}</td>
-						<td>{{ trans('jur-aut.tarif1_text2') }}</td>
-						<td>{{ trans('jur-aut.tarif1_text3') }}</td>
-					</tr>
-					<tr>
-						<td>{{ trans('jur-aut.tarif2_text1') }}</td>
-						<td>{{ trans('jur-aut.tarif2_text2') }}</td>
-						<td>{{ trans('jur-aut.tarif2_text3') }}</td>
-					</tr>
-					<tr>
-						<td>{{ trans('jur-aut.tarif3_text1') }}</td>
-						<td>{{ trans('jur-aut.tarif3_text2') }}</td>
-						<td>{{ trans('jur-aut.tarif3_text3') }}</td>
-					</tr>
-					<tr>
-						<td>{{ trans('jur-aut.tarif4_text1') }}</td>
-						<td>{{ trans('jur-aut.tarif4_text2') }}</td>
-						<td>{{ trans('jur-aut.tarif4_text3') }}</td>
-					</tr>
+					@foreach( json_decode($jurTarif->table) as $item )
+						<tr>
+							@if( app()->getLocale() == 'uk')
+								<td>{{ $item->price }}</td>
+								<td>{{ $item->qty }}</td>
+								<td>{{ $item->tarif }}</td>
+							@else
+								<td>{{ $item->priceRU }}</td>
+								<td>{{ $item->qtyRU }}</td>
+								<td>{{ $item->tarifRU }}</td>
+							@endif
+						</tr>
+					@endforeach
 				</table>
 
 				<p class="ja_price__last">{!! trans('jur-aut.price_last') !!} <a href="{{ route('vurSpor') }}">{{ trans('jur-aut.price_last_link') }}</a></p>
@@ -330,23 +268,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('jur-aut.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('jur-aut.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('jur-aut.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('jur-aut.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('jur-aut.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('jur-aut.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('jur-aut.answer3') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

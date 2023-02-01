@@ -44,12 +44,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="container">
 		<div class="row">
 			<div class="col dogovir">
-				{!! trans('oferta-konf.oferta') !!}
+				{!! Helpers::getLangString($oferta, 'text') !!}
 			</div>
 		</div>
 	</div>
 </section>
-
 
 @include('templates.foot')
 

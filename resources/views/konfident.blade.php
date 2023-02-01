@@ -44,7 +44,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="container">
 		<div class="row">
 			<div class="col dogovir">
-				{!! trans('oferta-konf.polituka') !!}
+				{!! Helpers::getLangString($polituka, 'text') !!}
 			</div>
 		</div>
 	</div>

@@ -149,19 +149,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row justify-content-center align-items-center">
 			<div class="col-xl-5 col-md-6">
 				<div class="manager-image">
-					<img src="{{ asset('images/manager2.jpg') }}" alt="" class="manger-image__img">
+					<img src="{{ asset($lider->photo) }}" alt="" class="manger-image__img">
 				</div>
 			</div>
 			<div class="col-xl-5 col-md-6">
-				<p class="manager__name">{{ trans('vidkryttia-usa.manager1_name') }}</p>
-				<p class="manager__position">{{ trans('vidkryttia-usa.manager1_position') }}</p>
+				<p class="manager__name">{{ Helpers::getLangString($lider, 'name') }}</p>
+				<p class="manager__position">{{ Helpers::getLangString($lider, 'position') }}</p>
 				<div class="manager-text">
-					<p class="manager-text__count">{{ trans('vidkryttia-usa.manager1_year') }}</p>
-					<p class="manager-text__text">{{ trans('vidkryttia-usa.manager1_exp') }}</p>
+					<p class="manager-text__count">{{ Helpers::getLangString($lider, 'number') }}</p>
+					<p class="manager-text__text">{{ Helpers::getLangString($lider, 'text') }}</p>
 				</div>
-				<a href="tel:+380674029916" class="manager__link">+38 067 402 99 16</a>
-				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ trans('vidkryttia-usa.manager1_name') }}">{{ trans('main.expert_btn') }}s <i></i></a>
+				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ Helpers::getLangString($lider, 'name') }}">{{ trans('main.expert_btn') }} <i></i></a>
 			</div>
+		</div>
+		<div class="row justify-content-center align-items-center">
+			<div class="col-xl-6 col-md-6">
+				@if( isset($lider->study) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title1') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'study') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->practic) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title2') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'practic') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->sphere) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title3') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'sphere') !!}</p>
+				</div>
+				@endif
+			</div>
+			@if( isset($lider->image) )
+			<div class="col-xl-4 col-md-6">
+				<div class="manager-diploma">
+					<img src="{{ asset($lider->image) }}" alt="diploma" class="manager-diploma__img">
+				</div>
+			</div>
+			@endif
 		</div>
 	</div>
 </section>
@@ -174,35 +202,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('vidkryttia-usa.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('vidkryttia-usa.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-usa.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('vidkryttia-usa.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-usa.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('vidkryttia-usa.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-usa.answer3') !!}</div>
-
-					<div class="faq__title">
-						<i>04</i>
-						<p>{{ trans('vidkryttia-usa.question4') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-usa.answer4') !!}</div>
-
-					<div class="faq__title">
-						<i>05</i>
-						<p>{{ trans('vidkryttia-usa.question5') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('vidkryttia-usa.answer5') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

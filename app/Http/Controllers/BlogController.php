@@ -11,6 +11,7 @@ class BlogController extends Controller
         return view('blog.main', [
             'blogCategory' => \App\Models\BlogCategory::get(),
             'content' => \App\Models\Blog::get(),
+            'contacts' => \App\Models\Contacts::first(),
         ]);
     }
 
@@ -19,6 +20,7 @@ class BlogController extends Controller
         return view('blog.category', [
             'blogCategory' => \App\Models\BlogCategory::get(),
             'category' => \App\Models\BlogCategory::where('slug', $slug)->with('articles')->firstOrFail(),
+            'contacts' => \App\Models\Contacts::first(),
         ]);
     }
 }

@@ -63,20 +63,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row">
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1 order-first">
 				<div class="number-item fadeIn_slow">
-					<p class="number-item__title">{{ trans('main.number_title1') }}</p>
-					<p class="number-item__text">{{ trans('main.number_text1') }}</p>
+					<p class="number-item__title">{{ Helpers::getLangString($numbers, 'title1') }}</p>
+					<p class="number-item__text">{{ Helpers::getLangString($numbers, 'text1') }}</p>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
 				<div class="number-item fadeIn_slow">
-					<p class="number-item__title">{{ trans('main.number_title2') }}</p>
-					<p class="number-item__text">{{ trans('main.number_text2') }}</p>
+					<p class="number-item__title">{{ Helpers::getLangString($numbers, 'title2') }}</p>
+					<p class="number-item__text">{{ Helpers::getLangString($numbers, 'text2') }}</p>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
 				<div class="number-item fadeIn_slow">
-					<p class="number-item__title">{{ trans('main.number_title3') }}</p>
-					<p class="number-item__text">{{ trans('main.number_text3') }}</p>
+					<p class="number-item__title">{{ Helpers::getLangString($numbers, 'title3') }}</p>
+					<p class="number-item__text">{{ Helpers::getLangString($numbers, 'text3') }}</p>
 				</div>
 			</div>
 		
@@ -91,20 +91,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
 				<div class="number-item fadeIn_slow">
-					<p class="number-item__title">{{ trans('main.number_title4') }}</p>
-					<p class="number-item__text">{{ trans('main.number_text4') }}</p>
+					<p class="number-item__title">{{ Helpers::getLangString($numbers, 'title4') }}</p>
+					<p class="number-item__text">{{ Helpers::getLangString($numbers, 'text4') }}</p>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1">
 				<div class="number-item fadeIn_slow">
-					<p class="number-item__title">{{ trans('main.number_title5') }}</p>
-					<p class="number-item__text">{{ trans('main.number_text5') }}</p>
+					<p class="number-item__title">{{ Helpers::getLangString($numbers, 'title5') }}</p>
+					<p class="number-item__text">{{ Helpers::getLangString($numbers, 'text5') }}</p>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-4 col-6 offset-xl-1 order-first order-sm-last">
 				<div class="number-item fadeIn_slow">
-					<p class="number-item__title">{{ trans('main.number_title6') }}</p>
-					<p class="number-item__text">{{ trans('main.number_text6') }}</p>
+					<p class="number-item__title">{{ Helpers::getLangString($numbers, 'title6') }}</p>
+					<p class="number-item__text">{{ Helpers::getLangString($numbers, 'text6') }}</p>
 				</div>
 			</div>
 		</div>
@@ -123,11 +123,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row align-items-center">
 			<div class="col-xl-5 col-md-6 order-0 order-md-1">
 				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/LXcoylC3IGA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($about->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div class="col-lx-5 col-md-6 offset-xl-1 order-1 order-md-0">
-				<p class="about__text">{!! trans('main.about_text') !!}</p>
+				<p class="about__text">{!! Helpers::getLangString($about, 'text') !!}</p>
 				<a href="#modal" class="about__btn fancybox">{{ trans('main.about_btn') }} <i></i></a>
 			</div>
 			
@@ -142,175 +142,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="block-title fadeInRight">{!! trans('main.team_title') !!}</h3>
 				<div class="team-slider">
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert1.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name1') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name1') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position1') }}</p>
-								<p class="expert-info__text">
-									<i>15+</i>
-									<span>{{ trans('main.expert_text1') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name1') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert2.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name2') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name2') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position2') }}</p>
-								<p class="expert-info__text">
-									<i>15+</i>
-									<span>{{ trans('main.expert_text2') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name2') }}">{{ trans('main.expert_btn') }} <i></i></a>
+					@foreach($team as $item)
+						<div class="team-slider__slide">
+							<div class="expert">
+								<div class="expert-photo">
+									<img src="{{ asset($item->image) }}" alt="expert" class="expert-photo__image">
+									<p class="expert-photo__name">{{ Helpers::getLangString($item, 'name') }}</p>
+								</div>
+								<div class="expert-info">
+									<p class="expert-info__name">{{ Helpers::getLangString($item, 'name') }}</p>
+									<p class="expert-info__position">{{ Helpers::getLangString($item, 'position') }}</p>
+									<p class="expert-info__text">
+										@if( isset($item->number) )
+										<i>{{ Helpers::getLangString($item, 'number') }}</i>
+										@endif
+										<span>{{ Helpers::getLangString($item, 'text') }}</span>
+									</p>
+									<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name1') }}">{{ trans('main.expert_btn') }} <i></i></a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert3.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name3') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name3') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position3') }}</p>
-								<p class="expert-info__text">
-									<i>17+</i>
-									<span>{{ trans('main.expert_text3') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name3') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert4.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name4') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name4') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position4') }}</p>
-								<p class="expert-info__text">
-									<i>15+</i>
-									<span>{{ trans('main.expert_text4') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name4') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert5.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name5') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name5') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position5') }}</p>
-								<p class="expert-info__text">
-									<i>15+</i>
-									<span>{{ trans('main.expert_text5') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name5') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert6.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name6') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name6') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position6') }}</p>
-								<p class="expert-info__text">
-									<i>15+</i>
-									<span>{{ trans('main.expert_text6') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name6') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert7.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name7') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name7') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position7') }}</p>
-								<p class="expert-info__text">
-									<i>10+</i>
-									<span>{{ trans('main.expert_text7') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name7') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert9.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name8') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name8') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position8') }}</p>
-								<p class="expert-info__text">
-									<i>10+</i>
-									<span>{{ trans('main.expert_text8') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name8') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert10.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name9') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name9') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position9') }}</p>
-								<p class="expert-info__text">
-									<i>5+</i>
-									<span>{{ trans('main.expert_text9') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name9') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="team-slider__slide">
-						<div class="expert">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert11.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name10') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name10') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position10') }}</p>
-								<p class="expert-info__text">
-									<span>{{ trans('main.expert_text10') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name10') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -329,111 +181,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</div>
 			<div class="col-12">
-				<div class="row align-items-center justify-content-end d-none d-md-flex" smooth-parallax container="body" start-position-x="-.3" end-position-x="0">
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client1.png') }}" alt="partner">
+				@foreach($clients->images as $item)
+					@if( $loop->iteration == 1 )
+						<div class="row align-items-center justify-content-end d-none d-md-flex" smooth-parallax container="body" start-position-x="-.3" end-position-x="0">
+					@endif
+						@if( $loop->iteration < 6 )
+							<div class="col-md-2">
+								<div class="partner">
+									<img src="{{ asset($item) }}" alt="partner">
+								</div>
+							</div>
+						@endif
+					@if( $loop->iteration == 5 )
 						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client2.png') }}" alt="partner">
+					@endif
+					@if( $loop->iteration == 6 )
+						<div class="row align-items-center d-none d-md-flex" smooth-parallax container="body" start-position-x=".3" end-position-x="0">
+					@endif
+						@if( $loop->iteration >= 6 && $loop->iteration < 11 )
+							<div class="col-md-2">
+								<div class="partner">
+									<img src="{{ asset($item) }}" alt="partner">
+								</div>
+							</div>
+						@endif
+					@if( $loop->iteration == 10 )
 						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client3.png') }}" alt="partner">
+					@endif
+					@if( $loop->iteration == 11 )
+						<div class="row align-items-center justify-content-end d-none d-md-flex" smooth-parallax container="body" start-position-x="-.3" end-position-x="0">
+					@endif
+						@if( $loop->iteration >= 11 && $loop->iteration < 16 )
+							<div class="col-md-2">
+								<div class="partner">
+									<img src="{{ asset($item) }}" alt="partner">
+								</div>
+							</div>
+						@endif
+					@if( $loop->last )
 						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client4.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client5.png') }}" alt="partner">
-						</div>
-					</div>
-				</div>
-				<div class="row align-items-center d-none d-md-flex" smooth-parallax container="body" start-position-x=".3" end-position-x="0">
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client6.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client7.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client8.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client9.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client10.png') }}" alt="partner">
-						</div>
-					</div>
-				</div>
+					@endif
+				@endforeach
 				<div class="partners-slider d-md-none">
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client1.png') }}" alt="partner">
+					@foreach($clients->images as $item)
+						<div class="partners-slider__slide">
+							<div class="partner">
+								<img src="{{ asset($item) }}" alt="partner">
+							</div>
 						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client2.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client3.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client4.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client5.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client6.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client7.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client8.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client9.png') }}" alt="partner">
-						</div>
-					</div>
-					<div class="partners-slider__slide">
-						<div class="partner">
-							<img src="{{ asset('images/uploads/client10.png') }}" alt="partner">
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -448,36 +244,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="block-title fadeInRight"><span>{{ trans('main.reviews_title') }}</span></h3>
 				<div class="reviews-slider">
-					<div class="review">
-						<a href="{{ asset('images/uploads/1rev.jpg') }}" data-fancybox="reviews">
-							<img src="{{ asset('images/uploads/thumb/1rev.jpg') }}" alt="review image" class="review__img">
-						</a>
-						<p class="review__title">ОТП Банк</p>
-					</div>
-					<div class="review">
-						<p class="review__title">Альфа Банк</p>
-						<a href="{{ asset('images/uploads/2rev.jpg') }}" data-fancybox="reviews">
-							<img src="{{ asset('images/uploads/thumb/2rev.jpg') }}" alt="review image" class="review__img">
-						</a>
-					</div>
-					<div class="review">
-						<a href="{{ asset('images/uploads/3rev.jpg') }}" data-fancybox="reviews">
-							<img src="{{ asset('images/uploads/thumb/3rev.jpg') }}" alt="review image" class="review__img">
-						</a>
-						<p class="review__title">ЧЕРЕДА</p>
-					</div>
-					<div class="review">
-						<p class="review__title">СLIO</p>
-						<a href="{{ asset('images/uploads/4rev.jpg') }}" data-fancybox="reviews">
-							<img src="{{ asset('images/uploads/thumb/4rev.jpg') }}" alt="review image" class="review__img">
-						</a>
-					</div>
-					<div class="review">
-						<a href="{{ asset('images/uploads/5rev.jpg') }}" data-fancybox="reviews">
-							<img src="{{ asset('images/uploads/thumb/5rev.jpg') }}" alt="review image" class="review__img">
-						</a>
-						<p class="review__title">IIT TRADING</p>
-					</div>
+					@foreach($reviews as $item)
+						<div class="review">
+							@if( $loop->iteration % 2 === 0 )
+								<p class="review__title">{{ Helpers::getLangString($item, 'title') }}</p>
+							@endif
+							<a href="{{ asset($item->image) }}" data-fancybox="reviews">
+								<img src="/images/uploads/thumb/{{basename($item->image)}}" alt="review image" class="review__img">
+							</a>
+							@if( $loop->iteration % 2 === 1 )
+								<p class="review__title">{{ Helpers::getLangString($item, 'title') }}</p>
+							@endif
+						</div>
+					@endforeach
 				</div>
 			</div>
 		</div>

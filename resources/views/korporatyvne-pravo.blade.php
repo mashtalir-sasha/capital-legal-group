@@ -61,12 +61,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('korp-pravo.about_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-5 col-md-6">
-				<h3 class="vs_about__text">{{ trans('korp-pravo.about_title') }}</h3>
+				<h3 class="vs_about__text">{{ Helpers::getLangString($korpAbout, 'text') }}</h3>
 				<a href="#modal" class="vs_about__btn fancybox">{{ trans('korp-pravo.about_btn') }} <i></i></a>
 			</div>
 			<div class="col-xl-5 col-md-6">
 				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/g5_ZZWtBxqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($korpAbout->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
@@ -214,23 +214,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('korp-pravo.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('korp-pravo.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('korp-pravo.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('korp-pravo.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('korp-pravo.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('korp-pravo.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('korp-pravo.answer3') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

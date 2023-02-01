@@ -61,16 +61,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('zakryttia-biz.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<p class="vs_about__title vs_about__title_fwn">{{ trans('zakryttia-biz.about_title') }}</p>
+				<p class="vs_about__title vs_about__title_fwn">{{ Helpers::getLangString($about, 'title') }}</p>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-5 col-md-6">
-				<p class="vs_about__title vs_about__title_fwn">{!! trans('zakryttia-biz.about_text') !!}</p>
+				<p class="vs_about__title vs_about__title_fwn">{!! Helpers::getLangString($about, 'list') !!}</p>
 			</div>
 			<div class="col-xl-5 col-md-6">
 				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/LXcoylC3IGA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($about->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
@@ -84,54 +84,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10">
 				<h3 class="ja_block-title fadeInRight">{!! trans('zakryttia-biz.package_title') !!}</h3>
 				<div class="row">
+					@foreach($tarifs as $item)
 					<div class="col-lg-4 col-sm-6">
-						<div class="package-item">
+						<div @if( $loop->iteration % 2 === 0 ) class="package-item package-item_accent" @else class="package-item" @endif>
 							<div class="package-item__title">
-								<h4>{{ trans('zakryttia-biz.package_name1') }}</h4>
+								<h4>{{ Helpers::getLangString($item, 'title') }}</h4>
 							</div>
 							<div class="package-item__wrap">
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text1') !!}</p>
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text1_2') !!}</p>
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text1_3') !!}</p>
+								<p class="package-item__text">{!! trans('zakryttia-biz.package_text1') !!} {!! Helpers::getLangString($item, 'offer') !!}</p>
+								<p class="package-item__text">{!! trans('zakryttia-biz.package_text2') !!} {!! Helpers::getLangString($item, 'accept') !!}</p>
+								<p class="package-item__text">{!! trans('zakryttia-biz.package_text3') !!} {!! Helpers::getLangString($item, 'term') !!}</p>
 							</div>
 							<div class="package-item__price">
-								<p>{!! trans('zakryttia-biz.package_price1') !!}</p>
+								<p>{!! trans('zakryttia-biz.package_price') !!} {{ $item->price }} грн.</p>
 								<a href="#details" class="package-item__btn fancybox">{{ trans('zakryttia-biz.package_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="package-item package-item_accent">
-							<div class="package-item__title">
-								<h4>{{ trans('zakryttia-biz.package_name2') }}</h4>
-							</div>
-							<div class="package-item__wrap">
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text2') !!}</p>
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text2_1') !!}</p>
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text2_2') !!}</p>
-							</div>
-							<div class="package-item__price">
-								<p>{!! trans('zakryttia-biz.package_price2') !!}</p>
-								<a href="#details" class="package-item__btn fancybox">{{ trans('zakryttia-biz.package_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="package-item">
-							<div class="package-item__title">
-								<h4>{{ trans('zakryttia-biz.package_name3') }}</h4>
-							</div>
-							<div class="package-item__wrap">
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text3') !!}</p>
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text3_1') !!}</p>
-								<p class="package-item__text">{!! trans('zakryttia-biz.package_text3_2') !!}</p>
-							</div>
-							<div class="package-item__price">
-								<p>{!! trans('zakryttia-biz.package_price3') !!}</p>
-								<a href="#details" class="package-item__btn fancybox">{{ trans('zakryttia-biz.package_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -242,47 +212,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('zakryttia-biz.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('zakryttia-biz.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('zakryttia-biz.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('zakryttia-biz.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('zakryttia-biz.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('zakryttia-biz.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('zakryttia-biz.answer3') !!}</div>
-
-					<div class="faq__title">
-						<i>04</i>
-						<p>{{ trans('zakryttia-biz.question4') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('zakryttia-biz.answer4') !!}</div>
-
-					<div class="faq__title">
-						<i>05</i>
-						<p>{{ trans('zakryttia-biz.question5') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('zakryttia-biz.answer5') !!}</div>
-
-					<div class="faq__title">
-						<i>06</i>
-						<p>{{ trans('zakryttia-biz.question6') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('zakryttia-biz.answer6') !!}</div>
-
-					<div class="faq__title">
-						<i>07</i>
-						<p>{{ trans('zakryttia-biz.question7') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('zakryttia-biz.answer7') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>
