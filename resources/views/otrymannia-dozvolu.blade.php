@@ -61,17 +61,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('otrymannia-dozvolu.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="vs_about__title">{{ trans('otrymannia-dozvolu.about_title') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'title') }}</h3>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-6 col-md-6">
-				<p class="vs_about__text vs_about__text_fz16">{!! trans('otrymannia-dozvolu.about_text1') !!}</p>
-				<p class="vs_about__text vs_about__text_fz16">{!! trans('otrymannia-dozvolu.about_text2') !!}</p>
+				<p class="vs_about__text vs_about__text_fz16">{!! Helpers::getLangString($about, 'text1') !!}</p>
+				<p class="vs_about__text vs_about__text_fz16">{!! Helpers::getLangString($about, 'text2') !!}</p>
 			</div>
 			<div class="col-xl-4 col-md-6">
 				<div class="video-container video-container_img">
-					<img src="{{ asset('images/otrymannia_dozvolu_img.jpg') }}" alt="image">
+					<img src="{{ asset($about->image) }}" alt="image">
 				</div>
 			</div>
 		</div>
@@ -84,7 +84,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<h4>{!! trans('otrymannia-dozvolu.tarif_name1') !!}</h4>
 							</div>
 							<div class="dozvil-item__wrap d-flex align-items-center">
-								<p class="dozvil-item__text">{!! trans('otrymannia-dozvolu.tarif_text1') !!}</p>
+								<p class="dozvil-item__text">
+									<b>{{ Helpers::getLangString($about, 'term_title') }}</b>
+									<br><br>
+									{{ Helpers::getLangString($about, 'term_text') }}
+								</p>
 							</div>
 						</div>
 					</div>
@@ -94,7 +98,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<h4>{!! trans('otrymannia-dozvolu.tarif_name2') !!}</h4>
 							</div>
 							<div class="dozvil-item__wrap d-flex align-items-center">
-								<p class="dozvil-item__text">{!! trans('otrymannia-dozvolu.tarif_text2') !!}</p>
+								<p class="dozvil-item__text">
+									<b>{{ Helpers::getLangString($about, 'price_title') }}</b>
+									<br><br>
+									{{ Helpers::getLangString($about, 'price_text') }}
+								</p>
 							</div>
 						</div>
 					</div>
@@ -104,7 +112,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<h4>{!! trans('otrymannia-dozvolu.tarif_name3') !!}</h4>
 							</div>
 							<div class="dozvil-item__wrap d-flex align-items-center">
-								<p class="dozvil-item__text">{!! trans('otrymannia-dozvolu.tarif_text3') !!}</p>
+								<p class="dozvil-item__text">
+									<b>{{ trans('otrymannia-dozvolu.tarif_name3_title1') }}</b>
+									@foreach( json_decode($about->docs1) as $item )
+										@if( app()->getLocale() == 'uk')
+											<br>{{ $item->item }}
+										@else
+											<br>{{ $item->itemRU }}
+										@endif
+									@endforeach
+									<br><br><b>{{ trans('otrymannia-dozvolu.tarif_name3_title2') }}</b>
+									@foreach( json_decode($about->docs2) as $item )
+										@if( app()->getLocale() == 'uk')
+											<br>{{ $item->item }}
+										@else
+											<br>{{ $item->itemRU }}
+										@endif
+									@endforeach
+									@if( isset($about->docs_note) )
+										<br><br>{{ Helpers::getLangString($about, 'docs_note') }}
+									@endif
+								</p>
 							</div>
 						</div>
 					</div>
@@ -130,21 +158,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="procedure-line__small i1"></div>
 					<div class="procedure-line__big i1"></div>
 				</div>
-				<p class="procedure__text">{{ trans('otrymannia-dozvolu.procedure_text1') }}</p>
+				<p class="procedure__text">{{ Helpers::getLangString($procedure, 'item1') }}</p>
 			</div>
 			<div class="col-lg-5">
 				<div class="procedure-line">
 					<div class="procedure-line__number">02</div>
 					<div class="procedure-line__big i2"></div>
 				</div>
-				<p class="procedure__text">{{ trans('otrymannia-dozvolu.procedure_text2') }}</p>
+				<p class="procedure__text">{{ Helpers::getLangString($procedure, 'item2') }}</p>
 			</div>
 			<div class="col-lg-5">
 				<div class="procedure-line">
 					<div class="procedure-line__number">03</div>
 					<div class="procedure-line__big i2"></div>
 				</div>
-				<p class="procedure__text">{{ trans('otrymannia-dozvolu.procedure_text3') }}</p>
+				<p class="procedure__text">{{ Helpers::getLangString($procedure, 'item3') }}</p>
 			</div>
 			<div class="col-lg-5">
 				<div class="procedure-line">
@@ -152,7 +180,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="procedure-line__small i1"></div>
 					<div class="procedure-line__big i1"></div>
 				</div>
-				<p class="procedure__text">{{ trans('otrymannia-dozvolu.procedure_text4') }}</p>
+				<p class="procedure__text">{{ Helpers::getLangString($procedure, 'item4') }}</p>
 			</div>
 		</div>
 	</div>
@@ -276,35 +304,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('otrymannia-dozvolu.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('otrymannia-dozvolu.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-dozvolu.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('otrymannia-dozvolu.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-dozvolu.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('otrymannia-dozvolu.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-dozvolu.answer3') !!}</div>
-
-					<div class="faq__title">
-						<i>04</i>
-						<p>{{ trans('otrymannia-dozvolu.question4') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-dozvolu.answer4') !!}</div>
-
-					<div class="faq__title">
-						<i>05</i>
-						<p>{{ trans('otrymannia-dozvolu.question5') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-dozvolu.answer5') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

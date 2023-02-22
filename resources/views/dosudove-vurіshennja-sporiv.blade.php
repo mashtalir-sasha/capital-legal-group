@@ -61,30 +61,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('dosud-vur.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="vs_about__title">{{ trans('dosud-vur.about_title') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'title') }}</h3>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-5 col-md-6">
 				<ul class="vs_about-list">
-					<li>{{ trans('dosud-vur.about_list1') }}</li>
-					<li>{{ trans('dosud-vur.about_list2') }}</li>
-					<li>{{ trans('dosud-vur.about_list3') }}</li>		
+					@foreach( json_decode($about->list) as $item )
+						@if( app()->getLocale() == 'uk')
+							<li>{{ $item->item }}</li>
+						@else
+							<li>{{ $item->itemRU }}</li>
+						@endif
+					@endforeach	
 				</ul>
 			</div>
 			<div class="col-xl-5 col-md-6">
 				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/kKz1oXTZ5iY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($about->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div class="col-xl-10">
 				<table class="vs_price-table">
 					<tr>
-						<th class="first" style="text-align:left">{!! trans('dosud-vur.price-table_title1') !!}</th>
-						<th class="middle">{!! trans('dosud-vur.price-table_title2') !!}</th>
+						<th class="first" style="text-align:left">{!! Helpers::getLangString($about, 'price_title') !!}</th>
+						<th class="middle">{!! Helpers::getLangString($about, 'price_price') !!}</th>
 					</tr>
 				</table>
-				<p class="vs_price__last">{!! trans('dosud-vur.price_last') !!}</p>
+				<p class="vs_price__last">{{ Helpers::getLangString($about, 'price_note') }}</p>
 				<a href="#modal" class="vs_about__btn fancybox mt20">{{ trans('dosud-vur.about_btn') }} <i></i></a>
 			</div>
 		</div>

@@ -61,28 +61,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('otrymannia-ipn.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="vs_about__title">{{ trans('otrymannia-ipn.about_title') }}</h3>
-				<h3 class="vs_about__title">{{ trans('otrymannia-ipn.about_title2') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'title') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'subtitle') }}</h3>
 				<ul class="vs_about-list">
-					<li>{!! trans('otrymannia-ipn.about_list1') !!}<a href="{{ route('otrymanniaDoz') }}">{{ trans('otrymannia-ipn.about_list1_link') }}</a> {!! trans('otrymannia-ipn.about_list1_last') !!}</li>
-					<li>{!! trans('otrymannia-ipn.about_list2') !!}</li>
+					<li>{!! Helpers::getLangString($about, 'item1') !!}</li>
+					<li>{!! Helpers::getLangString($about, 'item2') !!}</li>
 				</ul>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-6 col-md-6">
 				<ul class="vs_about-list">
-					<li>{!! trans('otrymannia-ipn.about_list3') !!}</li>
-					<li>{!! trans('otrymannia-ipn.about_list4') !!}</li>
-					<li>{!! trans('otrymannia-ipn.about_list5') !!}</li>
-					<li><li>{!! trans('otrymannia-ipn.about_list6') !!}<a href="{{ route('otrymanniaPos') }}">{{ trans('otrymannia-ipn.about_list6_link') }}</a></li>
-					<li>{!! trans('otrymannia-ipn.about_list7') !!}</li>
-					<li>{!! trans('otrymannia-ipn.about_list8') !!}</li>
+					@if( isset($about->item3) )<li>{!! Helpers::getLangString($about, 'item3') !!}</li>@endif
+					@if( isset($about->item4) )<li>{!! Helpers::getLangString($about, 'item4') !!}</li>@endif
+					@if( isset($about->item5) )<li>{!! Helpers::getLangString($about, 'item5') !!}</li>@endif
+					@if( isset($about->item6) )<li>{!! Helpers::getLangString($about, 'item6') !!}</li>@endif
+					@if( isset($about->item7) )<li>{!! Helpers::getLangString($about, 'item7') !!}</li>@endif
+					@if( isset($about->item8) )<li>{!! Helpers::getLangString($about, 'item8') !!}</li>@endif
 				</ul>
 			</div>
 			<div class="col-xl-4 col-md-6">
 				<div class="video-container">
-					<img src="{{ asset('images/otrymannia_ipn_img.jpg') }}" alt="image">
+					<img src="{{ asset($about->image) }}" alt="image">
 				</div>
 			</div>
 		</div>
@@ -95,7 +95,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<h4>{!! trans('otrymannia-ipn.tarif_name1') !!}</h4>
 							</div>
 							<div class="cart-item__wrap d-flex align-items-center">
-								<p class="cart-item__text">{!! trans('otrymannia-ipn.tarif_text1') !!}</p>
+								<p class="cart-item__text">
+									<b>{{ Helpers::getLangString($about, 'term_title') }}</b>
+									<br><br>
+									{{ Helpers::getLangString($about, 'term_text') }}
+								</p>
 							</div>
 						</div>
 					</div>
@@ -105,7 +109,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<h4>{!! trans('otrymannia-ipn.tarif_name2') !!}</h4>
 							</div>
 							<div class="cart-item__wrap d-flex align-items-center">
-								<p class="cart-item__text">{!! trans('otrymannia-ipn.tarif_text2') !!}</p>
+								<p class="cart-item__text">
+								<b>{{ Helpers::getLangString($about, 'price_title') }}</b>
+									<br><br>
+									{{ Helpers::getLangString($about, 'price_text') }}
+								</p>
 							</div>
 						</div>
 					</div>
@@ -115,7 +123,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<h4>{!! trans('otrymannia-ipn.tarif_name3') !!}</h4>
 							</div>
 							<div class="cart-item__wrap d-flex align-items-center">
-								<p class="cart-item__text">{!! trans('otrymannia-ipn.tarif_text3') !!}</p>
+								<p class="cart-item__text">
+									@foreach( json_decode($about->docs) as $item )
+										@if( app()->getLocale() == 'uk')
+											{{ $item->item }}
+											@if( !$loop->last ) <br><br> @endif
+										@else
+											{{ $item->itemRU }}
+											@if( !$loop->last ) <br><br> @endif
+										@endif
+									@endforeach
+								</p>
 							</div>
 						</div>
 					</div>
@@ -141,21 +159,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="procedure-line__small i1"></div>
 					<div class="procedure-line__big i1"></div>
 				</div>
-				<p class="procedure__text">{{ trans('otrymannia-ipn.procedure_text1') }}</p>
+				<p class="procedure__text">{{ Helpers::getLangString($procedure, 'item1') }}</p>
 			</div>
 			<div class="col-lg-3">
 				<div class="procedure-line">
 					<div class="procedure-line__number">02</div>
 					<div class="procedure-line__big i2"></div>
 				</div>
-				<p class="procedure__text">{{ trans('otrymannia-ipn.procedure_text2') }}</p>
+				<p class="procedure__text">{{ Helpers::getLangString($procedure, 'item2') }}</p>
 			</div>
 			<div class="col-lg-3">
 				<div class="procedure-line">
 					<div class="procedure-line__small i3"></div>
 					<div class="procedure-line__number">03</div>
 				</div>
-				<p class="procedure__text">{{ trans('otrymannia-ipn.procedure_text3') }}</p>
+				<p class="procedure__text">{{ Helpers::getLangString($procedure, 'item3') }}</p>
 			</div>
 		</div>
 	</div>
@@ -279,23 +297,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('otrymannia-ipn.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('otrymannia-ipn.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-ipn.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('otrymannia-ipn.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-ipn.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('otrymannia-ipn.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-ipn.answer3') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

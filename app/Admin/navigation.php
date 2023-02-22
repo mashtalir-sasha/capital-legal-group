@@ -213,6 +213,151 @@ return [
                 ->setTitle('Питання - відповідь'),
         ]
     ],
+    [
+        'title' => "Господарські спори",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '13',
+        'pages' => [
+            (new Page(\App\Models\GospAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\GospReceive::class))
+                ->setIcon('fas fa-check')
+                ->setPriority(2)
+                ->setTitle('Що отримуєте'),
+            (new Page(\App\Models\GospLider::class))
+                ->setIcon('fas fa-user-tie')
+                ->setPriority(3)
+                ->setTitle('Керівник напрямку'),
+            (new Page(\App\Models\GospFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(4)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Адміністративні спори",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '14',
+        'pages' => [
+            (new Page(\App\Models\AdminAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\AdminReceive::class))
+                ->setIcon('fas fa-check')
+                ->setPriority(2)
+                ->setTitle('Що отримуєте'),
+            (new Page(\App\Models\AdminLider::class))
+                ->setIcon('fas fa-user-tie')
+                ->setPriority(3)
+                ->setTitle('Керівник напрямку'),
+            (new Page(\App\Models\AdminFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(4)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Тендерне право",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '15',
+        'pages' => [
+            (new Page(\App\Models\TendAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\TendReceive::class))
+                ->setIcon('fas fa-check')
+                ->setPriority(2)
+                ->setTitle('Що отримуєте'),
+            (new Page(\App\Models\TendLider::class))
+                ->setIcon('fas fa-user-tie')
+                ->setPriority(3)
+                ->setTitle('Керівник напрямку'),
+            (new Page(\App\Models\TendFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(4)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Міграційне право",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '16',
+        'pages' => [
+            (new Page(\App\Models\MihrAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\MihrFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(2)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Отримання ІПН іноземцю",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '17',
+        'pages' => [
+            (new Page(\App\Models\IpnAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\IpnProcedure::class))
+                ->setIcon('fas fa-list-ol')
+                ->setPriority(2)
+                ->setTitle('Процедура'),
+            (new Page(\App\Models\IpnFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(2)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Отримання дозволу на роботу іноземцю",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '18',
+        'pages' => [
+            (new Page(\App\Models\DozAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\DozProcedure::class))
+                ->setIcon('fas fa-list-ol')
+                ->setPriority(2)
+                ->setTitle('Процедура'),
+            (new Page(\App\Models\DozFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(2)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Отримання посвідки на проживання",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '19',
+        'pages' => [
+            (new Page(\App\Models\PosAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\PosProcedure::class))
+                ->setIcon('fas fa-list-ol')
+                ->setPriority(2)
+                ->setTitle('Процедура'),
+            (new Page(\App\Models\PosTarif::class))
+                ->setIcon('fas fa-dollar-sign')
+                ->setPriority(3)
+                ->setTitle('Варіанти пропозицій'),
+            (new Page(\App\Models\PosFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(4)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
     AdminSection::addMenuPage(\App\Models\Oferta::class)
         ->setIcon('fas fa-align-justify')
         ->setPriority(22)

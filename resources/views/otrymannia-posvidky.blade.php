@@ -61,27 +61,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('otrymannia-posvidky.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="vs_about__title">{{ trans('otrymannia-posvidky.about_title') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'title') }}</h3>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<p class="vs_about__text vs_about__text_fz16">{!! trans('otrymannia-posvidky.about_text1') !!}</p>
+				<p class="vs_about__text vs_about__text_fz16"><b>{{ Helpers::getLangString($about, 'sub_title') }}</b></p>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-6 col-md-6">
 				<ul class="vs_about-list">
-					<li>{!! trans('otrymannia-posvidky.about_list1') !!}</li>
-					<li>{!! trans('otrymannia-posvidky.about_list2') !!}</li>
-					<li>{!! trans('otrymannia-posvidky.about_list3') !!}</li>
+					@foreach( json_decode($about->list) as $item )
+						@if( app()->getLocale() == 'uk')
+							<li>{{ $item->item }}</li>
+						@else
+							<li>{{ $item->itemRU }}</li>
+						@endif
+					@endforeach
 				</ul>
-				<p class="vs_about__text vs_about__text_fz16">{!! trans('otrymannia-posvidky.about_text2') !!}</p>
-				<p class="vs_about__text vs_about__text_fz16">{!! trans('otrymannia-posvidky.about_text3') !!}</p>
+				<p class="vs_about__text vs_about__text_fz16">{!! Helpers::getLangString($about, 'text1') !!}</p>
+				@if( isset($about->text2) )
+					<p class="vs_about__text vs_about__text_fz16">{!! Helpers::getLangString($about, 'text2') !!}</p>
+				@endif
 			</div>
 			<div class="col-xl-4 col-md-6">
 				<div class="video-container video-container_img">
-					<img src="{{ asset('images/otrymannia_posvidky_img.jpg') }}" alt="image">
+					<img src="{{ asset($about->image) }}" alt="image">
 				</div>
 			</div>
 		</div>
@@ -101,21 +107,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="procedure-line__small i1"></div>
 					<div class="procedure-line__big i1"></div>
 				</div>
-				<p class="procedure__text">{!! trans('otrymannia-posvidky.procedure_text1') !!}</p>
+				<p class="procedure__text">{!! Helpers::getLangString($procedure, 'item1') !!}</p>
 			</div>
 			<div class="col-lg-3">
 				<div class="procedure-line">
 					<div class="procedure-line__number">02</div>
 					<div class="procedure-line__big i2"></div>
 				</div>
-				<p class="procedure__text">{!! trans('otrymannia-posvidky.procedure_text2') !!}</p>
+				<p class="procedure__text">{!! Helpers::getLangString($procedure, 'item2') !!}</p>
 			</div>
 			<div class="col-lg-3">
 				<div class="procedure-line">
 					<div class="procedure-line__small i3"></div>
 					<div class="procedure-line__number">03</div>
 				</div>
-				<p class="procedure__text">{!! trans('otrymannia-posvidky.procedure_text3') !!}</p>
+				<p class="procedure__text">{!! Helpers::getLangString($procedure, 'item3') !!}</p>
 			</div>
 			<div class="col-lg-4">
 				<div class="procedure-line">
@@ -123,25 +129,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="procedure-line__small i1"></div>
 					<div class="procedure-line__big i1"></div>
 				</div>
-				<p class="procedure__text">{!! trans('otrymannia-posvidky.procedure_text4') !!}</p>
+				<p class="procedure__text">{!! Helpers::getLangString($procedure, 'item4') !!}</p>
 			</div>
 			<div class="col-lg-3">
 				<div class="procedure-line">
 					<div class="procedure-line__number">05</div>
 					<div class="procedure-line__big i2"></div>
 				</div>
-				<p class="procedure__text">{!! trans('otrymannia-posvidky.procedure_text5') !!}</p>
+				<p class="procedure__text">{!! Helpers::getLangString($procedure, 'item5') !!}</p>
 			</div>
 			<div class="col-lg-3">
 				<div class="procedure-line">
 					<div class="procedure-line__small i3"></div>
 					<div class="procedure-line__number">06</div>
 				</div>
-				<p class="procedure__text">{!! trans('otrymannia-posvidky.procedure_text6') !!}</p>
+				<p class="procedure__text">{!! Helpers::getLangString($procedure, 'item6') !!}</p>
 			</div>
-			<div class="col-xl-10">
-				<p class="procedure__text"><b>{{ trans('otrymannia-posvidky.procedure_subtitle') }}</b></p>
-			</div>
+			@if( isset($procedure->note) )
+				<div class="col-xl-10">
+					<p class="procedure__text"><b>{{ Helpers::getLangString($procedure, 'note') }}</b></p>
+				</div>
+			@endif
 		</div>
 	</div>
 </section>
@@ -152,30 +160,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
 				<h3 class="ja_block-title fadeInRight">{!! trans('otrymannia-posvidky.variant_title') !!}</h3>
-				<div class="variant-item">
-					<div class="variant-item__title"><h4>{{ trans('otrymannia-posvidky.variant_item1_title') }}</h4></div>
+				@foreach($tarifs as $item)
+				<div @if($item->is_top == 1) class="variant-item variant-item_top" @else class="variant-item" @endif>
+					<div class="variant-item__title">@if($item->is_top == 1) <i class="top"></i> @endif<h4>{{ Helpers::getLangString($item, 'title') }}</h4></div>
 					<div class="variant-item__wrap">
 						<h4 class="variant-item__subtitle">{{ trans('otrymannia-posvidky.variant_subtitle') }}</h4>
-						<div class="variant-item__text">{!! trans('otrymannia-posvidky.variant_item1_text') !!}</div>
+						<div class="variant-item__text">{!! Helpers::getLangString($item, 'text') !!}</div>
 					</div>
 				</div>
 				<a href="#buy" class="variant-item__btn fancybox">{{ trans('otrymannia-posvidky.variant_btn') }} <i></i></a>
-				<div class="variant-item variant-item_top">
-					<div class="variant-item__title"><i class="top"></i><h4>{{ trans('otrymannia-posvidky.variant_item2_title') }}</h4></div>
-					<div class="variant-item__wrap">
-						<h4 class="variant-item__subtitle">{{ trans('otrymannia-posvidky.variant_subtitle') }}</h4>
-						<div class="variant-item__text">{!! trans('otrymannia-posvidky.variant_item2_text') !!}</div>
-					</div>
-				</div>
-				<a href="#buy" class="variant-item__btn fancybox">{{ trans('otrymannia-posvidky.variant_btn') }} <i></i></a>
-				<div class="variant-item">
-					<div class="variant-item__title"><h4>{{ trans('otrymannia-posvidky.variant_item3_title') }}</h4></div>
-					<div class="variant-item__wrap">
-						<h4 class="variant-item__subtitle">{{ trans('otrymannia-posvidky.variant_subtitle') }}</h4>
-						<div class="variant-item__text">{!! trans('otrymannia-posvidky.variant_item3_text') !!}</div>
-					</div>
-				</div>
-				<a href="#buy" class="variant-item__btn fancybox">{{ trans('otrymannia-posvidky.variant_btn') }} <i></i></a>
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -299,23 +293,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('otrymannia-posvidky.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('otrymannia-posvidky.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-posvidky.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('otrymannia-posvidky.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-posvidky.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('otrymannia-posvidky.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('otrymannia-posvidky.answer3') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

@@ -61,38 +61,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('admin-spor.about_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<h3 class="vs_about__title">{{ trans('admin-spor.about_title') }}</h3>
+				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'title') }}</h3>
 				<ul class="vs_about-list">
-					<li>{{ trans('admin-spor.about_list1') }}</li>
-					<li>{{ trans('admin-spor.about_list2') }}</li>
+					@if( isset($about->item1) )
+						<li>
+							{{ Helpers::getLangString($about, 'item1') }}
+							@if( $about->list1 != '[]' )
+								<ul class="vs_about-list_into">
+									@foreach( json_decode($about->list1) as $item )
+										@if( app()->getLocale() == 'uk')
+											<li>{{ $item->item }}</li>
+										@else
+											<li>{{ $item->itemRU }}</li>
+										@endif
+									@endforeach
+								</ul>
+							@endif
+						</li>
+					@endif
+
+					@if( isset($about->item2) )
+						<li>
+							{{ Helpers::getLangString($about, 'item2') }}
+							@if( $about->list2 != '[]' )
+								<ul class="vs_about-list_into">
+									@foreach( json_decode($about->list2) as $item )
+										@if( app()->getLocale() == 'uk')
+											<li>{{ $item->item }}</li>
+										@else
+											<li>{{ $item->itemRU }}</li>
+										@endif
+									@endforeach
+								</ul>
+							@endif
+						</li>
+					@endif
 				</ul>
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-5 col-md-6">
 				<ul class="vs_about-list">
-					<li>
-						{{ trans('admin-spor.about_list3') }}
-						<ul class="vs_about-list_into">
-							{!! trans('admin-spor.about_list3_text') !!}
-						</ul>
-					</li>
-					<li>{{ trans('admin-spor.about_list4') }}</li>	
+					@if( isset($about->item3) )
+						<li>
+							{{ Helpers::getLangString($about, 'item3') }}
+							@if( $about->list3 != '[]' )
+								<ul class="vs_about-list_into">
+									@foreach( json_decode($about->list3) as $item )
+										@if( app()->getLocale() == 'uk')
+											<li>{{ $item->item }}</li>
+										@else
+											<li>{{ $item->itemRU }}</li>
+										@endif
+									@endforeach
+								</ul>
+							@endif
+						</li>
+					@endif
+					@if( isset($about->item4) )
+						<li>
+							{{ Helpers::getLangString($about, 'item4') }}
+							@if( $about->list4 != '[]' )
+								<ul class="vs_about-list_into">
+									@foreach( json_decode($about->list4) as $item )
+										@if( app()->getLocale() == 'uk')
+											<li>{{ $item->item }}</li>
+										@else
+											<li>{{ $item->itemRU }}</li>
+										@endif
+									@endforeach
+								</ul>
+							@endif
+						</li>
+					@endif	
 				</ul>
 			</div>
 			<div class="col-xl-5 col-md-6">
 				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/kKz1oXTZ5iY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($about->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div class="col-xl-10">
 				<table class="vs_price-table">
 					<tr>
-						<th class="first" style="text-align:left">{!! trans('admin-spor.price-table_title1') !!}</th>
-						<th class="middle">{!! trans('admin-spor.price-table_title2') !!}</th>
+						<th class="first" style="text-align:left">{!! Helpers::getLangString($about, 'price_title') !!}</th>
+						<th class="middle">{!! Helpers::getLangString($about, 'price_price') !!}</th>
 					</tr>
 				</table>
-				<p class="vs_price__last">{!! trans('admin-spor.price_last') !!}</p>
+				<p class="vs_price__last">{!! Helpers::getLangString($about, 'price_note') !!}</p>
 				<a href="#modal" class="vs_about__btn fancybox mt20">{{ trans('admin-spor.about_btn') }} <i></i></a>
 			</div>
 		</div>
@@ -106,36 +162,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10">
 				<h3 class="ja_block-title fadeInRight">{!! trans('admin-spor.receive_title') !!}</h3>
 				<div class="row">
+					@foreach($receives as $item)
 					<div class="col-lg-4 col-sm-6">
 						<div class="receive-item">
-							<img src="{{ asset('images/vs_receive_ico1.svg') }}" alt="ico" class="receive-item__ico">
-							<p class="receive-item__text">{!! trans('admin-spor.receive-item1') !!}</p>
+							<img src="{{ asset($item->image) }}" alt="ico" class="receive-item__ico">
+							<p class="receive-item__text">{!! Helpers::getLangString($item, 'title') !!}</p>
 						</div>
 					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="receive-item">
-							<img src="{{ asset('images/vs_receive_ico2.svg') }}" alt="ico" class="receive-item__ico">
-							<p class="receive-item__text">{!! trans('admin-spor.receive-item2') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="receive-item">
-							<img src="{{ asset('images/vs_receive_ico5.svg') }}" alt="ico" class="receive-item__ico">
-							<p class="receive-item__text">{!! trans('admin-spor.receive-item3') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="receive-item">
-							<img src="{{ asset('images/vs_receive_ico4.svg') }}" alt="ico" class="receive-item__ico">
-							<p class="receive-item__text">{!! trans('admin-spor.receive-item4') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="receive-item">
-							<img src="{{ asset('images/vs_receive_ico6.svg') }}" alt="ico" class="receive-item__ico">
-							<p class="receive-item__text">{!! trans('admin-spor.receive-item5') !!}</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -185,42 +219,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row justify-content-center align-items-center">
 			<div class="col-xl-5 col-md-6">
 				<div class="manager-image">
-					<img src="{{ asset('images/manager1.jpg') }}" alt="" class="manger-image__img">
+					<img src="{{ asset($lider->photo) }}" alt="" class="manger-image__img">
 				</div>
 			</div>
 			<div class="col-xl-5 col-md-6">
-				<p class="manager__name">{{ trans('admin-spor.manager1_name') }}</p>
-				<p class="manager__position">{{ trans('admin-spor.manager1_position') }}</p>
+				<p class="manager__name">{{ Helpers::getLangString($lider, 'name') }}</p>
+				<p class="manager__position">{{ Helpers::getLangString($lider, 'position') }}</p>
 				<div class="manager-text">
-					<p class="manager-text__count">{{ trans('admin-spor.manager1_year') }}</p>
-					<p class="manager-text__text">{{ trans('admin-spor.manager1_exp') }}</p>
+					<p class="manager-text__count">{{ Helpers::getLangString($lider, 'number') }}</p>
+					<p class="manager-text__text">{{ Helpers::getLangString($lider, 'text') }}</p>
 				</div>
-				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ trans('admin-spor.manager1_name') }}">{{ trans('main.expert_btn') }}s <i></i></a>
+				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ Helpers::getLangString($lider, 'name') }}">{{ trans('main.expert_btn') }} <i></i></a>
 			</div>
 		</div>
 		<div class="row justify-content-center align-items-center">
 			<div class="col-xl-6 col-md-6">
+				@if( isset($lider->study) )
 				<div class="manager__content">
-					<h4 class="manager__title">{{ trans('admin-spor.manager1_title1') }}</h4>
-					<p class="manager__text">{{ trans('admin-spor.manager1_text1') }}</p>
-					<p class="manager__text">{{ trans('admin-spor.manager1_text2') }}</p>
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title1') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'study') !!}</p>
 				</div>
+				@endif
+				@if( isset($lider->practic) )
 				<div class="manager__content">
-					<h4 class="manager__title">{{ trans('admin-spor.manager1_title2') }}</h4>
-					<p class="manager__text">{{ trans('admin-spor.manager1_text3') }}</p>
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title2') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'practic') !!}</p>
 				</div>
+				@endif
+				@if( isset($lider->sphere) )
 				<div class="manager__content">
-					<h4 class="manager__title">{{ trans('admin-spor.manager1_title3') }}</h4>
-					<p class="manager__text">{{ trans('admin-spor.manager1_text4') }}</p>
-					<p class="manager__text">{{ trans('admin-spor.manager1_text5') }}</p>
-					<p class="manager__text">{{ trans('admin-spor.manager1_text6') }}</p>
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title3') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'sphere') !!}</p>
 				</div>
+				@endif
 			</div>
+			@if( isset($lider->image) )
 			<div class="col-xl-4 col-md-6">
 				<div class="manager-diploma">
-					<img src="{{ asset('images/manager1_diploma.jpg') }}" alt="diploma" class="manager-diploma__img">
+					<img src="{{ asset($lider->image) }}" alt="diploma" class="manager-diploma__img">
 				</div>
 			</div>
+			@endif
 		</div>
 	</div>
 </section>
@@ -233,23 +272,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('admin-spor.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('admin-spor.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('admin-spor.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('admin-spor.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('admin-spor.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('admin-spor.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('admin-spor.answer3') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

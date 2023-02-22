@@ -52,6 +52,10 @@ class ServiceController extends Controller
             'blogContent' => \App\Models\BlogCategory::where('id', '10')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
             'contacts' => \App\Models\Contacts::first(),
+            'about' => \App\Models\GospAbout::first(),
+            'receives' => \App\Models\GospReceive::get(),
+            'lider' => \App\Models\GospLider::first(),
+            'faq' => \App\Models\GospFaq::get(),
         ]);
     }
 
@@ -61,6 +65,10 @@ class ServiceController extends Controller
             'blogContent' => \App\Models\BlogCategory::where('id', '11')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
             'contacts' => \App\Models\Contacts::first(),
+            'about' => \App\Models\AdminAbout::first(),
+            'receives' => \App\Models\AdminReceive::get(),
+            'lider' => \App\Models\AdminLider::first(),
+            'faq' => \App\Models\AdminFaq::get(),
         ]);
     }
 
@@ -128,6 +136,10 @@ class ServiceController extends Controller
             'blogContent' => \App\Models\BlogCategory::where('id', '12')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
             'contacts' => \App\Models\Contacts::first(),
+            'about' => \App\Models\TendAbout::first(),
+            'receives' => \App\Models\TendReceive::get(),
+            'lider' => \App\Models\TendLider::first(),
+            'faq' => \App\Models\TendFaq::get(),
         ]);
     }
 
@@ -148,6 +160,8 @@ class ServiceController extends Controller
             'blogContent' => \App\Models\BlogCategory::where('id', '13')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
             'contacts' => \App\Models\Contacts::first(),
+            'about' => \App\Models\MihrAbout::first(),
+            'faq' => \App\Models\MihrFaq::get(),
         ]);
     }
 
@@ -157,6 +171,9 @@ class ServiceController extends Controller
             'blogContent' => \App\Models\BlogCategory::where('id', '14')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
             'contacts' => \App\Models\Contacts::first(),
+            'about' => \App\Models\IpnAbout::first(),
+            'procedure' => \App\Models\IpnProcedure::first(),
+            'faq' => \App\Models\IpnFaq::get(),
         ]);
     }
 
@@ -166,6 +183,9 @@ class ServiceController extends Controller
             'blogContent' => \App\Models\BlogCategory::where('id', '15')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
             'contacts' => \App\Models\Contacts::first(),
+            'about' => \App\Models\DozAbout::first(),
+            'procedure' => \App\Models\DozProcedure::first(),
+            'faq' => \App\Models\DozFaq::get(),
         ]);
     }
 
@@ -175,6 +195,10 @@ class ServiceController extends Controller
             'blogContent' => \App\Models\BlogCategory::where('id', '16')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
             'contacts' => \App\Models\Contacts::first(),
+            'about' => \App\Models\PosAbout::first(),
+            'procedure' => \App\Models\PosProcedure::first(),
+            'tarifs' => \App\Models\PosTarif::get(),
+            'faq' => \App\Models\PosFaq::get(),
         ]);
     }
 
