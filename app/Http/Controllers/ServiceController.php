@@ -17,6 +17,7 @@ class ServiceController extends Controller
             'jurDirections' => \App\Models\JurDirections::get(),
             'jurTarif' => \App\Models\JurTraif::first(),
             'faq' => \App\Models\JurFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '1')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -80,6 +81,7 @@ class ServiceController extends Controller
             'contacts' => \App\Models\Contacts::first(),
             'korpAbout' => \App\Models\KorpAbout::first(),
             'faq' => \App\Models\KorpFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '2')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -92,6 +94,7 @@ class ServiceController extends Controller
             'about' => \App\Models\VidkryttiaAbout::first(),
             'tarifs' => \App\Models\VidkryttiaTarif::get(),
             'faq' => \App\Models\VidkryttiaFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '3')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -104,6 +107,7 @@ class ServiceController extends Controller
             'benefits' => \App\Models\KupivliaBenefits::get(),
             'tarifs' => \App\Models\KupivliaTarif::get(),
             'faq' => \App\Models\KupivliaFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '4')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -116,6 +120,7 @@ class ServiceController extends Controller
             'about' => \App\Models\ZakryttiaAbout::first(),
             'tarifs' => \App\Models\ZakryttiaTarif::get(),
             'faq' => \App\Models\ZakryttiaFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '5')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -151,6 +156,7 @@ class ServiceController extends Controller
             'contacts' => \App\Models\Contacts::first(),
             'about' => \App\Models\PodatkoveAbout::first(),
             'faq' => \App\Models\PodatkoveFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '6')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -162,6 +168,7 @@ class ServiceController extends Controller
             'contacts' => \App\Models\Contacts::first(),
             'about' => \App\Models\MihrAbout::first(),
             'faq' => \App\Models\MihrFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '7')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -174,6 +181,7 @@ class ServiceController extends Controller
             'about' => \App\Models\IpnAbout::first(),
             'procedure' => \App\Models\IpnProcedure::first(),
             'faq' => \App\Models\IpnFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '8')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -186,6 +194,7 @@ class ServiceController extends Controller
             'about' => \App\Models\DozAbout::first(),
             'procedure' => \App\Models\DozProcedure::first(),
             'faq' => \App\Models\DozFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '9')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -199,6 +208,7 @@ class ServiceController extends Controller
             'procedure' => \App\Models\PosProcedure::first(),
             'tarifs' => \App\Models\PosTarif::get(),
             'faq' => \App\Models\PosFaq::get(),
+            'team' => \App\Models\TeamCategory::where('id', '10')->with('lawyers')->firstOrFail(),
         ]);
     }
 
@@ -207,6 +217,9 @@ class ServiceController extends Controller
         return view('intelektualna-vlasnist', [
             'blogContent' => \App\Models\BlogCategory::where('id', '17')->with('articles')->firstOrFail(),
             'mailto' => 'office@prima-veritas.ua',
+            'about' => \App\Models\IntelectAbout::first(),
+            'lider' => \App\Models\IntelectLider::first(),
+            'faq' => \App\Models\IntelectFaq::get(),
             'contacts' => \App\Models\Contacts::first(),
         ]);
     }
@@ -216,6 +229,12 @@ class ServiceController extends Controller
         return view('bukhhalterskyi-autsorsing', [
             'blogContent' => \App\Models\BlogCategory::where('id', '18')->with('articles')->firstOrFail(),
             'mailto' => 'priadka@spg.kiev.ua',
+            'about' => \App\Models\BuhAbout::first(),
+            'directions' => \App\Models\BuhDirections::get(),
+            'tarif' => \App\Models\BuhTraif::first(),
+            'benefits' => \App\Models\BuhBenefits::get(),
+            'lider' => \App\Models\BuhLider::first(),
+            'faq' => \App\Models\BuhFaq::get(),
             'contacts' => \App\Models\Contacts::first(),
         ]);
     }

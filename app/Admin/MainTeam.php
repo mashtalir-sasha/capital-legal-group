@@ -2,6 +2,7 @@
 
 use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Models\MainTeam;
+use App\Models\TeamCategory;
 
 AdminSection::registerModel(MainTeam::class, function (ModelConfiguration $model) {
 
@@ -42,6 +43,7 @@ AdminSection::registerModel(MainTeam::class, function (ModelConfiguration $model
                 ];
             })->addColumn(function () {
                 return [
+                    AdminFormElement::multiselect('category', 'Показувати в блоці "Команда" на сторінках')->setModelForOptions(new TeamCategory)->setDisplay('title'),
                     AdminFormElement::image('image', 'Фото')->required(),
                 ];
             }), 

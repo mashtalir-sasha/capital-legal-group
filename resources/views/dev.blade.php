@@ -9,11 +9,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="shortcut icon" href="img/favicon/16.png" type="image/x-icon">
-	<link rel="icon" href="/img/favicon/16.png" type="image/x-icon"> 
-	<link rel="apple-touch-icon" href="/img/favicon/16.png">
-	<link rel="apple-touch-icon" sizes="32x32" href="/img/favicon/32.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/72.png"> 
+	<link rel="shortcut icon" href="/images/favicon/16.png" type="image/x-icon">
+	<link rel="icon" href="/images/favicon/16.png" type="image/x-icon"> 
+	<link rel="apple-touch-icon" href="/images/favicon/16.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/images/favicon/32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/72.png"> 
 	<meta name="theme-color" content="#C6A636">
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">

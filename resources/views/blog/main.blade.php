@@ -10,13 +10,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<link rel="shortcut icon" href="img/favicon/16.png" type="image/x-icon">
-	<link rel="icon" href="/img/favicon/16.png" type="image/x-icon"> 
-	<link rel="apple-touch-icon" href="/img/favicon/16.png">
-	<link rel="apple-touch-icon" sizes="32x32" href="/img/favicon/32.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/72.png"> 
+	<link rel="icon" href="/images/favicon/16.png" type="image/x-icon"> 
+	<link rel="apple-touch-icon" href="/images/favicon/16.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/images/favicon/32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/72.png"> 
 	<meta name="theme-color" content="#C6A636">
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
+
+	<meta property="og:title" content="Блог | {{ trans('main.meta_title') }}">
+	<meta property="og:description" content="{{ trans('main.meta_description') }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ Request::url() }}">
+	<meta property="og:image" content="{{ asset('images/blog_bg.jpg') }}">
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -79,7 +85,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<div class="col-md-6">
 								<div class="blog-cart">
 									<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="fancybox blog-cart__img">
-										<img src="https://img.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog item">
+										<img src="https://images.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog item">
 									</a>
 									<h4 class="blog-cart__title">{{ Helpers::getLangString($item, 'title') }}</h4>
 									<p class="blog-cart__text">{{ mb_strimwidth(Helpers::getLangString($item, 'text'), 0, 200, "...") }}</p>

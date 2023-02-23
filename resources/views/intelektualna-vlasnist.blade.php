@@ -3,22 +3,28 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ trans('main.meta_title') }}</title>
+	<title>{{ trans('intelekt-vlasnist.meta_title') }} | {{ trans('main.meta_title') }}</title>
 	<meta name="description" content="{{ trans('main.meta_description') }}">
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="shortcut icon" href="img/favicon/16.png" type="image/x-icon">
-	<link rel="icon" href="/img/favicon/16.png" type="image/x-icon"> 
-	<link rel="apple-touch-icon" href="/img/favicon/16.png">
-	<link rel="apple-touch-icon" sizes="32x32" href="/img/favicon/32.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/72.png"> 
+	<link rel="shortcut icon" href="/images/favicon/16.png" type="image/x-icon">
+	<link rel="icon" href="/images/favicon/16.png" type="image/x-icon"> 
+	<link rel="apple-touch-icon" href="/images/favicon/16.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/images/favicon/32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/72.png"> 
 	<meta name="theme-color" content="#C6A636">
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<meta property="og:title" content="{{ trans('intelekt-vlasnist.meta_title') }} | {{ trans('main.meta_title') }}">
+	<meta property="og:description" content="{{ trans('main.meta_description') }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ Request::url() }}">
+	<meta property="og:image" content="{{ asset('images/intelekt_vlasnist_bg.jpg') }}">
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -61,11 +67,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('intelekt-vlasnist.about_note') }}</div>
 		<div class="row justify-content-center align-items-center">
 			<div class="col-xl-5 col-md-6">
-				<p class="vs_about__title vs_about__title_fwn">{!! trans('intelekt-vlasnist.about_text') !!}</p>
+				<p class="vs_about__title vs_about__title_fwn">{!! Helpers::getLangString($about, 'title') !!}</p>
 			</div>
 			<div class="col-xl-5 col-md-6">
 				<div class="video-container">
-					<img src="{{ asset('images/intelekt_video.jpg') }}" alt="image">
+					<img src="{{ asset($about->image) }}" alt="image">
 				</div>
 			</div>
 		</div>
@@ -164,18 +170,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row justify-content-center align-items-center">
 			<div class="col-xl-5 col-md-6">
 				<div class="manager-image">
-					<img src="{{ asset('images/manager3.jpg') }}" alt="" class="manger-image__img">
+					<img src="{{ asset($lider->photo) }}" alt="" class="manger-image__img">
 				</div>
 			</div>
 			<div class="col-xl-5 col-md-6">
-				<p class="manager__name">{{ trans('intelekt-vlasnist.manager1_name') }}</p>
-				<p class="manager__position">{{ trans('intelekt-vlasnist.manager1_position') }}</p>
+				<p class="manager__name">{{ Helpers::getLangString($lider, 'name') }}</p>
+				<p class="manager__position">{{ Helpers::getLangString($lider, 'position') }}</p>
 				<div class="manager-text">
-					<p class="manager-text__count">{{ trans('intelekt-vlasnist.manager1_year') }}</p>
-					<p class="manager-text__text">{{ trans('intelekt-vlasnist.manager1_exp') }}</p>
+					<p class="manager-text__count">{{ Helpers::getLangString($lider, 'number') }}</p>
+					<p class="manager-text__text">{{ Helpers::getLangString($lider, 'text') }}</p>
 				</div>
-				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ trans('intelekt-vlasnist.manager1_name') }}">{{ trans('main.expert_btn') }}s <i></i></a>
+				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ Helpers::getLangString($lider, 'name') }}">{{ trans('main.expert_btn') }} <i></i></a>
 			</div>
+		</div>
+		<div class="row justify-content-center align-items-center">
+			<div class="col-xl-6 col-md-6">
+				@if( isset($lider->study) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title1') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'study') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->practic) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title2') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'practic') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->sphere) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title3') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'sphere') !!}</p>
+				</div>
+				@endif
+			</div>
+			@if( isset($lider->image) )
+			<div class="col-xl-4 col-md-6">
+				<div class="manager-diploma">
+					<img src="{{ asset($lider->image) }}" alt="diploma" class="manager-diploma__img">
+				</div>
+			</div>
+			@endif
 		</div>
 	</div>
 </section>
@@ -188,23 +223,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('intelekt-vlasnist.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('intelekt-vlasnist.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('intelekt-vlasnist.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('intelekt-vlasnist.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('intelekt-vlasnist.answer2') !!}</div>
-
-					<div class="faq__title">
-						<i>03</i>
-						<p>{{ trans('intelekt-vlasnist.question3') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('intelekt-vlasnist.answer3') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

@@ -9,6 +9,11 @@ class MainTeam extends Model
 {
     use HasFactory;
 
+    public function category()
+    {
+        return $this->belongsToMany(TeamCategory::class, 'lawyer_category', 'lawyer_id', 'category_id');
+    }
+
     public function setImageAttribute($image)
     {
         if (isset($this->attributes['image']) && $this->attributes['image'] != $image) {

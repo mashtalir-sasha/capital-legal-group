@@ -3,22 +3,28 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ trans('main.meta_title') }}</title>
+	<title>{{ trans('admin-spor.meta_title') }} | {{ trans('main.meta_title') }}</title>
 	<meta name="description" content="{{ trans('main.meta_description') }}">
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="shortcut icon" href="img/favicon/16.png" type="image/x-icon">
-	<link rel="icon" href="/img/favicon/16.png" type="image/x-icon"> 
-	<link rel="apple-touch-icon" href="/img/favicon/16.png">
-	<link rel="apple-touch-icon" sizes="32x32" href="/img/favicon/32.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/72.png"> 
+	<link rel="shortcut icon" href="/images/favicon/16.png" type="image/x-icon">
+	<link rel="icon" href="/images/favicon/16.png" type="image/x-icon"> 
+	<link rel="apple-touch-icon" href="/images/favicon/16.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/images/favicon/32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/72.png"> 
 	<meta name="theme-color" content="#C6A636">
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<meta property="og:title" content="{{ trans('admin-spor.meta_title') }} | {{ trans('main.meta_title') }}">
+	<meta property="og:description" content="{{ trans('main.meta_description') }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ Request::url() }}">
+	<meta property="og:image" content="{{ asset('images/admin_spor_bg.jpg') }}">
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -298,7 +304,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="blog-slider__slide">
 						<div class="blog-item">
 							<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="fancybox">
-								<img src="https://img.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
+								<img src="https://image.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
 							</a>
 							<div class="blog-item__content">
 								<h4 class="blog-item__title">{{ Helpers::getLangString($item, 'title') }}</h4>

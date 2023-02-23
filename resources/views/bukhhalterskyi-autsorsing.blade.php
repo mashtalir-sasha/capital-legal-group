@@ -3,22 +3,28 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ trans('main.meta_title') }}</title>
+	<title>{{ trans('buh-aut.meta_title') }} | {{ trans('main.meta_title') }}</title>
 	<meta name="description" content="{{ trans('main.meta_description') }}">
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="shortcut icon" href="img/favicon/16.png" type="image/x-icon">
-	<link rel="icon" href="/img/favicon/16.png" type="image/x-icon"> 
-	<link rel="apple-touch-icon" href="/img/favicon/16.png">
-	<link rel="apple-touch-icon" sizes="32x32" href="/img/favicon/32.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/72.png"> 
+	<link rel="shortcut icon" href="/images/favicon/16.png" type="image/x-icon">
+	<link rel="icon" href="/images/favicon/16.png" type="image/x-icon"> 
+	<link rel="apple-touch-icon" href="/images/favicon/16.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/images/favicon/32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/72.png"> 
 	<meta name="theme-color" content="#C6A636">
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<meta property="og:title" content="{{ trans('admin-spor.meta_title') }} | {{ trans('main.meta_title') }}">
+	<meta property="og:description" content="{{ trans('main.meta_description') }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ Request::url() }}">
+	<meta property="og:image" content="{{ asset('images/buh_aut_bg.jpg') }}">
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -61,12 +67,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('buh-aut.about_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-5 col-md-6">
-				<p class="vs_about__title vs_about__title_fwn">{!! trans('buh-aut.about_text') !!}</p>
-				<p class="vs_about__title vs_about__title_fwn">{!! trans('buh-aut.about_text2') !!}</p>
+				<p class="vs_about__title vs_about__title_fwn">{!! Helpers::getLangString($about, 'text1') !!}</p>
+				@if( isset( $about->text2 ) )
+				<p class="vs_about__title vs_about__title_fwn">{!! Helpers::getLangString($about, 'text2') !!}</p>
+				@endif
 			</div>
 			<div class="col-xl-5 col-md-6">
 				<div class="video-container">
-					<img src="{{ asset('images/buh_video.jpg') }}" alt="image">
+					<img src="{{ asset($about->image) }}" alt="image">
 				</div>
 			</div>
 		</div>
@@ -80,46 +88,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="ja_block-title fadeInRight">{!! trans('buh-aut.volume_title') !!}</h3>
 				<div class="row justify-content-center">
+					@foreach($directions as $item)
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item1') }}</p>
+							<p class="ja_volume-item__text">{{ Helpers::getLangString($item, 'text') }}</p>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item2') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item3') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item4') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item5') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item6') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item7') }}</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="ja_volume-item">
-							<p class="ja_volume-item__text">{{ trans('buh-aut.volume_item8') }}</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -135,47 +110,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<table class="ja_price-table ja_price-table_buh">
 					<tr>
-						<th class="first d-none d-md-table-cell">{!! trans('buh-aut.price-table_title1') !!}</th>
-						<th class="middle d-none d-md-table-cell">{!! trans('buh-aut.price-table_title2') !!}</th>
-						<th class="middle d-none d-md-table-cell">{!! trans('buh-aut.price-table_title3') !!}</th>
-						<th class="middle d-none d-md-table-cell">{!! trans('buh-aut.price-table_title4') !!}</th>
-						<th class="middle d-none d-md-table-cell">{!! trans('buh-aut.price-table_title5') !!}</th>
+						<th class="first d-md-table-cell">{!! trans('buh-aut.price-table_title1') !!}</th>
+						<th class="middle d-md-table-cell">{!! trans('buh-aut.price-table_title2') !!}</th>
+						<th class="middle d-md-table-cell">{!! trans('buh-aut.price-table_title3') !!}</th>
+						<th class="middle d-md-table-cell">{!! trans('buh-aut.price-table_title4') !!}</th>
+						<th class="middle d-md-table-cell">{!! trans('buh-aut.price-table_title5') !!}</th>
 					</tr>
-					<tr>
-						<th class="middle d-md-none">{!! trans('buh-aut.price-table_title2') !!}</th>
-						<td>{!! trans('buh-aut.tarif1_text1') !!}</td>
-						<td>{!! trans('buh-aut.tarif1_text2') !!}</td>
-						<td>{!! trans('buh-aut.tarif1_text3') !!}</td>
-						<td>{!! trans('buh-aut.tarif1_text4') !!}</td>
-						<td>{!! trans('buh-aut.tarif1_text5') !!}</td>
-					</tr>
-					<tr>
-						<th class="middle d-md-none">{!! trans('buh-aut.price-table_title3') !!}</th>
-						<td>{!! trans('buh-aut.tarif2_text1') !!}</td>
-						<td>{!! trans('buh-aut.tarif2_text2') !!}</td>
-						<td>{!! trans('buh-aut.tarif2_text3') !!}</td>
-						<td>{!! trans('buh-aut.tarif2_text4') !!}</td>
-						<td>{!! trans('buh-aut.tarif2_text5') !!}</td>
-					</tr>
-					<tr>
-						<th class="middle d-md-none">{!! trans('buh-aut.price-table_title4') !!}</th>
-						<td>{!! trans('buh-aut.tarif3_text1') !!}</td>
-						<td>{!! trans('buh-aut.tarif3_text2') !!}</td>
-						<td>{!! trans('buh-aut.tarif3_text3') !!}</td>
-						<td>{!! trans('buh-aut.tarif3_text4') !!}</td>
-						<td>{!! trans('buh-aut.tarif3_text5') !!}</td>
-					</tr>
-					<tr>
-						<th class="middle d-md-none">{!! trans('buh-aut.price-table_title5') !!}</th>
-						<td>{!! trans('buh-aut.tarif4_text1') !!}</td>
-						<td>{!! trans('buh-aut.tarif4_text2') !!}</td>
-						<td>{!! trans('buh-aut.tarif4_text3') !!}</td>
-						<td>{!! trans('buh-aut.tarif4_text4') !!}</td>
-						<td>{!! trans('buh-aut.tarif4_text5') !!}</td>
-					</tr>
+
+					@foreach( json_decode($tarif->table) as $item )
+						<tr>
+							@if( app()->getLocale() == 'uk')
+								<td>{{ $item->item1 }}</td>
+								<td>{{ $item->item2 }}</td>
+								<td>{{ $item->item3 }}</td>
+								<td>{{ $item->item4 }}</td>
+								<td>{{ $item->item5 }}</td>
+							@else
+								<td>{{ $item->item1RU }}</td>
+								<td>{{ $item->item2RU }}</td>
+								<td>{{ $item->item3RU }}</td>
+								<td>{{ $item->item4RU }}</td>
+								<td>{{ $item->item5RU }}</td>
+							@endif
+						</tr>
+					@endforeach
 				</table>
 
-				<p class="ja_price__last">{!! trans('buh-aut.price_last') !!}</p>
+				<p class="ja_price__last">{!! Helpers::getLangString($tarif, 'text') !!}</p>
 			</div>
 		</div>
 	</div>
@@ -188,42 +149,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="ja_block-title fadeInRight">{!! trans('buh-aut.benefits_title') !!}</h3>
 				<div class="row">
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico1.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('buh-aut.benefits-item1') !!}</p>
+					@foreach($benefits as $item)
+						<div class="col-lg-4 col-sm-6">
+							<div class="ja_benefits-item">
+								<img src="/{{ $item->image }}" alt="ico" class="ja_benefits-item__ico">
+								<p class="ja_benefits-item__text"><span>{{ Helpers::getLangString($item, 'title') }}</span>{{ Helpers::getLangString($item, 'text') }}</p>
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico2.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('buh-aut.benefits-item2') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico3.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('buh-aut.benefits-item3') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico4.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('buh-aut.benefits-item4') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico5.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('buh-aut.benefits-item5') !!}</p>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6">
-						<div class="ja_benefits-item">
-							<img src="{{ asset('images/ja_benefits_ico6.svg') }}" alt="ico" class="ja_benefits-item__ico">
-							<p class="ja_benefits-item__text">{!! trans('buh-aut.benefits-item6') !!}</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -273,18 +206,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row justify-content-center align-items-center">
 			<div class="col-xl-5 col-md-6">
 				<div class="manager-image">
-					<img src="{{ asset('images/manager6.jpg') }}" alt="" class="manger-image__img">
+					<img src="{{ asset($lider->photo) }}" alt="" class="manger-image__img">
 				</div>
 			</div>
 			<div class="col-xl-5 col-md-6">
-				<p class="manager__name">{{ trans('buh-aut.manager1_name') }}</p>
-				<p class="manager__position">{{ trans('buh-aut.manager1_position') }}</p>
+				<p class="manager__name">{{ Helpers::getLangString($lider, 'name') }}</p>
+				<p class="manager__position">{{ Helpers::getLangString($lider, 'position') }}</p>
 				<div class="manager-text">
-					<p class="manager-text__count">{{ trans('buh-aut.manager1_year') }}</p>
-					<p class="manager-text__text">{{ trans('buh-aut.manager1_exp') }}</p>
+					<p class="manager-text__count">{{ Helpers::getLangString($lider, 'number') }}</p>
+					<p class="manager-text__text">{{ Helpers::getLangString($lider, 'text') }}</p>
 				</div>
-				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ trans('buh-aut.manager1_name') }}">{{ trans('main.expert_btn') }}s <i></i></a>
+				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ Helpers::getLangString($lider, 'name') }}">{{ trans('main.expert_btn') }} <i></i></a>
 			</div>
+		</div>
+		<div class="row justify-content-center align-items-center">
+			<div class="col-xl-6 col-md-6">
+				@if( isset($lider->study) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title1') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'study') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->practic) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title2') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'practic') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->sphere) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title3') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'sphere') !!}</p>
+				</div>
+				@endif
+			</div>
+			@if( isset($lider->image) )
+			<div class="col-xl-4 col-md-6">
+				<div class="manager-diploma">
+					<img src="{{ asset($lider->image) }}" alt="diploma" class="manager-diploma__img">
+				</div>
+			</div>
+			@endif
 		</div>
 	</div>
 </section>
@@ -297,17 +259,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight">{!! trans('buh-aut.faq_title') !!}</h3>
 
 				<div class="faq-content">
-					<div class="faq__title">
-						<i>01</i>
-						<p>{{ trans('buh-aut.question1') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('buh-aut.answer1') !!}</div>
-
-					<div class="faq__title">
-						<i>02</i>
-						<p>{{ trans('buh-aut.question2') }}</p>
-					</div>
-					<div class="faq__answer">{!! trans('buh-aut.answer2') !!}</div>
+					@foreach($faq as $item)
+						<div class="faq__title">
+							<i>{{ str_pad($item->id, 2, 0, STR_PAD_LEFT) }}</i>
+							<p>{{ Helpers::getLangString($item, 'question') }}</p>
+						</div>
+						<div class="faq__answer">{!! Helpers::getLangString($item, 'answer') !!}</div>
+					@endforeach
 				</div>
 
 				<a href="#modal" class="ja_faq__btn fancybox">{{ trans('jur-aut.faq_btn') }} <i></i></a>

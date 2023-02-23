@@ -3,22 +3,28 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ trans('main.meta_title') }}</title>
+	<title>{{ trans('otrymannia-posvidky.meta_title') }} | {{ trans('main.meta_title') }}</title>
 	<meta name="description" content="{{ trans('main.meta_description') }}">
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="shortcut icon" href="img/favicon/16.png" type="image/x-icon">
-	<link rel="icon" href="/img/favicon/16.png" type="image/x-icon"> 
-	<link rel="apple-touch-icon" href="/img/favicon/16.png">
-	<link rel="apple-touch-icon" sizes="32x32" href="/img/favicon/32.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/72.png"> 
+	<link rel="shortcut icon" href="/images/favicon/16.png" type="image/x-icon">
+	<link rel="icon" href="/images/favicon/16.png" type="image/x-icon"> 
+	<link rel="apple-touch-icon" href="/images/favicon/16.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/images/favicon/32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/72.png"> 
 	<meta name="theme-color" content="#C6A636">
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<meta property="og:title" content="{{ trans('otrymannia-posvidky.meta_title') }} | {{ trans('main.meta_title') }}">
+	<meta property="og:description" content="{{ trans('main.meta_description') }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ Request::url() }}">
+	<meta property="og:image" content="{{ asset('images/otrymannia_posvidky_bg.jpg') }}">
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -245,40 +251,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="col-xl-10 offset-xl-1">
 				<h3 class="ja_block-title fadeInRight">{!! trans('jur-aut.team_title') !!}</h3>
 				<div class="team-slider team-slider_service">
+					@foreach($team->lawyers as $item)
 					<div class="team-slider__slide">
 						<div class="expert expert_service">
 							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert1.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name1') }}</p>
+								<img src="{{ asset($item->image) }}" alt="expert" class="expert-photo__image">
+								<p class="expert-photo__name">{{ Helpers::getLangString($item, 'name') }}</p>
 							</div>
 							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name1') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position1') }}</p>
+								<p class="expert-info__name">{{ Helpers::getLangString($item, 'name') }}</p>
+								<p class="expert-info__position">{{ Helpers::getLangString($item, 'position') }}</p>
 								<p class="expert-info__text">
-									<i>15+</i>
-									<span>{{ trans('main.expert_text1') }}</span>
+									@if( isset($item->number) )
+									<i>{{ Helpers::getLangString($item, 'number') }}</i>
+									@endif
+									<span>{{ Helpers::getLangString($item, 'text') }}</span>
 								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name1') }}">{{ trans('main.expert_btn') }} <i></i></a>
+								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ Helpers::getLangString($item, 'name') }}">{{ trans('main.expert_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="team-slider__slide">
-						<div class="expert expert_service">
-							<div class="expert-photo">
-								<img src="{{ asset('images/uploads/expert9.jpg') }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ trans('main.expert_name8') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ trans('main.expert_name8') }}</p>
-								<p class="expert-info__position">{{ trans('main.expert_position8') }}</p>
-								<p class="expert-info__text">
-									<i>10+</i>
-									<span>{{ trans('main.expert_text8') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ trans('main.expert_name9') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>

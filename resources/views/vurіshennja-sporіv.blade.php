@@ -3,22 +3,28 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ trans('main.meta_title') }}</title>
+	<title>{{ trans('vur-spor.meta_title') }} | {{ trans('main.meta_title') }}</title>
 	<meta name="description" content="{{ trans('main.meta_description') }}">
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<link rel="shortcut icon" href="img/favicon/16.png" type="image/x-icon">
-	<link rel="icon" href="/img/favicon/16.png" type="image/x-icon"> 
-	<link rel="apple-touch-icon" href="/img/favicon/16.png">
-	<link rel="apple-touch-icon" sizes="32x32" href="/img/favicon/32.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/72.png"> 
+	<link rel="icon" href="/images/favicon/16.png" type="image/x-icon"> 
+	<link rel="apple-touch-icon" href="/images/favicon/16.png">
+	<link rel="apple-touch-icon" sizes="32x32" href="/images/favicon/32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/72.png"> 
 	<meta name="theme-color" content="#C6A636">
 
 	<link rel="stylesheet" href="{{ mix('/css/main.css') }}">
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<meta property="og:title" content="{{ trans('vur-spor.meta_title') }} | {{ trans('main.meta_title') }}">
+	<meta property="og:description" content="{{ trans('main.meta_description') }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ Request::url() }}">
+	<meta property="og:image" content="{{ asset('images/vir_spor_bg.jpg') }}">
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -42,7 +48,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 @include('templates.nav')
 
-<header class="ja_head header" style="background-image: url(/images/vir_spor_bg.jpg);">
+<header class="ja_head header" style="background-image: url(/imagess/vir_spor_bg.jpg);">
 	<div class="container">
 		<div class="ja_head__note d-none d-xl-block">{!! trans('vur-spor.head_note') !!}</div>
 		<div class="row align-items-center">
@@ -203,19 +209,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight"><span><i>{{ trans('vur-spor.other_title') }}</i></span></h3>
 				<div class="row">
 					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/images/other_item1.jpg);">
+						<div class="other-services__item" style="background-image: url(/imagess/other_item1.jpg);">
 							<p class="other-services__text">{{ trans('vur-spor.other_text1') }}</p>
 						</div>
 						<a href="{{ route('dosudoveVur') }}" class="other-services__btn">{{ trans('vur-spor.other_btn') }} <i></i></a>
 					</div>
 					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/images/other_item2.jpg);">
+						<div class="other-services__item" style="background-image: url(/imagess/other_item2.jpg);">
 							<p class="other-services__text">{{ trans('vur-spor.other_text2') }}</p>
 						</div>
 						<a href="{{ route('gospSpor') }}" class="other-services__btn">{{ trans('vur-spor.other_btn') }} <i></i></a>
 					</div>
 					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/images/other_item3.jpg);">
+						<div class="other-services__item" style="background-image: url(/imagess/other_item3.jpg);">
 							<p class="other-services__text">{{ trans('vur-spor.other_text3') }}</p>
 						</div>
 						<a href="{{ route('adminSpor') }}" class="other-services__btn">{{ trans('vur-spor.other_btn') }} <i></i></a>
@@ -369,7 +375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="blog-slider__slide">
 						<div class="blog-item">
 							<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="fancybox">
-								<img src="https://img.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
+								<img src="https://images.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
 							</a>
 							<div class="blog-item__content">
 								<h4 class="blog-item__title">{{ Helpers::getLangString($item, 'title') }}</h4>

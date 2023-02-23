@@ -358,6 +358,56 @@ return [
                 ->setTitle('Питання - відповідь'),
         ]
     ],
+    [
+        'title' => "Інтелектуальна власність",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '20',
+        'pages' => [
+            (new Page(\App\Models\IntelectAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\IntelectLider::class))
+                ->setIcon('fas fa-user-tie')
+                ->setPriority(2)
+                ->setTitle('Керівник напрямку'),
+            (new Page(\App\Models\IntelectFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(3)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Бухгалтерський аутсорсинг",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '21',
+        'pages' => [
+            (new Page(\App\Models\BuhAbout::class))
+                ->setIcon('fas fa-info-circle')
+                ->setPriority(1)
+                ->setTitle('Про нас'),
+            (new Page(\App\Models\BuhDirections::class))
+                ->setIcon('fas fa-arrow-right')
+                ->setPriority(2)
+                ->setTitle('Напрямки роботи'),
+            (new Page(\App\Models\BuhTraif::class))
+                ->setIcon('fas fa-dollar-sign')
+                ->setPriority(3)
+                ->setTitle('Тарифи'),
+            (new Page(\App\Models\BuhBenefits::class))
+                ->setIcon('fas fa-check')
+                ->setPriority(4)
+                ->setTitle('Переваги'),
+            (new Page(\App\Models\BuhLider::class))
+                ->setIcon('fas fa-user-tie')
+                ->setPriority(5)
+                ->setTitle('Керівник напрямку'),
+            (new Page(\App\Models\BuhFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(6)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
     AdminSection::addMenuPage(\App\Models\Oferta::class)
         ->setIcon('fas fa-align-justify')
         ->setPriority(22)

@@ -29,7 +29,7 @@ class VidkrUsaLider extends Model
         $img->save($file, 100);
     }
 
-    /*public function setImageAttribute($image)
+    public function setImageAttribute($image)
     {
         if (isset($this->attributes['image']) && $this->attributes['image'] != $image) {
             $file = public_path() . DIRECTORY_SEPARATOR . $this->attributes['image'];
@@ -37,16 +37,21 @@ class VidkrUsaLider extends Model
                 @unlink($file);
             }
         }
-        $this->attributes['image'] = $image;
+        if (empty($image))
+            $this->attributes['image'] = NULL;
+        else
+            $this->attributes['image'] = $image;
 
-        $file = public_path() . DIRECTORY_SEPARATOR . $image;
+        if (!empty($image)) {
+            $file = public_path() . DIRECTORY_SEPARATOR . $image;
 
-        $img = \Image::make($file);
-        $img->resize(403, null, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
+            $img = \Image::make($file);
+            $img->resize(403, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
 
-        $img->save($file, 100);
-    }*/
+            $img->save($file, 100);
+        }
+    }
 }
