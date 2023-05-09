@@ -67,6 +67,7 @@
 				<ul class="foot-list">
 					<li class="foot-list__item"><a href="{{ route('vidkryttiaUkr') }}">{{ trans('main.foot_menu24') }}</a></li>
 					<li class="foot-list__item"><a href="{{ route('kupivliaKomp') }}">{{ trans('main.foot_menu23') }}</a></li>
+					<li class="foot-list__item"><a href="{{ route('yurAdr') }}">{{ trans('main.foot_menu25') }}</a></li>
 					<li class="foot-list__item"><a href="{{ route('zakryttiaBiz') }}">{{ trans('main.foot_menu10') }}</a></li>
 					<li class="foot-list__item"><a href="{{ route('vidkryttiaUsa') }}">{{ trans('main.foot_menu11') }}</a></li>
 					<li class="foot-list__item"><a href="{{ route('dosudoveVur') }}">{{ trans('main.foot_menu12') }}</a></li>

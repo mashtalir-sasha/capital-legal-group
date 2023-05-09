@@ -33,7 +33,8 @@ AdminSection::registerModel(JurTraif::class, function (ModelConfiguration $model
                                 AdminFormElement::text('price', 'Вартість обслуговування за місяць')->required(),
                                 AdminFormElement::text('qty', 'Кількість оплачених годин')->required(),
                                 AdminFormElement::text('tarif', 'Тариф')->required(),
-                            ])
+                            ]),
+                            AdminFormElement::ckeditor('note', 'Нотатка'),
                         ]),
                         'Русский' => new \SleepingOwl\Admin\Form\FormElements([
                             AdminFormElement::textarea('text1RU', 'Текст 1')->required(),
@@ -43,7 +44,8 @@ AdminSection::registerModel(JurTraif::class, function (ModelConfiguration $model
                                 AdminFormElement::text('priceRU', 'Стоимость обслуживания за 1 месяц')->required(),
                                 AdminFormElement::text('qtyRU', 'Количество оплаченных часов')->required(),
                                 AdminFormElement::text('tarifRU', 'Тариф')->required(),
-                            ])
+                            ]),
+                            AdminFormElement::ckeditor('noteRU', 'Заметка'),
                         ]),
                     ]),
                 ];

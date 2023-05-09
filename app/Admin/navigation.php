@@ -119,9 +119,32 @@ return [
         ]
     ],
     [
-        'title' => "Закриття бізнесу в Україні",
+        'title' => "Купівля юридичної адреси",
         'icon' => 'fas fa-chevron-circle-down',
         'priority' => '8',
+        'pages' => [
+            (new Page(\App\Models\YurBenefits::class))
+                ->setIcon('fas fa-check')
+                ->setPriority(1)
+                ->setTitle('Переваги'),
+            (new Page(\App\Models\YurTarif::class))
+                ->setIcon('fas fa-dollar-sign')
+                ->setPriority(2)
+                ->setTitle('Варіанти пропозицій'),
+            (new Page(\App\Models\YurLider::class))
+                ->setIcon('fas fa-user-tie')
+                ->setPriority(3)
+                ->setTitle('Керівник напрямку'),
+            (new Page(\App\Models\YurFaq::class))
+                ->setIcon('fas fa-question')
+                ->setPriority(4)
+                ->setTitle('Питання - відповідь'),
+        ]
+    ],
+    [
+        'title' => "Закриття бізнесу в Україні",
+        'icon' => 'fas fa-chevron-circle-down',
+        'priority' => '9',
         'pages' => [
             (new Page(\App\Models\ZakryttiaAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -140,7 +163,7 @@ return [
     [
         'title' => "Відкриття бізнесу в США",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '9',
+        'priority' => '10',
         'pages' => [
             (new Page(\App\Models\VidkrUsaLider::class))
                 ->setIcon('fas fa-user-tie')
@@ -155,7 +178,7 @@ return [
     [
         'title' => "Податкове право",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '10',
+        'priority' => '11',
         'pages' => [
             (new Page(\App\Models\PodatkoveAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -170,7 +193,7 @@ return [
     [
         'title' => "Вирішення спорів",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '11',
+        'priority' => '12',
         'pages' => [
             (new Page(\App\Models\VurAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -193,7 +216,7 @@ return [
     [
         'title' => "Досудове врегулювання спорів",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '12',
+        'priority' => '13',
         'pages' => [
             (new Page(\App\Models\DosAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -216,7 +239,7 @@ return [
     [
         'title' => "Господарські спори",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '13',
+        'priority' => '14',
         'pages' => [
             (new Page(\App\Models\GospAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -239,7 +262,7 @@ return [
     [
         'title' => "Адміністративні спори",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '14',
+        'priority' => '15',
         'pages' => [
             (new Page(\App\Models\AdminAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -262,7 +285,7 @@ return [
     [
         'title' => "Тендерне право",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '15',
+        'priority' => '16',
         'pages' => [
             (new Page(\App\Models\TendAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -285,7 +308,7 @@ return [
     [
         'title' => "Міграційне право",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '16',
+        'priority' => '17',
         'pages' => [
             (new Page(\App\Models\MihrAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -300,7 +323,7 @@ return [
     [
         'title' => "Отримання ІПН іноземцю",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '17',
+        'priority' => '18',
         'pages' => [
             (new Page(\App\Models\IpnAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -319,7 +342,7 @@ return [
     [
         'title' => "Отримання дозволу на роботу іноземцю",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '18',
+        'priority' => '19',
         'pages' => [
             (new Page(\App\Models\DozAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -338,7 +361,7 @@ return [
     [
         'title' => "Отримання посвідки на проживання",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '19',
+        'priority' => '20',
         'pages' => [
             (new Page(\App\Models\PosAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -361,7 +384,7 @@ return [
     [
         'title' => "Інтелектуальна власність",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '20',
+        'priority' => '21',
         'pages' => [
             (new Page(\App\Models\IntelectAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -380,7 +403,7 @@ return [
     [
         'title' => "Бухгалтерський аутсорсинг",
         'icon' => 'fas fa-chevron-circle-down',
-        'priority' => '21',
+        'priority' => '22',
         'pages' => [
             (new Page(\App\Models\BuhAbout::class))
                 ->setIcon('fas fa-info-circle')
@@ -410,10 +433,10 @@ return [
     ],
     AdminSection::addMenuPage(\App\Models\Oferta::class)
         ->setIcon('fas fa-align-justify')
-        ->setPriority(22)
+        ->setPriority(23)
         ->setTitle('Договір оферти'),
     AdminSection::addMenuPage(\App\Models\Konfident::class)
         ->setIcon('fas fa-align-justify')
-        ->setPriority(23)
+        ->setPriority(24)
         ->setTitle('Політика конфіден.'),
 ];

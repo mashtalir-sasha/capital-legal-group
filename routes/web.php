@@ -34,6 +34,7 @@ Route::localizedGroup(function () {
 	Route::get('korporatyvne-pravo/kupivlia-hotovykh-kompanii', [App\Http\Controllers\ServiceController::class, 'kupivliaKomp'])->name('kupivliaKomp');
 	Route::get('korporatyvne-pravo/zakryttia-biznesu-v-ukraini', [App\Http\Controllers\ServiceController::class, 'zakryttiaBiz'])->name('zakryttiaBiz');
 	Route::get('korporatyvne-pravo/vidkryttia-biznesu-usa', [App\Http\Controllers\ServiceController::class, 'vidkryttiaUsa'])->name('vidkryttiaUsa');
+	Route::get('korporatyvne-pravo/yurydychna-adresa', [App\Http\Controllers\ServiceController::class, 'yurAdr'])->name('yurAdr');
 
 	Route::get('tenderne-pravo', [App\Http\Controllers\ServiceController::class, 'tendernePravo'])->name('tendernePravo');
 

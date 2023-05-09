@@ -48,7 +48,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 @include('templates.nav')
 
-<header class="ja_head header" style="background-image: url(/imagess/vir_spor_bg.jpg);">
+<header class="ja_head header" style="background-image: url(/images/vir_spor_bg.jpg);">
 	<div class="container">
 		<div class="ja_head__note d-none d-xl-block">{!! trans('vur-spor.head_note') !!}</div>
 		<div class="row align-items-center">
@@ -209,19 +209,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3 class="ja_block-title fadeInRight"><span><i>{{ trans('vur-spor.other_title') }}</i></span></h3>
 				<div class="row">
 					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/imagess/other_item1.jpg);">
+						<div class="other-services__item" style="background-image: url(/images/other_item1.jpg);">
 							<p class="other-services__text">{{ trans('vur-spor.other_text1') }}</p>
 						</div>
 						<a href="{{ route('dosudoveVur') }}" class="other-services__btn">{{ trans('vur-spor.other_btn') }} <i></i></a>
 					</div>
 					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/imagess/other_item2.jpg);">
+						<div class="other-services__item" style="background-image: url(/images/other_item2.jpg);">
 							<p class="other-services__text">{{ trans('vur-spor.other_text2') }}</p>
 						</div>
 						<a href="{{ route('gospSpor') }}" class="other-services__btn">{{ trans('vur-spor.other_btn') }} <i></i></a>
 					</div>
 					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/imagess/other_item3.jpg);">
+						<div class="other-services__item" style="background-image: url(/images/other_item3.jpg);">
 							<p class="other-services__text">{{ trans('vur-spor.other_text3') }}</p>
 						</div>
 						<a href="{{ route('adminSpor') }}" class="other-services__btn">{{ trans('vur-spor.other_btn') }} <i></i></a>

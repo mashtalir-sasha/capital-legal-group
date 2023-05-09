@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ trans('vidkryttia-ukr.meta_title') }} | {{ trans('main.meta_title') }}</title>
+	<title>{{ trans('yurydychna-adresa.meta_title') }} | {{ trans('main.meta_title') }}</title>
 	<meta name="description" content="{{ trans('main.meta_description') }}">
 	<meta name="keywords" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,11 +20,12 @@
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<meta property="og:title" content="{{ trans('vidkryttia-ukr.meta_title') }} | {{ trans('main.meta_title') }}">
+	<meta property="og:title" content="{{ trans('yurydychna-adresa.meta_title') }} | {{ trans('main.meta_title') }}">
 	<meta property="og:description" content="{{ trans('main.meta_description') }}">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="{{ Request::url() }}">
-	<meta property="og:image" content="{{ asset('images/vidkryttia_ukr_bg.jpg') }}">
+	<meta property="og:image" content="{{ asset('images/kupivliya_komp_bg.jpg') }}">
+
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -48,84 +49,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 @include('templates.nav')
 
-<header class="ja_head header" style="background-image: url(/images/vidkryttia_ukr_bg.jpg);">
+<header class="ja_head header" style="background-image: url(/images/yurydychna_adresa_bg.jpg);">
 	<div class="container">
-		<div class="ja_head__note d-none d-xl-block">{!! trans('vidkryttia-ukr.head_note') !!}</div>
+		<div class="ja_head__note d-none d-xl-block">{!! trans('yurydychna-adresa.head_note') !!}</div>
 		<div class="row align-items-center">
 			<div class="col offset-lg-1">
 				<div class="ja_head__content">
-					<h1 class="ja_head-title">{!! trans('vidkryttia-ukr.main_title') !!}</h1>
-					<h2 class="ja_head-text">{{ trans('vidkryttia-ukr.main_text') }}</h2>
+					<h1 class="ja_head-title">{!! trans('yurydychna-adresa.main_title') !!}</h1>
+					<h2 class="ja_head-text">{{ trans('yurydychna-adresa.main_text') }}</h2>
 				</div>
 			</div>
 		</div>
 	</div>
 </header>
 
-<section class="vs_about scroll fadeIn">
+<section class="ja_benefits ja_benefits_shadow scroll fadeIn">
 	<div class="container">
-		<div class="note d-none d-xl-block">{{ trans('vidkryttia-ukr.about_note') }}</div>
+		<div class="note d-none d-xl-block">{{ trans('yurydychna-adresa.benefits_note') }}</div>
 		<div class="row">
 			<div class="col-xl-10 offset-xl-1">
-				<p class="vs_about__title vs_about__title_fwn">{{ Helpers::getLangString($about, 'title') }}</p>
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			<div class="col-xl-5 col-md-6">
-				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'subtitle1') }}</h3>
-				<ul class="vs_about-list vs_about-list_fz16">
-					@foreach( json_decode($about->list1) as $item )
-						@if( app()->getLocale() == 'uk')
-							<li>{{ $item->item }}</li>
-						@else
-							<li>{{ $item->itemRU }}</li>
-						@endif
+				<h3 class="ja_block-title fadeInRight">{!! trans('yurydychna-adresa.benefits_title') !!}</h3>
+				<div class="row">
+					@foreach($benefits as $item)
+					<div class="col-lg-4 col-sm-6">
+						<div class="ja_benefits-item">
+							<img src="{{ asset($item->image) }}" alt="ico" class="ja_benefits-item__ico">
+							<p class="ja_benefits-item__text">
+								<span>{{ Helpers::getLangString($item, 'title') }}</span>
+								{{ Helpers::getLangString($item, 'text') }}
+							</p>
+						</div>
+					</div>
 					@endforeach
-				</ul>
-				<h3 class="vs_about__title">{{ Helpers::getLangString($about, 'subtitle2') }}</h3>
-				<ul class="vs_about-list vs_about-list_fz16">
-					@foreach( json_decode($about->list2) as $item )
-						@if( app()->getLocale() == 'uk')
-							<li>{{ $item->item }}</li>
-						@else
-							<li>{{ $item->itemRU }}</li>
-						@endif
-					@endforeach
-				</ul>
-				<a href="{{ route('jurAut') }}" class="vs_about-link">{{ trans('vidkryttia-ukr.about_link1') }}</a>
-				<a href="{{ route('bukhhalterskyiAut') }}" class="vs_about-link">{{ trans('vidkryttia-ukr.about_link2') }}</a>
-				<a href="#modal" class="vs_about__btn fancybox">{{ trans('vidkryttia-ukr.about_btn') }} <i></i></a>
-			</div>
-			<div class="col-xl-5 col-md-6">
-				<div class="video-container">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ basename($about->video) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-
 <section class="tarif scroll fadeIn">
 	<div class="container">
-		<div class="note d-none d-xl-block">{{ trans('vidkryttia-ukr.tarif_note') }}</div>
+		<div class="note d-none d-xl-block">{{ trans('yurydychna-adresa.tarif_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title fadeInRight">{!! trans('vidkryttia-ukr.tarif_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('yurydychna-adresa.tarif_title') !!}</h3>
 				<div class="row">
 					@foreach($tarifs as $item)
 					<div class="col-lg-4 col-sm-6">
-						<div @if( $loop->iteration % 2 === 0 ) class="tarif-item tarif-item_accent" @else class="tarif-item" @endif>
-							<div class="tarif-item__title">
-								<h4>{{ Helpers::getLangString($item, 'name') }}</h4>
+						<div class="cart-item">
+							<div class="cart-item__title machHeight">
+								<h4>{{ Helpers::getLangString($item, 'title') }}</h4>
 							</div>
-							<div class="tarif-item__wrap">
-								<p class="tarif-item__subtitle">{{ Helpers::getLangString($item, 'title') }} <br> {{ trans('vidkryttia-ukr.tarif_subtitle') }}</p>
-								<p class="tarif-item__text">{!! Helpers::getLangString($item, 'text') !!}</p>
+							<div class="cart-item__wrap">
+								<p class="cart-item__text">{!! Helpers::getLangString($item, 'text') !!}</p>
 							</div>
-							<div class="tarif-item__price">
-								<p>{!! trans('vidkryttia-ukr.tarif_price') !!} {{ $item->price }} грн.</p>
-								<a href="#buy" class="tarif-item__btn fancybox">{{ trans('vidkryttia-ukr.tarif_btn') }} <i></i></a>
+							<div class="cart-item__price">
+								<p>{!! trans('yurydychna-adresa.tarif_price') !!} {{ $item->price }}</p>
+								<a href="#discuss" class="cart-item__btn fancybox">{{ trans('yurydychna-adresa.tarif_btn') }} <i></i></a>
 							</div>
 						</div>
 					</div>
@@ -170,36 +150,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="alt scroll fadeIn">
 	<div class="container">
-		<div class="note d-none d-xl-block">{{ trans('vidkryttia-ukr.alt_note') }}</div>
+		<div class="note d-none d-xl-block">{{ trans('yurydychna-adresa.alt_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title fadeInRight">{!! trans('vidkryttia-ukr.alt_title') !!}</h3>
-				<a href="{{ route('kupivliaKomp') }}" class="alt-services__item" style="background-image: url(/images/korp_alt1.jpg);">
-					<p class="alt-services__text">{{ trans('vidkryttia-ukr.alt_text') }}</p>
-				</a>
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			<div class="col-xl-10">
-				<h3 class="ja_block-title fadeInRight"><span><i>{{ trans('vidkryttia-ukr.other_title') }}</i></span></h3>
+				<h3 class="ja_block-title fadeInRight"><span><i>{{ trans('yurydychna-adresa.other_title') }}</i></span></h3>
 				<div class="row justify-content-center">
 					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/images/korp_alt2.jpg);">
-							<p class="other-services__text">{{ trans('vidkryttia-ukr.other_text1') }}</p>
+						<div class="other-services__item" style="background-image: url(/images/korp_alt4.jpg);">
+							<p class="other-services__text">{{ trans('yurydychna-adresa.other_text3') }}</p>
 						</div>
-						<a href="{{ route('jurAut') }}" class="other-services__btn">{{ trans('vidkryttia-ukr.other_btn') }} <i></i></a>
+						<a href="{{ route('vidkryttiaUkr') }}" class="other-services__btn">{{ trans('yurydychna-adresa.other_btn') }} <i></i></a>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="other-services__item" style="background-image: url(/images/korp_alt2.jpg);">
+							<p class="other-services__text">{{ trans('yurydychna-adresa.other_text1') }}</p>
+						</div>
+						<a href="{{ route('jurAut') }}" class="other-services__btn">{{ trans('yurydychna-adresa.other_btn') }} <i></i></a>
 					</div>
 					<div class="col-md-4 col-sm-6">
 						<div class="other-services__item" style="background-image: url(/images/korp_alt3.jpg);">
-							<p class="other-services__text">{{ trans('vidkryttia-ukr.other_text2') }}</p>
+							<p class="other-services__text">{{ trans('yurydychna-adresa.other_text2') }}</p>
 						</div>
-						<a href="{{ route('bukhhalterskyiAut') }}" class="other-services__btn">{{ trans('vidkryttia-ukr.other_btn') }} <i></i></a>
-					</div>
-					<div class="col-md-4 col-sm-6">
-						<div class="other-services__item" style="background-image: url(/images/korp_alt4.jpg);">
-							<p class="other-services__text">{{ trans('vidkryttia-ukr.other_text3') }}</p>
-						</div>
-						<a href="{{ route('intelektVlasnist') }}" class="other-services__btn">{{ trans('vidkryttia-ukr.other_btn') }} <i></i></a>
+						<a href="{{ route('bukhhalterskyiAut') }}" class="other-services__btn">{{ trans('yurydychna-adresa.other_btn') }} <i></i></a>
 					</div>
 				</div>
 			</div>
@@ -207,46 +179,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </section>
 
-<section id="team" class="team scroll fadeIn">
+<section id="team" class="manager scroll fadeIn">
 	<div class="container">
-		<div class="note d-none d-xl-block">{{ trans('jur-aut.team_note') }}</div>
-		<div class="row">
-			<div class="col-xl-10 offset-xl-1">
-				<h3 class="ja_block-title fadeInRight">{!! trans('jur-aut.team_title') !!}</h3>
-				<div class="team-slider team-slider_service">
-					@foreach($team->lawyers as $item)
-					<div class="team-slider__slide">
-						<div class="expert expert_service">
-							<div class="expert-photo">
-								<img src="{{ asset($item->image) }}" alt="expert" class="expert-photo__image">
-								<p class="expert-photo__name">{{ Helpers::getLangString($item, 'name') }}</p>
-							</div>
-							<div class="expert-info">
-								<p class="expert-info__name">{{ Helpers::getLangString($item, 'name') }}</p>
-								<p class="expert-info__position">{{ Helpers::getLangString($item, 'position') }}</p>
-								<p class="expert-info__text">
-									@if( isset($item->number) )
-									<i>{{ Helpers::getLangString($item, 'number') }}</i>
-									@endif
-									<span>{{ Helpers::getLangString($item, 'text') }}</span>
-								</p>
-								<a href="#expert" class="expert-info__btn fancybox" data-name="{{ Helpers::getLangString($item, 'name') }}">{{ trans('main.expert_btn') }} <i></i></a>
-							</div>
-						</div>
-					</div>
-					@endforeach
+		<div class="note d-none d-xl-block">{{ trans('yurydychna-adresa.manager_note') }}</div>
+		<div class="row justify-content-center">
+			<div class="col-xl-10">
+				<h3 class="ja_block-title fadeInRight">{!! trans('yurydychna-adresa.manager_title') !!}</h3>
+			</div>
+		</div>
+		<div class="row justify-content-center align-items-center">
+			<div class="col-xl-5 col-md-6">
+				<div class="manager-image">
+					<img src="{{ asset($lider->photo) }}" alt="" class="manger-image__img">
 				</div>
 			</div>
+			<div class="col-xl-5 col-md-6">
+				<p class="manager__name">{{ Helpers::getLangString($lider, 'name') }}</p>
+				<p class="manager__position">{{ Helpers::getLangString($lider, 'position') }}</p>
+				<div class="manager-text">
+					<p class="manager-text__count">{{ Helpers::getLangString($lider, 'number') }}</p>
+					<p class="manager-text__text">{{ Helpers::getLangString($lider, 'text') }}</p>
+				</div>
+				<a href="#expert" class="expert-info__btn expert-info__btn_center fancybox" data-name="{{ Helpers::getLangString($lider, 'name') }}">{{ trans('main.expert_btn') }} <i></i></a>
+			</div>
+		</div>
+		<div class="row justify-content-center align-items-center">
+			<div class="col-xl-6 col-md-6">
+				@if( isset($lider->study) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title1') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'study') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->practic) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title2') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'practic') !!}</p>
+				</div>
+				@endif
+				@if( isset($lider->sphere) )
+				<div class="manager__content">
+					<h4 class="manager__title">{{ trans('vur-spor.manager1_title3') }}</h4>
+					<p class="manager__text">{!! Helpers::getLangString($lider, 'sphere') !!}</p>
+				</div>
+				@endif
+			</div>
+			@if( isset($lider->image) )
+			<div class="col-xl-4 col-md-6">
+				<div class="manager-diploma">
+					<img src="{{ asset($lider->image) }}" alt="diploma" class="manager-diploma__img">
+				</div>
+			</div>
+			@endif
 		</div>
 	</div>
 </section>
 
 <section class="ja_faq scroll fadeIn">
 	<div class="container">
-		<div class="note d-none d-xl-block">{{ trans('vidkryttia-ukr.faq_note') }}</div>
+		<div class="note d-none d-xl-block">{{ trans('yurydychna-adresa.faq_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title fadeInRight">{!! trans('vidkryttia-ukr.faq_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('yurydychna-adresa.faq_title') !!}</h3>
 
 				<div class="faq-content">
 					@foreach($faq as $item)
@@ -269,7 +263,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="note d-none d-xl-block">{{ trans('jur-aut.blog_note') }}</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-10">
-				<h3 class="ja_block-title fadeInRight">{!! trans('vidkryttia-ukr.blog_title') !!}</h3>
+				<h3 class="ja_block-title fadeInRight">{!! trans('yurydychna-adresa.blog_title') !!}</h3>
 				<div class="blog-slider">
 					@forelse($blogContent->articles as $item)
 					<div class="blog-slider__slide">

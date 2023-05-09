@@ -214,7 +214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="blog-slider__slide">
 						<div class="blog-item">
 							<a href="https://www.youtube.com/watch?v={{ $item->link }}" class="fancybox">
-								<img src="https://image.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
+								<img src="https://img.youtube.com/vi/{{ $item->link }}/maxresdefault.jpg" alt="blog image" class="blog-item__image">
 							</a>
 							<div class="blog-item__content">
 								<h4 class="blog-item__title">{{ Helpers::getLangString($item, 'title') }}</h4>

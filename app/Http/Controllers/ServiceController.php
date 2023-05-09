@@ -135,6 +135,19 @@ class ServiceController extends Controller
         ]);
     }
 
+    public function yurAdr()
+    {
+        return view('yurydychna-adresa', [
+            'blogContent' => \App\Models\BlogCategory::where('id', '19')->with('articles')->firstOrFail(),
+            'mailto' => 'borovyk@spg.kiev.ua, priadka@spg.kiev.ua',
+            'contacts' => \App\Models\Contacts::first(),
+            'benefits' => \App\Models\YurBenefits::get(),
+            'tarifs' => \App\Models\YurTarif::get(),
+            'faq' => \App\Models\YurFaq::get(),
+            'lider' => \App\Models\YurLider::first(),
+        ]);
+    }
+
     public function tendernePravo()
     {
         return view('tenderne-pravo', [

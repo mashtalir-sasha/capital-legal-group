@@ -13,7 +13,7 @@ class MailController extends Controller
         if ( $request->mailto != "" ) {
             $mailto = $request->mailto;
         } else {
-            $mailto = 'mashtalir_sasha@ukr.net';
+            $mailto = 'priadka@spg.kiev.ua';
         }
 
         if ( $request->title != "" ) {

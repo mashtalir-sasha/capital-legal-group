@@ -24,6 +24,9 @@ class CreateJurTraifsTable extends Migration
 
             $table->text('table')->nullable();
 
+            $table->text('note')->nullable();
+            $table->text('noteRU')->nullable();
+
             $table->timestamps();
         });
     }

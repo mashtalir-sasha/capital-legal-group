@@ -195,6 +195,9 @@ $(function() {
 	$('.receive-item').matchHeight()
 
 	$('.tarif-item__wrap, .cart-item__wrap, .package-item__wrap').matchHeight()
+	$('.machHeight').matchHeight({
+		byRow: true,
+	})
 
 	$('.blog-cart__title').matchHeight()
 

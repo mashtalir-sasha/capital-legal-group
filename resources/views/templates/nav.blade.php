@@ -28,6 +28,7 @@
 									<ul class="nav-hide2">
 										<li><a href="{{ route('vidkryttiaUkr') }}">{{ trans('main.service2_item1') }}</a></li>
 										<li><a href="{{ route('kupivliaKomp') }}">{{ trans('main.service2_item2') }}</a></li>
+										<li><a href="{{ route('yurAdr') }}">{{ trans('main.service2_item5') }}</a></li>
 										<li><a href="{{ route('zakryttiaBiz') }}">{{ trans('main.service2_item3') }}</a></li>
 										<li><a href="{{ route('vidkryttiaUsa') }}">{{ trans('main.service2_item4') }}</a></li>
 									</ul>	

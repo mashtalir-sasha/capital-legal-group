@@ -230,7 +230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					@endforeach
 				</table>
 
-				<p class="ja_price__last">{!! trans('jur-aut.price_last') !!} <a href="{{ route('vurSpor') }}">{{ trans('jur-aut.price_last_link') }}</a></p>
+				<p class="ja_price__last">{!! Helpers::getLangString($jurTarif, 'note') !!}</p>
 			</div>
 		</div>
 	</div>
